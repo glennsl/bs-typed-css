@@ -13,21 +13,21 @@ module Types = {
   /**
    * Values
    */
-  type value('a) = 'a constraint [< allTypes] = 'a;
-  type none = value([`none]);
-  type auto = value([`auto]);
-  type length = value([`length]);
+  type value('a)  = 'a constraint [< allTypes] = 'a;
+  type none       = value([`none]);
+  type auto       = value([`auto]);
+  type length     = value([`length]);
   type percentage = value([`percentage]);
-  type uri = value([`uri]);
-  /*type counter = value([`counter]);*/
-  type color = value([`color]);
+  type uri        = value([`uri]);
+  /*type counter  = value([`counter]);*/
+  type color      = value([`color]);
 
 
   /**
    * Declarations
    */
   type declaration;
-  type marginWidth = [`length | `percentage | `auto];
+  type marginWidth  = [`length | `percentage | `auto];
   type paddingWidth = [`length | `percentage];
 };
 
@@ -110,13 +110,18 @@ module type Declarations = {
   let marginLeft: value([< marginWidth | `universal]) => declaration;
 
   let padding: value([< paddingWidth | `universal]) => declaration;
-  /*
-  let padding2: (~v:paddingWidth, ~h:paddingWidth) => declaration;
-  let padding3: (~top:paddingWidth, ~h:paddingWidth, ~bottom:paddingWidth) => declaration ;
-  let padding4: (~top:paddingWidth, ~right:paddingWidth, ~bottom:paddingWidth, ~left:paddingWidth) => declaration ;
-  let paddingTop: paddingWidth => declaration;
-  let paddingRight: paddingWidth => declaration;
-  let paddingBottom: paddingWidth => declaration;
-  let paddingLeft: paddingWidth => declaration;
-  */
+  let padding2: (~v:value([< paddingWidth]),
+                ~h:value([< paddingWidth])) => declaration;
+  let padding3: (~top:value([< paddingWidth]),
+                ~h:value([< paddingWidth]),
+                ~bottom:value([< paddingWidth])) => declaration;
+  let padding4: (~top:value([< paddingWidth]),
+                ~right:value([< paddingWidth]),
+                ~bottom:value([< paddingWidth]),
+                ~left:value([< paddingWidth])) => declaration;
+  let paddingTop: value([< paddingWidth | `universal]) => declaration;
+  let paddingRight: value([< paddingWidth | `universal]) => declaration;
+  let paddingBottom: value([< paddingWidth | `universal]) => declaration;
+  let paddingLeft: value([< paddingWidth | `universal]) => declaration;
+
 };

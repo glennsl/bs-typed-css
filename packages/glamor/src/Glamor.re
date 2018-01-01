@@ -44,7 +44,23 @@ let marginBottom = value =>
 let marginLeft = value =>
   ("marginLeft", value) |> asDeclaration;
 
-let padding = value     => ("padding", value) |> asDeclaration;
+
+let padding = value =>
+  ("padding", value) |> asDeclaration;
+let padding2 = (~v, ~h) =>
+  ("padding", {j|$v $h|j} |> asValue) |> asDeclaration;
+let padding3 = (~top, ~h, ~bottom) =>
+  ("padding", {j|$top $h $bottom|j} |> asValue) |> asDeclaration;
+let padding4 = (~top, ~right, ~bottom, ~left) =>
+  ("padding", {j|$top $right $bottom $left|j} |> asValue) |> asDeclaration;
+let paddingTop = value =>
+  ("paddingTop", value) |> asDeclaration;
+let paddingRight = value =>
+  ("paddingRight", value) |> asDeclaration;
+let paddingBottom = value =>
+  ("paddingBottom", value) |> asDeclaration;
+let paddingLeft = value =>
+  ("paddingLeft", value) |> asDeclaration;
 
 let css = declarations =>
   declarations |> List.map(getDeclaration)

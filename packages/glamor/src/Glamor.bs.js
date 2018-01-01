@@ -107,6 +107,55 @@ function padding(value) {
         ];
 }
 
+function padding2(v, h) {
+  return /* tuple */[
+          "padding",
+          "" + (String(v) + (" " + (String(h) + "")))
+        ];
+}
+
+function padding3(top, h, bottom) {
+  return /* tuple */[
+          "padding",
+          "" + (String(top) + (" " + (String(h) + (" " + (String(bottom) + "")))))
+        ];
+}
+
+function padding4(top, right, bottom, left) {
+  return /* tuple */[
+          "padding",
+          "" + (String(top) + (" " + (String(right) + (" " + (String(bottom) + (" " + (String(left) + "")))))))
+        ];
+}
+
+function paddingTop(value) {
+  return /* tuple */[
+          "paddingTop",
+          value
+        ];
+}
+
+function paddingRight(value) {
+  return /* tuple */[
+          "paddingRight",
+          value
+        ];
+}
+
+function paddingBottom(value) {
+  return /* tuple */[
+          "paddingBottom",
+          value
+        ];
+}
+
+function paddingLeft(value) {
+  return /* tuple */[
+          "paddingLeft",
+          value
+        ];
+}
+
 function css(declarations) {
   return Js_dict.fromList(List.map((function (prim) {
                     return prim;
@@ -125,30 +174,37 @@ var auto = "auto";
 
 var zero = "0";
 
-exports.inherit_     = inherit_;
-exports.initial      = initial;
-exports.unset        = unset;
-exports.none         = none;
-exports.auto         = auto;
-exports.em           = em;
-exports.ex           = ex;
-exports.inch         = inch;
-exports.cm           = cm;
-exports.mm           = mm;
-exports.pt           = pt;
-exports.pc           = pc;
-exports.px           = px;
-exports.zero         = zero;
-exports.pct          = pct;
-exports.url          = url;
-exports.margin       = margin;
-exports.margin2      = margin2;
-exports.margin3      = margin3;
-exports.margin4      = margin4;
-exports.marginTop    = marginTop;
-exports.marginRight  = marginRight;
-exports.marginBottom = marginBottom;
-exports.marginLeft   = marginLeft;
-exports.padding      = padding;
-exports.css          = css;
+exports.inherit_      = inherit_;
+exports.initial       = initial;
+exports.unset         = unset;
+exports.none          = none;
+exports.auto          = auto;
+exports.em            = em;
+exports.ex            = ex;
+exports.inch          = inch;
+exports.cm            = cm;
+exports.mm            = mm;
+exports.pt            = pt;
+exports.pc            = pc;
+exports.px            = px;
+exports.zero          = zero;
+exports.pct           = pct;
+exports.url           = url;
+exports.margin        = margin;
+exports.margin2       = margin2;
+exports.margin3       = margin3;
+exports.margin4       = margin4;
+exports.marginTop     = marginTop;
+exports.marginRight   = marginRight;
+exports.marginBottom  = marginBottom;
+exports.marginLeft    = marginLeft;
+exports.padding       = padding;
+exports.padding2      = padding2;
+exports.padding3      = padding3;
+exports.padding4      = padding4;
+exports.paddingTop    = paddingTop;
+exports.paddingRight  = paddingRight;
+exports.paddingBottom = paddingBottom;
+exports.paddingLeft   = paddingLeft;
+exports.css           = css;
 /* Js_dict Not a pure module */
