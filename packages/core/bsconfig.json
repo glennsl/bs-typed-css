@@ -1,0 +1,15 @@
+{
+  "name": "typed-css-core",
+  "version": "0.1.0",
+  "sources": [
+    "src"
+  ],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "bs-dependencies": [],
+  "bs-dev-dependencies": [],
+  "refmt": 3
+}

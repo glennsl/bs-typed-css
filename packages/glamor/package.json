@@ -1,0 +1,25 @@
+{
+  "name": "typed-css-glamor",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "watch:jest": "jest --watchAll"
+  },
+  "keywords": [
+    "reason",
+    "bucklescript",
+    "css",
+    "glamor"
+  ],
+  "author": "glennsl",
+  "license": "MIT",
+  "dependencies": {
+    "typed-css-core": "../core"
+  },
+  "devDependencies": {
+    "bs-platform": "^2.1.0",
+    "@glennsl/bs-jest": "^0.3.2"
+  }
+}

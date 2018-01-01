@@ -1,0 +1,19 @@
+{
+  "name": "typed-glamor",
+  "version": "0.1.0",
+  "sources": [
+    "src",
+    {
+      "dir": "__tests__",
+      "type": "dev"
+    }
+  ],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "bs-dependencies": ["typed-css-core"],
+  "bs-dev-dependencies": ["@glennsl/bs-jest"],
+  "refmt": 3
+}
