@@ -29,15 +29,23 @@ let url = url => {j|url($url)|j} |> asValue;
 
 let margin = value =>
   ("margin", value) |> asDeclaration;
+let margin2 = (~v, ~h) =>
+  ("margin", {j|$v $h|j} |> asValue) |> asDeclaration;
+let margin3 = (~top, ~h, ~bottom) =>
+  ("margin", {j|$top $h $bottom|j} |> asValue) |> asDeclaration;
+let margin4 = (~top, ~right, ~bottom, ~left) =>
+  ("margin", {j|$top $right $bottom $left|j} |> asValue) |> asDeclaration;
+let marginTop = value =>
+  ("marginTop", value) |> asDeclaration;
+let marginRight = value =>
+  ("marginRight", value) |> asDeclaration;
+let marginBottom = value =>
+  ("marginBottom", value) |> asDeclaration;
+let marginLeft = value =>
+  ("marginLeft", value) |> asDeclaration;
 
-let padding = value =>
-  ("padding", value) |> asDeclaration;
+let padding = value     => ("padding", value) |> asDeclaration;
 
-let style = declarations => {
-  let dict = Js.Dict.empty();
-  declarations |> List.iter(decl => {
-    let (k, v) = decl |> getDeclaration;
-    Js.Dict.set(dict, k, v);
-  });
-  dict
-};
+let css = declarations =>
+  declarations |> List.map(getDeclaration)
+               |> Js.Dict.fromList;

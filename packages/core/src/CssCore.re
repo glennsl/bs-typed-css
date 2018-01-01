@@ -1,5 +1,6 @@
 module Types = {
   type allTypes = [
+    | `universal
     | `none
     | `auto
     | `length
@@ -26,8 +27,8 @@ module Types = {
    * Declarations
    */
   type declaration;
-  type marginWidth('a) = value([< `length | `percentage | `auto] as 'a);
-  type paddingWidth('a) = value([< `length | `percentage] as 'a);
+  type marginWidth = [`length | `percentage | `auto];
+  type paddingWidth = [`length | `percentage];
 };
 
 module type Values = {
@@ -40,9 +41,9 @@ module type Values = {
   /**
    * Universal
   */
-  let inherit_: value(_);
-  let initial: value(_);
-  let unset: value(_);
+  let inherit_: value([`universal]);
+  let initial: value([`universal]);
+  let unset: value([`universal]);
 
 
   /**
@@ -89,18 +90,26 @@ module type Declarations = {
    */
   open Types;
 
-  let margin: marginWidth(_) => declaration;
-  /*
-  let margin2: (~v:marginWidth, ~h:marginWidth) => declaration;
-  let margin3: (~top:marginWidth, ~h:marginWidth, ~bottom:marginWidth) => declaration ;
-  let margin4: (~top:marginWidth, ~right:marginWidth, ~bottom:marginWidth, ~left:marginWidth) => declaration ;
-  let marginTop: marginWidth => declaration;
-  let marginRight: marginWidth => declaration;
-  let marginBottom: marginWidth => declaration;
-  let marginLef5: marginWidth => declaration;
-  */
 
-  let padding: paddingWidth(_) => declaration;
+  /**
+   * Box model
+   */
+  let margin: value([< marginWidth | `universal]) => declaration;
+  let margin2: (~v:value([< marginWidth]),
+                ~h:value([< marginWidth])) => declaration;
+  let margin3: (~top:value([< marginWidth]),
+                ~h:value([< marginWidth]),
+                ~bottom:value([< marginWidth])) => declaration;
+  let margin4: (~top:value([< marginWidth]),
+                ~right:value([< marginWidth]),
+                ~bottom:value([< marginWidth]),
+                ~left:value([< marginWidth])) => declaration;
+  let marginTop: value([< marginWidth | `universal]) => declaration;
+  let marginRight: value([< marginWidth | `universal]) => declaration;
+  let marginBottom: value([< marginWidth | `universal]) => declaration;
+  let marginLeft: value([< marginWidth | `universal]) => declaration;
+
+  let padding: value([< paddingWidth | `universal]) => declaration;
   /*
   let padding2: (~v:paddingWidth, ~h:paddingWidth) => declaration;
   let padding3: (~top:paddingWidth, ~h:paddingWidth, ~bottom:paddingWidth) => declaration ;
@@ -108,6 +117,6 @@ module type Declarations = {
   let paddingTop: paddingWidth => declaration;
   let paddingRight: paddingWidth => declaration;
   let paddingBottom: paddingWidth => declaration;
-  let paddingLef5: paddingWidth => declaration;
+  let paddingLeft: paddingWidth => declaration;
   */
 };

@@ -3,4 +3,4 @@ open CssCore.Types;
 include CssCore.Values;
 include CssCore.Declarations;
 
-let style: list(declaration) => Js.Dict.t(value(_));
+let css: list(declaration) => Js.Dict.t(value(_));

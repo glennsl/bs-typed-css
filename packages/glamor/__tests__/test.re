@@ -4,11 +4,11 @@ open Glamor;
 
 let _ =
   test("basic", () => {
-    let css = style([
-      margin(auto),
+    let style = css([
       padding(em(10.)),
-      margin(unset)
+      margin2(~v=zero, ~h=auto /*unset - not allowed*/),
+      marginLeft(initial)
     ]);
 
-    expect(css) |> toEqual({ "margin": "10em" } |> Obj.magic);
+    expect(style) |> toEqual({ "padding": "10em", "margin": "0 auto", "marginLeft": "initial" } |> Obj.magic);
   });

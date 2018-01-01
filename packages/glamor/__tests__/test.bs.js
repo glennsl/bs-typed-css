@@ -5,19 +5,21 @@ var Jest   = require("@glennsl/bs-jest/src/jest.js");
 var Glamor = require("../src/Glamor.bs.js");
 
 Jest.test("basic", (function () {
-        var css = Glamor.style(/* :: */[
-              Glamor.margin(Glamor.auto),
+        var style = Glamor.css(/* :: */[
+              Glamor.padding(Glamor.em(10)),
               /* :: */[
-                Glamor.padding(Glamor.em(10)),
+                Glamor.margin2(Glamor.zero, Glamor.auto),
                 /* :: */[
-                  Glamor.margin(Glamor.unset),
+                  Glamor.marginLeft(Glamor.initial),
                   /* [] */0
                 ]
               ]
             ]);
         return Jest.Expect[/* toEqual */12]({
-                    margin: "10em"
-                  }, Jest.Expect[/* expect */0](css));
+                    padding: "10em",
+                    margin: "0 auto",
+                    marginLeft: "initial"
+                  }, Jest.Expect[/* expect */0](style));
       }));
 
 /*  Not a pure module */
