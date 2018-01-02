@@ -156,6 +156,118 @@ function paddingLeft(value) {
         ];
 }
 
+function border(width, style, color) {
+  return /* tuple */[
+          "border",
+          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
+        ];
+}
+
+function borderWidth(value) {
+  return /* tuple */[
+          "borderWidth",
+          value
+        ];
+}
+
+function borderTopWidth(value) {
+  return /* tuple */[
+          "borderTopWidth",
+          value
+        ];
+}
+
+function borderRightWidth(value) {
+  return /* tuple */[
+          "borderRightWidth",
+          value
+        ];
+}
+
+function borderBottomWidth(value) {
+  return /* tuple */[
+          "borderBottomWidth",
+          value
+        ];
+}
+
+function borderLeftWidth(value) {
+  return /* tuple */[
+          "borderLeftWidth",
+          value
+        ];
+}
+
+function borderStyle(value) {
+  return /* tuple */[
+          "borderStyle",
+          value
+        ];
+}
+
+function borderTopStyle(value) {
+  return /* tuple */[
+          "borderTopStyle",
+          value
+        ];
+}
+
+function borderRightStyle(value) {
+  return /* tuple */[
+          "borderRightStyle",
+          value
+        ];
+}
+
+function borderBottomStyle(value) {
+  return /* tuple */[
+          "borderBottomStyle",
+          value
+        ];
+}
+
+function borderLeftStyle(value) {
+  return /* tuple */[
+          "borderLeftStyle",
+          value
+        ];
+}
+
+function borderColor(value) {
+  return /* tuple */[
+          "borderColor",
+          value
+        ];
+}
+
+function borderTopColor(value) {
+  return /* tuple */[
+          "borderTopColor",
+          value
+        ];
+}
+
+function borderRightColor(value) {
+  return /* tuple */[
+          "borderRightColor",
+          value
+        ];
+}
+
+function borderBottomColor(value) {
+  return /* tuple */[
+          "borderBottomColor",
+          value
+        ];
+}
+
+function borderLeftColor(value) {
+  return /* tuple */[
+          "borderLeftColor",
+          value
+        ];
+}
+
 function css(declarations) {
   return Js_dict.fromList(List.map((function (prim) {
                     return prim;
@@ -168,43 +280,98 @@ var initial = "initial";
 
 var unset = "unset";
 
+var zero = "0";
+
+var transparent = "transparent";
+
 var none = "none";
 
 var auto = "auto";
 
-var zero = "0";
+var thin = "thin";
 
-exports.inherit_      = inherit_;
-exports.initial       = initial;
-exports.unset         = unset;
-exports.none          = none;
-exports.auto          = auto;
-exports.em            = em;
-exports.ex            = ex;
-exports.inch          = inch;
-exports.cm            = cm;
-exports.mm            = mm;
-exports.pt            = pt;
-exports.pc            = pc;
-exports.px            = px;
-exports.zero          = zero;
-exports.pct           = pct;
-exports.url           = url;
-exports.margin        = margin;
-exports.margin2       = margin2;
-exports.margin3       = margin3;
-exports.margin4       = margin4;
-exports.marginTop     = marginTop;
-exports.marginRight   = marginRight;
-exports.marginBottom  = marginBottom;
-exports.marginLeft    = marginLeft;
-exports.padding       = padding;
-exports.padding2      = padding2;
-exports.padding3      = padding3;
-exports.padding4      = padding4;
-exports.paddingTop    = paddingTop;
-exports.paddingRight  = paddingRight;
-exports.paddingBottom = paddingBottom;
-exports.paddingLeft   = paddingLeft;
-exports.css           = css;
+var medium = "medium";
+
+var thick = "thick";
+
+var hidden = "hidden";
+
+var dotted = "dotted";
+
+var dashed = "dashed";
+
+var solid = "solid";
+
+var $$double = "double";
+
+var groove = "groove";
+
+var ridge = "ridge";
+
+var inset = "inset";
+
+var outset = "outset";
+
+exports.inherit_          = inherit_;
+exports.initial           = initial;
+exports.unset             = unset;
+exports.em                = em;
+exports.ex                = ex;
+exports.inch              = inch;
+exports.cm                = cm;
+exports.mm                = mm;
+exports.pt                = pt;
+exports.pc                = pc;
+exports.px                = px;
+exports.zero              = zero;
+exports.pct               = pct;
+exports.url               = url;
+exports.transparent       = transparent;
+exports.none              = none;
+exports.auto              = auto;
+exports.thin              = thin;
+exports.medium            = medium;
+exports.thick             = thick;
+exports.hidden            = hidden;
+exports.dotted            = dotted;
+exports.dashed            = dashed;
+exports.solid             = solid;
+exports.$$double          = $$double;
+exports.groove            = groove;
+exports.ridge             = ridge;
+exports.inset             = inset;
+exports.outset            = outset;
+exports.margin            = margin;
+exports.margin2           = margin2;
+exports.margin3           = margin3;
+exports.margin4           = margin4;
+exports.marginTop         = marginTop;
+exports.marginRight       = marginRight;
+exports.marginBottom      = marginBottom;
+exports.marginLeft        = marginLeft;
+exports.padding           = padding;
+exports.padding2          = padding2;
+exports.padding3          = padding3;
+exports.padding4          = padding4;
+exports.paddingTop        = paddingTop;
+exports.paddingRight      = paddingRight;
+exports.paddingBottom     = paddingBottom;
+exports.paddingLeft       = paddingLeft;
+exports.border            = border;
+exports.borderWidth       = borderWidth;
+exports.borderTopWidth    = borderTopWidth;
+exports.borderRightWidth  = borderRightWidth;
+exports.borderBottomWidth = borderBottomWidth;
+exports.borderLeftWidth   = borderLeftWidth;
+exports.borderStyle       = borderStyle;
+exports.borderTopStyle    = borderTopStyle;
+exports.borderRightStyle  = borderRightStyle;
+exports.borderBottomStyle = borderBottomStyle;
+exports.borderLeftStyle   = borderLeftStyle;
+exports.borderColor       = borderColor;
+exports.borderTopColor    = borderTopColor;
+exports.borderRightColor  = borderRightColor;
+exports.borderBottomColor = borderBottomColor;
+exports.borderLeftColor   = borderLeftColor;
+exports.css               = css;
 /* Js_dict Not a pure module */

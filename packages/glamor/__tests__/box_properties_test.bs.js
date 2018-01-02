@@ -74,4 +74,71 @@ describe("padding", (function () {
                   ]);
       }));
 
+describe("border", (function () {
+        TestHelpers.testDeclaration(Glamor.border(Glamor.px(1), Glamor.solid, Glamor.transparent), /* tuple */[
+              "border",
+              "1px solid transparent"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderWidth(Glamor.px(2)), /* tuple */[
+              "borderWidth",
+              "2px"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderTopWidth(Glamor.px(2)), /* tuple */[
+              "borderTopWidth",
+              "2px"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderRightWidth(Glamor.px(2)), /* tuple */[
+              "borderRightWidth",
+              "2px"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderBottomWidth(Glamor.px(2)), /* tuple */[
+              "borderBottomWidth",
+              "2px"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderLeftWidth(Glamor.px(2)), /* tuple */[
+              "borderLeftWidth",
+              "2px"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderStyle(Glamor.solid), /* tuple */[
+              "borderStyle",
+              "solid"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderTopStyle(Glamor.dashed), /* tuple */[
+              "borderTopStyle",
+              "dashed"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderRightStyle(Glamor.dotted), /* tuple */[
+              "borderRightStyle",
+              "dotted"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderBottomStyle(Glamor.ridge), /* tuple */[
+              "borderBottomStyle",
+              "ridge"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderLeftStyle(Glamor.inset), /* tuple */[
+              "borderLeftStyle",
+              "inset"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderColor(Glamor.transparent), /* tuple */[
+              "borderColor",
+              "transparent"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderTopColor(Glamor.transparent), /* tuple */[
+              "borderTopColor",
+              "transparent"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderRightColor(Glamor.transparent), /* tuple */[
+              "borderRightColor",
+              "transparent"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderBottomColor(Glamor.transparent), /* tuple */[
+              "borderBottomColor",
+              "transparent"
+            ]);
+        return TestHelpers.testDeclaration(Glamor.borderLeftColor(Glamor.transparent), /* tuple */[
+                    "borderLeftColor",
+                    "transparent"
+                  ]);
+      }));
+
 /*  Not a pure module */

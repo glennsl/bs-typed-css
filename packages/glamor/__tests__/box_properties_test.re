@@ -17,6 +17,7 @@ describe("margin", () => {
   testDeclaration(
     margin4(~top=pct(10.), ~right=auto, ~bottom=px(45), ~left=(ex(2.))),
     ("margin", "10% auto 45px 2ex"));
+
   testDeclaration(
     marginTop(px(1)),
     ("marginTop", "1px"));
@@ -44,6 +45,7 @@ describe("padding", () => {
   testDeclaration(
     padding4(~top=pct(10.), ~right=pct(50.), ~bottom=px(45), ~left=(ex(2.))),
     ("padding", "10% 50% 45px 2ex"));
+
   testDeclaration(
     paddingTop(px(1)),
     ("paddingTop", "1px"));
@@ -56,4 +58,58 @@ describe("padding", () => {
   testDeclaration(
     paddingLeft(px(1)),
     ("paddingLeft", "1px"));
+});
+
+describe("border", () => {
+  testDeclaration(
+    border(~width=px(1), ~style=solid, ~color=transparent),
+    ("border", "1px solid transparent"));
+
+  testDeclaration(
+    borderWidth(px(2)),
+    ("borderWidth", "2px"));
+  testDeclaration(
+    borderTopWidth(px(2)),
+    ("borderTopWidth", "2px"));
+  testDeclaration(
+    borderRightWidth(px(2)),
+    ("borderRightWidth", "2px"));
+  testDeclaration(
+    borderBottomWidth(px(2)),
+    ("borderBottomWidth", "2px"));
+  testDeclaration(
+    borderLeftWidth(px(2)),
+    ("borderLeftWidth", "2px"));
+
+  testDeclaration(
+    borderStyle(solid),
+    ("borderStyle", "solid"));
+  testDeclaration(
+    borderTopStyle(dashed),
+    ("borderTopStyle", "dashed"));
+  testDeclaration(
+    borderRightStyle(dotted),
+    ("borderRightStyle", "dotted"));
+  testDeclaration(
+    borderBottomStyle(ridge),
+    ("borderBottomStyle", "ridge"));
+  testDeclaration(
+    borderLeftStyle(inset),
+    ("borderLeftStyle", "inset"));
+
+  testDeclaration(
+    borderColor(transparent),
+    ("borderColor", "transparent"));
+  testDeclaration(
+    borderTopColor(transparent),
+    ("borderTopColor", "transparent"));
+  testDeclaration(
+    borderRightColor(transparent),
+    ("borderRightColor", "transparent"));
+  testDeclaration(
+    borderBottomColor(transparent),
+    ("borderBottomColor", "transparent"));
+  testDeclaration(
+    borderLeftColor(transparent),
+    ("borderLeftColor", "transparent"));
 });

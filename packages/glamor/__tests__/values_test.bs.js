@@ -10,11 +10,6 @@ describe("universal", (function () {
         return TestHelpers.testValue(Glamor.unset, "unset");
       }));
 
-describe("shared", (function () {
-        TestHelpers.testValue(Glamor.none, "none");
-        return TestHelpers.testValue(Glamor.auto, "auto");
-      }));
-
 describe("length", (function () {
         TestHelpers.testValue(Glamor.em(1.5), "1.5em");
         TestHelpers.testValue(Glamor.ex(1), "1ex");
@@ -33,6 +28,27 @@ describe("percentage", (function () {
 
 describe("url", (function () {
         return TestHelpers.testValue(Glamor.url("harry potter"), "url(harry potter)");
+      }));
+
+describe("color", (function () {
+        return TestHelpers.testValue(Glamor.transparent, "transparent");
+      }));
+
+describe("ad-hoc", (function () {
+        TestHelpers.testValue(Glamor.none, "none");
+        TestHelpers.testValue(Glamor.auto, "auto");
+        TestHelpers.testValue(Glamor.thin, "thin");
+        TestHelpers.testValue(Glamor.medium, "medium");
+        TestHelpers.testValue(Glamor.thick, "thick");
+        TestHelpers.testValue(Glamor.hidden, "hidden");
+        TestHelpers.testValue(Glamor.dotted, "dotted");
+        TestHelpers.testValue(Glamor.dashed, "dashed");
+        TestHelpers.testValue(Glamor.solid, "solid");
+        TestHelpers.testValue(Glamor.$$double, "double");
+        TestHelpers.testValue(Glamor.groove, "groove");
+        TestHelpers.testValue(Glamor.ridge, "ridge");
+        TestHelpers.testValue(Glamor.inset, "inset");
+        return TestHelpers.testValue(Glamor.outset, "outset");
       }));
 
 /*  Not a pure module */
