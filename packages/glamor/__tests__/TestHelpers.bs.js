@@ -6,7 +6,8 @@ var Glamor  = require("../src/Glamor.bs.js");
 var Js_dict = require("bs-platform/lib/js/js_dict.js");
 
 function testDeclaration(decl, expected) {
-  return Jest.test(JSON.stringify(decl), (function () {
+  var name = JSON.stringify(decl);
+  return Jest.test(name, (function () {
                 return Jest.Expect[/* toEqual */12](Js_dict.fromList(/* :: */[
                                 expected,
                                 /* [] */0
@@ -17,5 +18,12 @@ function testDeclaration(decl, expected) {
               }));
 }
 
+function testValue(value, expected) {
+  return Jest.test(value, (function () {
+                return Jest.Expect[/* toEqual */12](expected, Jest.Expect[/* expect */0](value));
+              }));
+}
+
 exports.testDeclaration = testDeclaration;
+exports.testValue       = testValue;
 /* Jest Not a pure module */
