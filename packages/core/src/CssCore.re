@@ -1,35 +1,31 @@
-module Types = {
 
-  /**
-   * Values
-   */
-  type value('a)  = 'a constraint [>] = 'a;
-  type universal  = value([`universal]);
-  type length     = value([`length]);
-  type percentage = value([`percentage]);
-  type angle      = value([`angle]);
-  type uri        = value([`uri]);
-  /*type counter  = value([`counter]);*/
-  type color      = value([`color]);
+/*********
+ * Types
+ */
 
+type declaration;
 
-  /**
-   * Declarations
-   */
-  type declaration;
-  type marginWidth  = [`length | `percentage | `auto];
-  type paddingWidth = [`length | `percentage];
-  type lineWidth    = [`thin | `medium | `thick | `length];
-  type lineStyle    = [`none | `hidden | `dotted | `dashed | `solid | `double | `groove | `ridge | `inset | `outset];
-};
+ /* values */
+type value('a)  = 'a constraint [>] = 'a;
+type universal  = value([`universal]);
+type length     = value([`length]);
+type percentage = value([`percentage]);
+type angle      = value([`angle]);
+type uri        = value([`uri]);
+/*type counter  = value([`counter]);*/
+type color      = value([`color]);
+
+/* property values */
+type marginWidth  = [`length | `percentage | `auto];
+type paddingWidth = [`length | `percentage];
+type lineWidth    = [`thin | `medium | `thick | `length];
+type lineStyle    = [`none | `hidden | `dotted | `dashed | `solid | `double | `groove | `ridge | `inset | `outset];
 
 
 /*********
  * Values
  */
 module type Values = {
-  open Types;
-
 
   /**
    * Universal
@@ -272,11 +268,9 @@ module type Values = {
 
 
 /*********
- * Declarations
+ * Properties
  */
-module type Declarations = {
-  open Types;
-
+module type Properties = {
 
   /**
    * Box model
