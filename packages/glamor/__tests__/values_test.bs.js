@@ -38,6 +38,12 @@ describe("url", (function () {
       }));
 
 describe("color", (function () {
+        TestHelpers.testValue(Glamor.rgb(255, 0, 0), "rgb(255, 0, 0)");
+        TestHelpers.testValue(Glamor.rgba(255, 0, 128, 0.5), "rgba(255, 0, 128, 0.5)");
+        TestHelpers.testValue(Glamor.hsl(Glamor.turn(0.5), 50, 100), "hsl(0.5turn, 50%, 100%)");
+        TestHelpers.testValue(Glamor.hsla(Glamor.turn(0.5), 50, 100, 0.5), "hsla(0.5turn, 50%, 100%, 0.5)");
+        TestHelpers.testValue(Glamor.hex(3978), "#f8a");
+        TestHelpers.testValue(Glamor.currentColor, "currentColor");
         return TestHelpers.testValue(Glamor.transparent, "transparent");
       }));
 
