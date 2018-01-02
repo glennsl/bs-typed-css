@@ -104,8 +104,8 @@ function hsla(h, s, l, a) {
   return "hsla(" + (String(h) + (", " + (String(s) + ("%, " + (String(l) + ("%, " + (String(a) + ")")))))));
 }
 
-function hex(v) {
-  return "#" + v.toString(16);
+function hex(value) {
+  return "#" + value.toString(16);
 }
 
 function margin(value) {
@@ -360,10 +360,10 @@ function borderRadius(value) {
         ];
 }
 
-function borderTopRightRadius(v) {
+function borderTopRightRadius(value) {
   return /* tuple */[
           "borderTopRightRadius",
-          v
+          value
         ];
 }
 
@@ -374,10 +374,10 @@ function borderTopRightRadius2(v, h) {
         ];
 }
 
-function borderTopLeftRadius(v) {
+function borderTopLeftRadius(value) {
   return /* tuple */[
           "borderTopLeftRadius",
-          v
+          value
         ];
 }
 
@@ -388,10 +388,10 @@ function borderTopLeftRadius2(v, h) {
         ];
 }
 
-function borderBottomRightRadius(v) {
+function borderBottomRightRadius(value) {
   return /* tuple */[
           "borderBottomRightRadius",
-          v
+          value
         ];
 }
 
@@ -402,10 +402,10 @@ function borderBottomRightRadius2(v, h) {
         ];
 }
 
-function borderBottomLeftRadius(v) {
+function borderBottomLeftRadius(value) {
   return /* tuple */[
           "borderBottomLeftRadius",
-          v
+          value
         ];
 }
 

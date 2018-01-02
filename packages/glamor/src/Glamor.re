@@ -65,7 +65,7 @@ let rgba = (r, g, b, a) => {j|rgba($r, $g, $b, $a)|j} |> asValue;
 let hsl = (h, s, l) => {j|hsl($h, $s%, $l%)|j} |> asValue;
 
 let hsla = (h, s, l, a) => {j|hsla($h, $s%, $l%, $a)|j} |> asValue;
-let hex = v => "#" ++ Js.Int.toStringWithRadix(~radix=16, v) |> asValue;
+let hex = value => "#" ++ Js.Int.toStringWithRadix(~radix=16, value) |> asValue;
 
 let currentColor = "currentColor" |> asValue;
 let transparent = "transparent" |> asValue;
@@ -241,42 +241,42 @@ let outset = "outset" |> asValue;
  * Properties
  */
 let margin = value =>
-  ("margin", value) |> asDeclaration;
+  prop("margin", value);
 let margin2 = (~v, ~h) =>
-  ("margin", {j|$v $h|j} |> asValue) |> asDeclaration;
+  prop("margin", {j|$v $h|j} |> asValue);
 let margin3 = (~top, ~h, ~bottom) =>
-  ("margin", {j|$top $h $bottom|j} |> asValue) |> asDeclaration;
+  prop("margin", {j|$top $h $bottom|j} |> asValue);
 let margin4 = (~top, ~right, ~bottom, ~left) =>
-  ("margin", {j|$top $right $bottom $left|j} |> asValue) |> asDeclaration;
+  prop("margin", {j|$top $right $bottom $left|j} |> asValue);
 let marginTop = value =>
-  ("marginTop", value) |> asDeclaration;
+  prop("marginTop", value);
 let marginRight = value =>
-  ("marginRight", value) |> asDeclaration;
+  prop("marginRight", value);
 let marginBottom = value =>
-  ("marginBottom", value) |> asDeclaration;
+  prop("marginBottom", value);
 let marginLeft = value =>
-  ("marginLeft", value) |> asDeclaration;
+  prop("marginLeft", value);
 
 
 let padding = value =>
-  ("padding", value) |> asDeclaration;
+  prop("padding", value);
 let padding2 = (~v, ~h) =>
-  ("padding", {j|$v $h|j} |> asValue) |> asDeclaration;
+  prop("padding", {j|$v $h|j} |> asValue);
 let padding3 = (~top, ~h, ~bottom) =>
-  ("padding", {j|$top $h $bottom|j} |> asValue) |> asDeclaration;
+  prop("padding", {j|$top $h $bottom|j} |> asValue);
 let padding4 = (~top, ~right, ~bottom, ~left) =>
-  ("padding", {j|$top $right $bottom $left|j} |> asValue) |> asDeclaration;
+  prop("padding", {j|$top $right $bottom $left|j} |> asValue);
 let paddingTop = value =>
-  ("paddingTop", value) |> asDeclaration;
+  prop("paddingTop", value);
 let paddingRight = value =>
-  ("paddingRight", value) |> asDeclaration;
+  prop("paddingRight", value);
 let paddingBottom = value =>
-  ("paddingBottom", value) |> asDeclaration;
+  prop("paddingBottom", value);
 let paddingLeft = value =>
-  ("paddingLeft", value) |> asDeclaration;
+  prop("paddingLeft", value);
 
 let border = value =>
-  ("border", value) |> asDeclaration;
+  prop("border", value);
 let border2 = (~width=?, ~color=?, style) => {
   let value =
     switch ((width, color)) {
@@ -285,55 +285,60 @@ let border2 = (~width=?, ~color=?, style) => {
     | (None, Some(c))     => {j|$style $c|j}
     | (None, None)        => getValue(style)
     };
-  ("border", value |> asValue) |> asDeclaration
+  prop("border", value |> asValue)
 };
 let border3 = (~width, ~style, ~color) =>
-  ("border", {j|$width $style $color|j} |> asValue) |> asDeclaration;
+  prop("border", {j|$width $style $color|j} |> asValue);
 let borderWidth = value =>
-  ("borderWidth", value) |> asDeclaration;
+  prop("borderWidth", value);
 let borderTopWidth = value =>
-  ("borderTopWidth", value) |> asDeclaration;
+  prop("borderTopWidth", value);
 let borderRightWidth = value =>
-  ("borderRightWidth", value) |> asDeclaration;
+  prop("borderRightWidth", value);
 let borderBottomWidth = value =>
-  ("borderBottomWidth", value) |> asDeclaration;
+  prop("borderBottomWidth", value);
 let borderLeftWidth = value =>
-  ("borderLeftWidth", value) |> asDeclaration;
+  prop("borderLeftWidth", value);
 let borderStyle = value =>
-  ("borderStyle", value) |> asDeclaration;
+  prop("borderStyle", value);
 let borderTopStyle = value =>
-  ("borderTopStyle", value) |> asDeclaration;
+  prop("borderTopStyle", value);
 let borderRightStyle = value =>
-  ("borderRightStyle", value) |> asDeclaration;
+  prop("borderRightStyle", value);
 let borderBottomStyle = value =>
-  ("borderBottomStyle", value) |> asDeclaration;
+  prop("borderBottomStyle", value);
 let borderLeftStyle = value =>
-  ("borderLeftStyle", value) |> asDeclaration;
+  prop("borderLeftStyle", value);
 let borderColor = value =>
-  ("borderColor", value) |> asDeclaration;
+  prop("borderColor", value);
 let borderTopColor = value =>
-  ("borderTopColor", value) |> asDeclaration;
+  prop("borderTopColor", value);
 let borderRightColor = value =>
-  ("borderRightColor", value) |> asDeclaration;
+  prop("borderRightColor", value);
 let borderBottomColor = value =>
-  ("borderBottomColor", value) |> asDeclaration;
+  prop("borderBottomColor", value);
 let borderLeftColor = value =>
-  ("borderLeftColor", value) |> asDeclaration;
+  prop("borderLeftColor", value);
 
 let borderRadius = value =>
-  ("borderRadius", value) |> asDeclaration;
-let borderTopRightRadius = v => prop("borderTopRightRadius", v);
+  prop("borderRadius", value);
+let borderTopRightRadius = value =>
+  prop("borderTopRightRadius", value);
 let borderTopRightRadius2 = (~v, ~h) =>
   prop("borderTopRightRadius", {j|$v $h|j} |> asValue);
-let borderTopLeftRadius = v => prop("borderTopLeftRadius", v);
+let borderTopLeftRadius = value =>
+  prop("borderTopLeftRadius", value);
 let borderTopLeftRadius2 = (~v, ~h) =>
   prop("borderTopLeftRadius", {j|$v $h|j} |> asValue);
-let borderBottomRightRadius = v => prop("borderBottomRightRadius", v);
+let borderBottomRightRadius = value =>
+  prop("borderBottomRightRadius", value);
 let borderBottomRightRadius2 = (~v, ~h) =>
   prop("borderBottomRightRadius", {j|$v $h|j} |> asValue);
-let borderBottomLeftRadius = v => prop("borderBottomLeftRadius", v);
+let borderBottomLeftRadius = value =>
+  prop("borderBottomLeftRadius", value);
 let borderBottomLeftRadius2 = (~v, ~h) =>
   prop("borderBottomLeftRadius", {j|$v $h|j} |> asValue);
+
 
 /*********
  * Glamor
