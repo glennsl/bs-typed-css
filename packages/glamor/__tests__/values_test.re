@@ -26,6 +26,13 @@ describe("percentage", () => {
   testValue( pct(1.2),  "1.2%");
 });
 
+describe("angle", () => {
+  testValue( rad(3.14),  "3.14rad");
+  testValue( grad(200.), "200grad");
+  testValue( deg(180.),  "180deg");
+  testValue( turn(0.5),  "0.5turn");
+});
+
 describe("url", () => {
   testValue( url("harry potter"), "url(harry potter)");
 });

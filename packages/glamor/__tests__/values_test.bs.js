@@ -26,6 +26,13 @@ describe("percentage", (function () {
         return TestHelpers.testValue(Glamor.pct(1.2), "1.2%");
       }));
 
+describe("angle", (function () {
+        TestHelpers.testValue(Glamor.rad(3.14), "3.14rad");
+        TestHelpers.testValue(Glamor.grad(200), "200grad");
+        TestHelpers.testValue(Glamor.deg(180), "180deg");
+        return TestHelpers.testValue(Glamor.turn(0.5), "0.5turn");
+      }));
+
 describe("url", (function () {
         return TestHelpers.testValue(Glamor.url("harry potter"), "url(harry potter)");
       }));

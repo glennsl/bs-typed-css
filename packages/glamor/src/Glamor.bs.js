@@ -40,6 +40,22 @@ function pct(n) {
   return "" + (String(n) + "%");
 }
 
+function rad(i) {
+  return "" + (String(i) + "rad");
+}
+
+function grad(i) {
+  return "" + (String(i) + "grad");
+}
+
+function deg(i) {
+  return "" + (String(i) + "deg");
+}
+
+function turn(i) {
+  return "" + (String(i) + "turn");
+}
+
 function url(url$1) {
   return "url(" + (String(url$1) + ")");
 }

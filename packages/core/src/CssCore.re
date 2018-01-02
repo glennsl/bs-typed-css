@@ -7,6 +7,7 @@ module Types = {
   type universal  = value([`universal]);
   type length     = value([`length]);
   type percentage = value([`percentage]);
+  type angle      = value([`angle]);
   type uri        = value([`uri]);
   /*type counter  = value([`counter]);*/
   type color      = value([`color]);
@@ -62,6 +63,14 @@ module type Values = {
    */
   let pct: float => percentage;
 
+
+  /**
+   * Angle
+   */
+  let rad: float => angle;
+  let grad: float => angle;
+  let deg: float => angle;
+  let turn: float => angle;
 
   /**
    * Url
