@@ -764,6 +764,8 @@ var inset = "inset";
 
 var outset = "outset";
 
+var all = "all";
+
 exports.inherit_                 = inherit_;
 exports.initial                  = initial;
 exports.unset                    = unset;
@@ -959,6 +961,7 @@ exports.groove                   = groove;
 exports.ridge                    = ridge;
 exports.inset                    = inset;
 exports.outset                   = outset;
+exports.all                      = all;
 exports.margin                   = margin;
 exports.margin2                  = margin2;
 exports.margin3                  = margin3;

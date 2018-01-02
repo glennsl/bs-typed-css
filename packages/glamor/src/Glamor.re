@@ -240,6 +240,7 @@ let ridge = "ridge" |> asValue;
 let inset = "inset" |> asValue;
 let outset = "outset" |> asValue;
 
+let all = "all" |> asValue;
 
 /*********
  * Properties

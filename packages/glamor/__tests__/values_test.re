@@ -68,17 +68,19 @@ describe("ad-hoc", () => {
   testValue( none, "none");
   testValue( auto, "auto");
 
-  testValue( thin,    "thin");
-  testValue( medium,  "medium");
-  testValue( thick,   "thick");
+  testValue( thin,   "thin");
+  testValue( medium, "medium");
+  testValue( thick,  "thick");
 
-  testValue( hidden,  "hidden");
-  testValue( dotted,  "dotted");
-  testValue( dashed,  "dashed");
-  testValue( solid,   "solid");
-  testValue( double,  "double");
-  testValue( groove,  "groove");
-  testValue( ridge,   "ridge");
-  testValue( inset,   "inset");
-  testValue( outset,  "outset");
+  testValue( hidden, "hidden");
+  testValue( dotted, "dotted");
+  testValue( dashed, "dashed");
+  testValue( solid,  "solid");
+  testValue( double, "double");
+  testValue( groove, "groove");
+  testValue( ridge,  "ridge");
+  testValue( inset,  "inset");
+  testValue( outset, "outset");
+
+  testValue( all, "all");
 });

@@ -73,7 +73,8 @@ describe("ad-hoc", (function () {
         TestHelpers.testValue(Glamor.groove, "groove");
         TestHelpers.testValue(Glamor.ridge, "ridge");
         TestHelpers.testValue(Glamor.inset, "inset");
-        return TestHelpers.testValue(Glamor.outset, "outset");
+        TestHelpers.testValue(Glamor.outset, "outset");
+        return TestHelpers.testValue(Glamor.all, "all");
       }));
 
 /*  Not a pure module */

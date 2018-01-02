@@ -16,7 +16,7 @@ type uri        = value([`uri]);
 /*type counter  = value([`counter]);*/
 type color      = value([`color]);
 
-/* property values */
+/* aliases for property values */
 type marginWidth  = [`length | `percentage | `auto];
 type paddingWidth = [`length | `percentage];
 type lineWidth    = [`thin | `medium | `thick | `length];
@@ -271,6 +271,9 @@ module type Values = {
   let ridge:  value([`ridge]);
   let inset:  value([`inset]);
   let outset: value([`outset]);
+
+  /* transition */
+  let all: value([`all]);
 };
 
 
@@ -340,7 +343,7 @@ module type Properties = {
   let borderLeftColor:    value([< color | `universal]) => declaration;
 
   let borderRadius:             value([< `length | `percentage | `universal]) => declaration;
-  /* borderRadius2-4 */
+  /* TODO?: borderRadius2-4 */
   let borderTopLeftRadius:      value([< `length | `percentage | `universal]) => declaration;
   let borderTopLeftRadius2:     (~v:value([< `length | `percentage | `universal]),
                                  ~h:value([< `length | `percentage | `universal])) => declaration;
