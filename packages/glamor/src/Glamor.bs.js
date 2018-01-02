@@ -353,6 +353,69 @@ function borderLeftColor(value) {
         ];
 }
 
+function borderRadius(value) {
+  return /* tuple */[
+          "borderRadius",
+          value
+        ];
+}
+
+function borderTopRightRadius(v) {
+  return /* tuple */[
+          "borderTopRightRadius",
+          v
+        ];
+}
+
+function borderTopRightRadius2(v, h) {
+  return /* tuple */[
+          "borderTopRightRadius",
+          "" + (String(v) + (" " + (String(h) + "")))
+        ];
+}
+
+function borderTopLeftRadius(v) {
+  return /* tuple */[
+          "borderTopLeftRadius",
+          v
+        ];
+}
+
+function borderTopLeftRadius2(v, h) {
+  return /* tuple */[
+          "borderTopLeftRadius",
+          "" + (String(v) + (" " + (String(h) + "")))
+        ];
+}
+
+function borderBottomRightRadius(v) {
+  return /* tuple */[
+          "borderBottomRightRadius",
+          v
+        ];
+}
+
+function borderBottomRightRadius2(v, h) {
+  return /* tuple */[
+          "borderBottomRightRadius",
+          "" + (String(v) + (" " + (String(h) + "")))
+        ];
+}
+
+function borderBottomLeftRadius(v) {
+  return /* tuple */[
+          "borderBottomLeftRadius",
+          v
+        ];
+}
+
+function borderBottomLeftRadius2(v, h) {
+  return /* tuple */[
+          "borderBottomLeftRadius",
+          "" + (String(v) + (" " + (String(h) + "")))
+        ];
+}
+
 function css(declarations) {
   return Js_dict.fromList(List.map((function (prim) {
                     return prim;
@@ -693,232 +756,241 @@ var inset = "inset";
 
 var outset = "outset";
 
-exports.inherit_             = inherit_;
-exports.initial              = initial;
-exports.unset                = unset;
-exports.em                   = em;
-exports.ex                   = ex;
-exports.ch                   = ch;
-exports.rem                  = rem;
-exports.vw                   = vw;
-exports.vh                   = vh;
-exports.vmin                 = vmin;
-exports.vmax                 = vmax;
-exports.cm                   = cm;
-exports.mm                   = mm;
-exports.q                    = q;
-exports.inch                 = inch;
-exports.pc                   = pc;
-exports.pt                   = pt;
-exports.px                   = px;
-exports.zero                 = zero;
-exports.pct                  = pct;
-exports.rad                  = rad;
-exports.grad                 = grad;
-exports.deg                  = deg;
-exports.turn                 = turn;
-exports.url                  = url;
-exports.rgb                  = rgb;
-exports.rgba                 = rgba;
-exports.hsl                  = hsl;
-exports.hsla                 = hsla;
-exports.hex                  = hex;
-exports.currentColor         = currentColor;
-exports.transparent          = transparent;
-exports.aliceblue            = aliceblue;
-exports.antiquewhite         = antiquewhite;
-exports.aqua                 = aqua;
-exports.aquamarine           = aquamarine;
-exports.azure                = azure;
-exports.beige                = beige;
-exports.bisque               = bisque;
-exports.black                = black;
-exports.blanchedalmond       = blanchedalmond;
-exports.blue                 = blue;
-exports.blueviolet           = blueviolet;
-exports.brown                = brown;
-exports.burlywood            = burlywood;
-exports.cadetblue            = cadetblue;
-exports.chartreuse           = chartreuse;
-exports.chocolate            = chocolate;
-exports.coral                = coral;
-exports.cornflowerblue       = cornflowerblue;
-exports.cornsilk             = cornsilk;
-exports.crimson              = crimson;
-exports.cyan                 = cyan;
-exports.darkblue             = darkblue;
-exports.darkcyan             = darkcyan;
-exports.darkgoldenrod        = darkgoldenrod;
-exports.darkgray             = darkgray;
-exports.darkgrey             = darkgrey;
-exports.darkgreen            = darkgreen;
-exports.darkkhaki            = darkkhaki;
-exports.darkmagenta          = darkmagenta;
-exports.darkolivegreen       = darkolivegreen;
-exports.darkorange           = darkorange;
-exports.darkorchid           = darkorchid;
-exports.darkred              = darkred;
-exports.darksalmon           = darksalmon;
-exports.darkseagreen         = darkseagreen;
-exports.darkslateblue        = darkslateblue;
-exports.darkslategray        = darkslategray;
-exports.darkslategrey        = darkslategrey;
-exports.darkturquoise        = darkturquoise;
-exports.darkviolet           = darkviolet;
-exports.deeppink             = deeppink;
-exports.deepskyblue          = deepskyblue;
-exports.dimgray              = dimgray;
-exports.dimgrey              = dimgrey;
-exports.dodgerblue           = dodgerblue;
-exports.firebrick            = firebrick;
-exports.floralwhite          = floralwhite;
-exports.forestgreen          = forestgreen;
-exports.fuchsia              = fuchsia;
-exports.gainsboro            = gainsboro;
-exports.ghostwhite           = ghostwhite;
-exports.gold                 = gold;
-exports.goldenrod            = goldenrod;
-exports.gray                 = gray;
-exports.grey                 = grey;
-exports.green                = green;
-exports.greenyellow          = greenyellow;
-exports.honeydew             = honeydew;
-exports.hotpink              = hotpink;
-exports.indianred            = indianred;
-exports.indigo               = indigo;
-exports.ivory                = ivory;
-exports.khaki                = khaki;
-exports.lavender             = lavender;
-exports.lavenderblush        = lavenderblush;
-exports.lawngreen            = lawngreen;
-exports.lemonchiffon         = lemonchiffon;
-exports.lightblue            = lightblue;
-exports.lightcoral           = lightcoral;
-exports.lightcyan            = lightcyan;
-exports.lightgoldenrodyellow = lightgoldenrodyellow;
-exports.lightgray            = lightgray;
-exports.lightgrey            = lightgrey;
-exports.lightgreen           = lightgreen;
-exports.lightpink            = lightpink;
-exports.lightsalmon          = lightsalmon;
-exports.lightseagreen        = lightseagreen;
-exports.lightskyblue         = lightskyblue;
-exports.lightslategray       = lightslategray;
-exports.lightslategrey       = lightslategrey;
-exports.lightsteelblue       = lightsteelblue;
-exports.lightyellow          = lightyellow;
-exports.lime                 = lime;
-exports.limegreen            = limegreen;
-exports.linen                = linen;
-exports.magenta              = magenta;
-exports.maroon               = maroon;
-exports.mediumaquamarine     = mediumaquamarine;
-exports.mediumblue           = mediumblue;
-exports.mediumorchid         = mediumorchid;
-exports.mediumpurple         = mediumpurple;
-exports.mediumseagreen       = mediumseagreen;
-exports.mediumslateblue      = mediumslateblue;
-exports.mediumspringgreen    = mediumspringgreen;
-exports.mediumturquoise      = mediumturquoise;
-exports.mediumvioletred      = mediumvioletred;
-exports.midnightblue         = midnightblue;
-exports.mintcream            = mintcream;
-exports.mistyrose            = mistyrose;
-exports.moccasin             = moccasin;
-exports.navajowhite          = navajowhite;
-exports.navy                 = navy;
-exports.oldlace              = oldlace;
-exports.olive                = olive;
-exports.olivedrab            = olivedrab;
-exports.orange               = orange;
-exports.orangered            = orangered;
-exports.orchid               = orchid;
-exports.palegoldenrod        = palegoldenrod;
-exports.palegreen            = palegreen;
-exports.paleturquoise        = paleturquoise;
-exports.palevioletred        = palevioletred;
-exports.papayawhip           = papayawhip;
-exports.peachpuff            = peachpuff;
-exports.peru                 = peru;
-exports.pink                 = pink;
-exports.plum                 = plum;
-exports.powderblue           = powderblue;
-exports.purple               = purple;
-exports.red                  = red;
-exports.rosybrown            = rosybrown;
-exports.royalblue            = royalblue;
-exports.saddlebrown          = saddlebrown;
-exports.salmon               = salmon;
-exports.sandybrown           = sandybrown;
-exports.seagreen             = seagreen;
-exports.seashell             = seashell;
-exports.sienna               = sienna;
-exports.silver               = silver;
-exports.skyblue              = skyblue;
-exports.slateblue            = slateblue;
-exports.slategray            = slategray;
-exports.slategrey            = slategrey;
-exports.snow                 = snow;
-exports.springgreen          = springgreen;
-exports.steelblue            = steelblue;
-exports.tan                  = tan;
-exports.teal                 = teal;
-exports.thistle              = thistle;
-exports.tomato               = tomato;
-exports.turquoise            = turquoise;
-exports.violet               = violet;
-exports.wheat                = wheat;
-exports.white                = white;
-exports.whitesmoke           = whitesmoke;
-exports.yellow               = yellow;
-exports.yellowgreen          = yellowgreen;
-exports.none                 = none;
-exports.auto                 = auto;
-exports.thin                 = thin;
-exports.medium               = medium;
-exports.thick                = thick;
-exports.hidden               = hidden;
-exports.dotted               = dotted;
-exports.dashed               = dashed;
-exports.solid                = solid;
-exports.$$double             = $$double;
-exports.groove               = groove;
-exports.ridge                = ridge;
-exports.inset                = inset;
-exports.outset               = outset;
-exports.margin               = margin;
-exports.margin2              = margin2;
-exports.margin3              = margin3;
-exports.margin4              = margin4;
-exports.marginTop            = marginTop;
-exports.marginRight          = marginRight;
-exports.marginBottom         = marginBottom;
-exports.marginLeft           = marginLeft;
-exports.padding              = padding;
-exports.padding2             = padding2;
-exports.padding3             = padding3;
-exports.padding4             = padding4;
-exports.paddingTop           = paddingTop;
-exports.paddingRight         = paddingRight;
-exports.paddingBottom        = paddingBottom;
-exports.paddingLeft          = paddingLeft;
-exports.border               = border;
-exports.border2              = border2;
-exports.border3              = border3;
-exports.borderWidth          = borderWidth;
-exports.borderTopWidth       = borderTopWidth;
-exports.borderRightWidth     = borderRightWidth;
-exports.borderBottomWidth    = borderBottomWidth;
-exports.borderLeftWidth      = borderLeftWidth;
-exports.borderStyle          = borderStyle;
-exports.borderTopStyle       = borderTopStyle;
-exports.borderRightStyle     = borderRightStyle;
-exports.borderBottomStyle    = borderBottomStyle;
-exports.borderLeftStyle      = borderLeftStyle;
-exports.borderColor          = borderColor;
-exports.borderTopColor       = borderTopColor;
-exports.borderRightColor     = borderRightColor;
-exports.borderBottomColor    = borderBottomColor;
-exports.borderLeftColor      = borderLeftColor;
-exports.css                  = css;
+exports.inherit_                 = inherit_;
+exports.initial                  = initial;
+exports.unset                    = unset;
+exports.em                       = em;
+exports.ex                       = ex;
+exports.ch                       = ch;
+exports.rem                      = rem;
+exports.vw                       = vw;
+exports.vh                       = vh;
+exports.vmin                     = vmin;
+exports.vmax                     = vmax;
+exports.cm                       = cm;
+exports.mm                       = mm;
+exports.q                        = q;
+exports.inch                     = inch;
+exports.pc                       = pc;
+exports.pt                       = pt;
+exports.px                       = px;
+exports.zero                     = zero;
+exports.pct                      = pct;
+exports.rad                      = rad;
+exports.grad                     = grad;
+exports.deg                      = deg;
+exports.turn                     = turn;
+exports.url                      = url;
+exports.rgb                      = rgb;
+exports.rgba                     = rgba;
+exports.hsl                      = hsl;
+exports.hsla                     = hsla;
+exports.hex                      = hex;
+exports.currentColor             = currentColor;
+exports.transparent              = transparent;
+exports.aliceblue                = aliceblue;
+exports.antiquewhite             = antiquewhite;
+exports.aqua                     = aqua;
+exports.aquamarine               = aquamarine;
+exports.azure                    = azure;
+exports.beige                    = beige;
+exports.bisque                   = bisque;
+exports.black                    = black;
+exports.blanchedalmond           = blanchedalmond;
+exports.blue                     = blue;
+exports.blueviolet               = blueviolet;
+exports.brown                    = brown;
+exports.burlywood                = burlywood;
+exports.cadetblue                = cadetblue;
+exports.chartreuse               = chartreuse;
+exports.chocolate                = chocolate;
+exports.coral                    = coral;
+exports.cornflowerblue           = cornflowerblue;
+exports.cornsilk                 = cornsilk;
+exports.crimson                  = crimson;
+exports.cyan                     = cyan;
+exports.darkblue                 = darkblue;
+exports.darkcyan                 = darkcyan;
+exports.darkgoldenrod            = darkgoldenrod;
+exports.darkgray                 = darkgray;
+exports.darkgrey                 = darkgrey;
+exports.darkgreen                = darkgreen;
+exports.darkkhaki                = darkkhaki;
+exports.darkmagenta              = darkmagenta;
+exports.darkolivegreen           = darkolivegreen;
+exports.darkorange               = darkorange;
+exports.darkorchid               = darkorchid;
+exports.darkred                  = darkred;
+exports.darksalmon               = darksalmon;
+exports.darkseagreen             = darkseagreen;
+exports.darkslateblue            = darkslateblue;
+exports.darkslategray            = darkslategray;
+exports.darkslategrey            = darkslategrey;
+exports.darkturquoise            = darkturquoise;
+exports.darkviolet               = darkviolet;
+exports.deeppink                 = deeppink;
+exports.deepskyblue              = deepskyblue;
+exports.dimgray                  = dimgray;
+exports.dimgrey                  = dimgrey;
+exports.dodgerblue               = dodgerblue;
+exports.firebrick                = firebrick;
+exports.floralwhite              = floralwhite;
+exports.forestgreen              = forestgreen;
+exports.fuchsia                  = fuchsia;
+exports.gainsboro                = gainsboro;
+exports.ghostwhite               = ghostwhite;
+exports.gold                     = gold;
+exports.goldenrod                = goldenrod;
+exports.gray                     = gray;
+exports.grey                     = grey;
+exports.green                    = green;
+exports.greenyellow              = greenyellow;
+exports.honeydew                 = honeydew;
+exports.hotpink                  = hotpink;
+exports.indianred                = indianred;
+exports.indigo                   = indigo;
+exports.ivory                    = ivory;
+exports.khaki                    = khaki;
+exports.lavender                 = lavender;
+exports.lavenderblush            = lavenderblush;
+exports.lawngreen                = lawngreen;
+exports.lemonchiffon             = lemonchiffon;
+exports.lightblue                = lightblue;
+exports.lightcoral               = lightcoral;
+exports.lightcyan                = lightcyan;
+exports.lightgoldenrodyellow     = lightgoldenrodyellow;
+exports.lightgray                = lightgray;
+exports.lightgrey                = lightgrey;
+exports.lightgreen               = lightgreen;
+exports.lightpink                = lightpink;
+exports.lightsalmon              = lightsalmon;
+exports.lightseagreen            = lightseagreen;
+exports.lightskyblue             = lightskyblue;
+exports.lightslategray           = lightslategray;
+exports.lightslategrey           = lightslategrey;
+exports.lightsteelblue           = lightsteelblue;
+exports.lightyellow              = lightyellow;
+exports.lime                     = lime;
+exports.limegreen                = limegreen;
+exports.linen                    = linen;
+exports.magenta                  = magenta;
+exports.maroon                   = maroon;
+exports.mediumaquamarine         = mediumaquamarine;
+exports.mediumblue               = mediumblue;
+exports.mediumorchid             = mediumorchid;
+exports.mediumpurple             = mediumpurple;
+exports.mediumseagreen           = mediumseagreen;
+exports.mediumslateblue          = mediumslateblue;
+exports.mediumspringgreen        = mediumspringgreen;
+exports.mediumturquoise          = mediumturquoise;
+exports.mediumvioletred          = mediumvioletred;
+exports.midnightblue             = midnightblue;
+exports.mintcream                = mintcream;
+exports.mistyrose                = mistyrose;
+exports.moccasin                 = moccasin;
+exports.navajowhite              = navajowhite;
+exports.navy                     = navy;
+exports.oldlace                  = oldlace;
+exports.olive                    = olive;
+exports.olivedrab                = olivedrab;
+exports.orange                   = orange;
+exports.orangered                = orangered;
+exports.orchid                   = orchid;
+exports.palegoldenrod            = palegoldenrod;
+exports.palegreen                = palegreen;
+exports.paleturquoise            = paleturquoise;
+exports.palevioletred            = palevioletred;
+exports.papayawhip               = papayawhip;
+exports.peachpuff                = peachpuff;
+exports.peru                     = peru;
+exports.pink                     = pink;
+exports.plum                     = plum;
+exports.powderblue               = powderblue;
+exports.purple                   = purple;
+exports.red                      = red;
+exports.rosybrown                = rosybrown;
+exports.royalblue                = royalblue;
+exports.saddlebrown              = saddlebrown;
+exports.salmon                   = salmon;
+exports.sandybrown               = sandybrown;
+exports.seagreen                 = seagreen;
+exports.seashell                 = seashell;
+exports.sienna                   = sienna;
+exports.silver                   = silver;
+exports.skyblue                  = skyblue;
+exports.slateblue                = slateblue;
+exports.slategray                = slategray;
+exports.slategrey                = slategrey;
+exports.snow                     = snow;
+exports.springgreen              = springgreen;
+exports.steelblue                = steelblue;
+exports.tan                      = tan;
+exports.teal                     = teal;
+exports.thistle                  = thistle;
+exports.tomato                   = tomato;
+exports.turquoise                = turquoise;
+exports.violet                   = violet;
+exports.wheat                    = wheat;
+exports.white                    = white;
+exports.whitesmoke               = whitesmoke;
+exports.yellow                   = yellow;
+exports.yellowgreen              = yellowgreen;
+exports.none                     = none;
+exports.auto                     = auto;
+exports.thin                     = thin;
+exports.medium                   = medium;
+exports.thick                    = thick;
+exports.hidden                   = hidden;
+exports.dotted                   = dotted;
+exports.dashed                   = dashed;
+exports.solid                    = solid;
+exports.$$double                 = $$double;
+exports.groove                   = groove;
+exports.ridge                    = ridge;
+exports.inset                    = inset;
+exports.outset                   = outset;
+exports.margin                   = margin;
+exports.margin2                  = margin2;
+exports.margin3                  = margin3;
+exports.margin4                  = margin4;
+exports.marginTop                = marginTop;
+exports.marginRight              = marginRight;
+exports.marginBottom             = marginBottom;
+exports.marginLeft               = marginLeft;
+exports.padding                  = padding;
+exports.padding2                 = padding2;
+exports.padding3                 = padding3;
+exports.padding4                 = padding4;
+exports.paddingTop               = paddingTop;
+exports.paddingRight             = paddingRight;
+exports.paddingBottom            = paddingBottom;
+exports.paddingLeft              = paddingLeft;
+exports.border                   = border;
+exports.border2                  = border2;
+exports.border3                  = border3;
+exports.borderWidth              = borderWidth;
+exports.borderTopWidth           = borderTopWidth;
+exports.borderRightWidth         = borderRightWidth;
+exports.borderBottomWidth        = borderBottomWidth;
+exports.borderLeftWidth          = borderLeftWidth;
+exports.borderStyle              = borderStyle;
+exports.borderTopStyle           = borderTopStyle;
+exports.borderRightStyle         = borderRightStyle;
+exports.borderBottomStyle        = borderBottomStyle;
+exports.borderLeftStyle          = borderLeftStyle;
+exports.borderColor              = borderColor;
+exports.borderTopColor           = borderTopColor;
+exports.borderRightColor         = borderRightColor;
+exports.borderBottomColor        = borderBottomColor;
+exports.borderLeftColor          = borderLeftColor;
+exports.borderRadius             = borderRadius;
+exports.borderTopLeftRadius      = borderTopLeftRadius;
+exports.borderTopLeftRadius2     = borderTopLeftRadius2;
+exports.borderTopRightRadius     = borderTopRightRadius;
+exports.borderTopRightRadius2    = borderTopRightRadius2;
+exports.borderBottomRightRadius  = borderBottomRightRadius;
+exports.borderBottomRightRadius2 = borderBottomRightRadius2;
+exports.borderBottomLeftRadius   = borderBottomLeftRadius;
+exports.borderBottomLeftRadius2  = borderBottomLeftRadius2;
+exports.css                      = css;
 /* Js_dict Not a pure module */

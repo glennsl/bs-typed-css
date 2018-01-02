@@ -11,6 +11,9 @@ type decl('a) = (string, value('a));
 external asDeclaration : decl(_) => declaration = "%identity";
 external getDeclaration : declaration => decl(_) = "%identity";
 
+let prop = name =>
+  value => (name, value) |> asDeclaration;
+
 
 /*********
  * Values
@@ -317,6 +320,20 @@ let borderBottomColor = value =>
 let borderLeftColor = value =>
   ("borderLeftColor", value) |> asDeclaration;
 
+let borderRadius = value =>
+  ("borderRadius", value) |> asDeclaration;
+let borderTopRightRadius = v => prop("borderTopRightRadius", v);
+let borderTopRightRadius2 = (~v, ~h) =>
+  prop("borderTopRightRadius", {j|$v $h|j} |> asValue);
+let borderTopLeftRadius = v => prop("borderTopLeftRadius", v);
+let borderTopLeftRadius2 = (~v, ~h) =>
+  prop("borderTopLeftRadius", {j|$v $h|j} |> asValue);
+let borderBottomRightRadius = v => prop("borderBottomRightRadius", v);
+let borderBottomRightRadius2 = (~v, ~h) =>
+  prop("borderBottomRightRadius", {j|$v $h|j} |> asValue);
+let borderBottomLeftRadius = v => prop("borderBottomLeftRadius", v);
+let borderBottomLeftRadius2 = (~v, ~h) =>
+  prop("borderBottomLeftRadius", {j|$v $h|j} |> asValue);
 
 /*********
  * Glamor

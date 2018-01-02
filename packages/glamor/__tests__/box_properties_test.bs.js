@@ -155,9 +155,45 @@ describe("border", (function () {
               "borderBottomColor",
               "transparent"
             ]);
-        return TestHelpers.testDeclaration(Glamor.borderLeftColor(Glamor.transparent), /* tuple */[
-                    "borderLeftColor",
-                    "transparent"
+        TestHelpers.testDeclaration(Glamor.borderLeftColor(Glamor.transparent), /* tuple */[
+              "borderLeftColor",
+              "transparent"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderRadius(Glamor.px(2)), /* tuple */[
+              "borderRadius",
+              "2px"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderTopLeftRadius(Glamor.px(2)), /* tuple */[
+              "borderTopLeftRadius",
+              "2px"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderTopLeftRadius2(Glamor.px(2), Glamor.zero), /* tuple */[
+              "borderTopLeftRadius",
+              "2px 0"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderTopRightRadius(Glamor.px(2)), /* tuple */[
+              "borderTopRightRadius",
+              "2px"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderTopRightRadius2(Glamor.px(2), Glamor.zero), /* tuple */[
+              "borderTopRightRadius",
+              "2px 0"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderBottomLeftRadius(Glamor.px(2)), /* tuple */[
+              "borderBottomLeftRadius",
+              "2px"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderBottomLeftRadius2(Glamor.px(2), Glamor.zero), /* tuple */[
+              "borderBottomLeftRadius",
+              "2px 0"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderBottomRightRadius(Glamor.px(2)), /* tuple */[
+              "borderBottomRightRadius",
+              "2px"
+            ]);
+        return TestHelpers.testDeclaration(Glamor.borderBottomRightRadius2(Glamor.px(2), Glamor.zero), /* tuple */[
+                    "borderBottomRightRadius",
+                    "2px 0"
                   ]);
       }));
 

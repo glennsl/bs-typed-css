@@ -127,4 +127,33 @@ describe("border", () => {
   testDeclaration(
     borderLeftColor(transparent),
     ("borderLeftColor", "transparent"));
+
+  testDeclaration(
+    borderRadius(px(2)),
+    ("borderRadius", "2px"));
+
+  testDeclaration(
+    borderTopLeftRadius(px(2)),
+    ("borderTopLeftRadius", "2px"));
+  testDeclaration(
+    borderTopLeftRadius2(~v=px(2), ~h=zero),
+    ("borderTopLeftRadius", "2px 0"));
+  testDeclaration(
+    borderTopRightRadius(px(2)),
+    ("borderTopRightRadius", "2px"));
+  testDeclaration(
+    borderTopRightRadius2(~v=px(2), ~h=zero),
+    ("borderTopRightRadius", "2px 0"));
+  testDeclaration(
+    borderBottomLeftRadius(px(2)),
+    ("borderBottomLeftRadius", "2px"));
+  testDeclaration(
+    borderBottomLeftRadius2(~v=px(2), ~h=zero),
+    ("borderBottomLeftRadius", "2px 0"));
+  testDeclaration(
+    borderBottomRightRadius(px(2)),
+    ("borderBottomRightRadius", "2px"));
+  testDeclaration(
+    borderBottomRightRadius2(~v=px(2), ~h=zero),
+    ("borderBottomRightRadius", "2px 0"));
 });

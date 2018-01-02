@@ -331,4 +331,20 @@ module type Properties = {
   let borderRightColor:   value([< color | `universal]) => declaration;
   let borderBottomColor:  value([< color | `universal]) => declaration;
   let borderLeftColor:    value([< color | `universal]) => declaration;
+
+  let borderRadius:             value([< `length | `percentage | `universal]) => declaration;
+  /* borderRadius2-4 */
+  let borderTopLeftRadius:      value([< `length | `percentage | `universal]) => declaration;
+  let borderTopLeftRadius2:     (~v:value([< `length | `percentage | `universal]),
+                                 ~h:value([< `length | `percentage | `universal])) => declaration;
+  let borderTopRightRadius:     value([< `length | `percentage | `universal]) => declaration;
+  let borderTopRightRadius2:    (~v:value([< `length | `percentage | `universal]),
+                                 ~h:value([< `length | `percentage | `universal])) => declaration;
+  let borderBottomRightRadius:  value([< `length | `percentage | `universal]) => declaration;
+  let borderBottomRightRadius2: (~v:value([< `length | `percentage | `universal]),
+                                 ~h:value([< `length | `percentage | `universal])) => declaration;
+  let borderBottomLeftRadius:   value([< `length | `percentage | `universal]) => declaration;
+  let borderBottomLeftRadius2:  (~v:value([< `length | `percentage | `universal]),
+                                 ~h:value([< `length | `percentage | `universal])) => declaration;
+
 };
