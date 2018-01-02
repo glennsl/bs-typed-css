@@ -40,6 +40,11 @@ describe("angle", (function () {
         return TestHelpers.testValue(Glamor.turn(0.5), "0.5turn");
       }));
 
+describe("time", (function () {
+        TestHelpers.testValue(Glamor.s(1.2), "1.2s");
+        return TestHelpers.testValue(Glamor.ms(200), "200ms");
+      }));
+
 describe("url", (function () {
         return TestHelpers.testValue(Glamor.url("harry potter"), "url(harry potter)");
       }));

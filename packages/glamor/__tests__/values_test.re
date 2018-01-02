@@ -42,6 +42,11 @@ describe("angle", () => {
   testValue( turn(0.5),  "0.5turn");
 });
 
+describe("time", () => {
+  testValue( s(1.2),  "1.2s");
+  testValue( ms(200), "200ms");
+});
+
 describe("url", () => {
   testValue( url("harry potter"), "url(harry potter)");
 });

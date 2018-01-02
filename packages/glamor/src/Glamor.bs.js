@@ -68,20 +68,28 @@ function pct(n) {
   return "" + (String(n) + "%");
 }
 
-function rad(i) {
-  return "" + (String(i) + "rad");
+function rad(n) {
+  return "" + (String(n) + "rad");
 }
 
-function grad(i) {
-  return "" + (String(i) + "grad");
+function grad(n) {
+  return "" + (String(n) + "grad");
 }
 
-function deg(i) {
-  return "" + (String(i) + "deg");
+function deg(n) {
+  return "" + (String(n) + "deg");
 }
 
-function turn(i) {
-  return "" + (String(i) + "turn");
+function turn(n) {
+  return "" + (String(n) + "turn");
+}
+
+function s(n) {
+  return "" + (String(n) + "s");
+}
+
+function ms(n) {
+  return "" + (String(n) + "ms");
 }
 
 function url(url$1) {
@@ -780,6 +788,8 @@ exports.rad                      = rad;
 exports.grad                     = grad;
 exports.deg                      = deg;
 exports.turn                     = turn;
+exports.s                        = s;
+exports.ms                       = ms;
 exports.url                      = url;
 exports.rgb                      = rgb;
 exports.rgba                     = rgba;

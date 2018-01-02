@@ -49,10 +49,14 @@ let zero = "0" |> asValue;
 let pct = n => {j|$n%|j} |> asValue;
 
 /* angle */
-let rad = i => {j|$(i)rad|j} |> asValue;
-let grad = i => {j|$(i)grad|j} |> asValue;
-let deg = i => {j|$(i)deg|j} |> asValue;
-let turn = i => {j|$(i)turn|j} |> asValue;
+let rad = n => {j|$(n)rad|j} |> asValue;
+let grad = n => {j|$(n)grad|j} |> asValue;
+let deg = n => {j|$(n)deg|j} |> asValue;
+let turn = n => {j|$(n)turn|j} |> asValue;
+
+/* time */
+let s = n => {j|$(n)s|j} |> asValue;
+let ms = n => {j|$(n)ms|j} |> asValue;
 
 /* url */
 let url = url => {j|url($url)|j} |> asValue;

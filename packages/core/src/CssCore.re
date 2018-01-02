@@ -11,6 +11,7 @@ type universal  = value([`universal]);
 type length     = value([`length]);
 type percentage = value([`percentage]);
 type angle      = value([`angle]);
+type time       = value([`time]);
 type uri        = value([`uri]);
 /*type counter  = value([`counter]);*/
 type color      = value([`color]);
@@ -76,6 +77,12 @@ module type Values = {
   let grad: float => angle;
   let deg: float => angle;
   let turn: float => angle;
+
+  /**
+   * Time
+   */
+  let s: float => time;
+  let ms: int => time;
 
   /**
    * Url
