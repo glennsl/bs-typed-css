@@ -12,8 +12,28 @@ function ex(n) {
   return "" + (String(n) + "ex");
 }
 
-function inch(n) {
-  return "" + (String(n) + "in");
+function ch(n) {
+  return "" + (String(n) + "ch");
+}
+
+function rem(n) {
+  return "" + (String(n) + "rem");
+}
+
+function vw(n) {
+  return "" + (String(n) + "vw");
+}
+
+function vh(n) {
+  return "" + (String(n) + "vh");
+}
+
+function vmin(n) {
+  return "" + (String(n) + "vmin");
+}
+
+function vmax(n) {
+  return "" + (String(n) + "vmax");
 }
 
 function cm(n) {
@@ -24,12 +44,20 @@ function mm(n) {
   return "" + (String(n) + "mm");
 }
 
-function pt(n) {
-  return "" + (String(n) + "pt");
+function q(n) {
+  return "" + (String(n) + "q");
+}
+
+function inch(n) {
+  return "" + (String(n) + "in");
 }
 
 function pc(n) {
   return "" + (String(n) + "pc");
+}
+
+function pt(n) {
+  return "" + (String(n) + "pt");
 }
 
 function px(n) {
@@ -649,11 +677,18 @@ exports.initial              = initial;
 exports.unset                = unset;
 exports.em                   = em;
 exports.ex                   = ex;
-exports.inch                 = inch;
+exports.ch                   = ch;
+exports.rem                  = rem;
+exports.vw                   = vw;
+exports.vh                   = vh;
+exports.vmin                 = vmin;
+exports.vmax                 = vmax;
 exports.cm                   = cm;
 exports.mm                   = mm;
-exports.pt                   = pt;
+exports.q                    = q;
+exports.inch                 = inch;
 exports.pc                   = pc;
+exports.pt                   = pt;
 exports.px                   = px;
 exports.zero                 = zero;
 exports.pct                  = pct;

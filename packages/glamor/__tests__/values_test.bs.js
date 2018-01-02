@@ -13,11 +13,18 @@ describe("universal", (function () {
 describe("length", (function () {
         TestHelpers.testValue(Glamor.em(1.5), "1.5em");
         TestHelpers.testValue(Glamor.ex(1), "1ex");
-        TestHelpers.testValue(Glamor.inch(1), "1in");
+        TestHelpers.testValue(Glamor.ch(1), "1ch");
+        TestHelpers.testValue(Glamor.rem(1), "1rem");
+        TestHelpers.testValue(Glamor.vw(33.3), "33.3vw");
+        TestHelpers.testValue(Glamor.vh(33.3), "33.3vh");
+        TestHelpers.testValue(Glamor.vmin(33.3), "33.3vmin");
+        TestHelpers.testValue(Glamor.vmax(33.3), "33.3vmax");
         TestHelpers.testValue(Glamor.cm(1), "1cm");
         TestHelpers.testValue(Glamor.mm(1), "1mm");
-        TestHelpers.testValue(Glamor.pt(1), "1pt");
+        TestHelpers.testValue(Glamor.q(1), "1q");
+        TestHelpers.testValue(Glamor.inch(1), "1in");
         TestHelpers.testValue(Glamor.pc(1), "1pc");
+        TestHelpers.testValue(Glamor.pt(1), "1pt");
         TestHelpers.testValue(Glamor.px(1), "1px");
         return TestHelpers.testValue(Glamor.zero, "0");
       }));

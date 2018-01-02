@@ -43,16 +43,25 @@ module type Values = {
    * Length
    */
 
-  /* relative */
+  /* font-relative */
   let em: float => length;
   let ex: float => length;
+  let ch: float => length;
+  let rem: float => length;
+
+  /* viewport-percentage */
+  let vw: float => length;
+  let vh: float => length;
+  let vmin: float => length;
+  let vmax: float => length;
 
   /* absolute */
-  let inch: float => length;
   let cm: float => length;
   let mm: float => length;
-  let pt: float => length;
+  let q: float => length;
+  let inch: float => length;
   let pc: float => length;
+  let pt: float => length;
   let px: int => length;
 
   let zero: length;

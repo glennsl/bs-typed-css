@@ -13,11 +13,20 @@ describe("universal", () => {
 describe("length", () => {
   testValue( em(1.5),   "1.5em");
   testValue( ex(1.),    "1ex");
-  testValue( inch(1.),  "1in");
+  testValue( ch(1.),    "1ch");
+  testValue( rem(1.),   "1rem");
+
+  testValue( vw(33.3),  "33.3vw");
+  testValue( vh(33.3),  "33.3vh");
+  testValue( vmin(33.3),"33.3vmin");
+  testValue( vmax(33.3),"33.3vmax");
+
   testValue( cm(1.),    "1cm");
   testValue( mm(1.),    "1mm");
-  testValue( pt(1.),    "1pt");
+  testValue( q(1.),     "1q");
+  testValue( inch(1.),  "1in");
   testValue( pc(1.),    "1pc");
+  testValue( pt(1.),    "1pt");
   testValue( px(1),     "1px");
   testValue( zero,      "0");
 });

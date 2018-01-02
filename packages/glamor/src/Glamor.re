@@ -19,12 +19,22 @@ let unset = "unset" |> asValue;
 /* length */
 let em = n => {j|$(n)em|j} |> asValue;
 let ex = n => {j|$(n)ex|j} |> asValue;
-let inch = n => {j|$(n)in|j} |> asValue;
+let ch = n => {j|$(n)ch|j} |> asValue;
+let rem = n => {j|$(n)rem|j} |> asValue;
+
+let vw = n => {j|$(n)vw|j} |> asValue;
+let vh = n => {j|$(n)vh|j} |> asValue;
+let vmin = n => {j|$(n)vmin|j} |> asValue;
+let vmax = n => {j|$(n)vmax|j} |> asValue;
+
 let cm = n => {j|$(n)cm|j} |> asValue;
 let mm = n => {j|$(n)mm|j} |> asValue;
-let pt = n => {j|$(n)pt|j} |> asValue;
+let q = n => {j|$(n)q|j} |> asValue;
+let inch = n => {j|$(n)in|j} |> asValue;
 let pc = n => {j|$(n)pc|j} |> asValue;
+let pt = n => {j|$(n)pt|j} |> asValue;
 let px = n => {j|$(n)px|j} |> asValue;
+
 let zero = "0" |> asValue;
 
 /* percentage */
