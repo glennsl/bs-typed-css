@@ -62,8 +62,23 @@ describe("padding", () => {
 
 describe("border", () => {
   testDeclaration(
-    border(~width=px(1), ~style=solid, ~color=transparent),
-    ("border", "1px solid transparent"));
+    border(none),
+    ("border", "none"));
+  testDeclaration(
+    border2(ridge),
+    ("border", "ridge"));
+  testDeclaration(
+    border2(~width=px(1), dashed),
+    ("border", "1px dashed"));
+  testDeclaration(
+    border2(inset, ~color=green),
+    ("border", "inset green"));
+  testDeclaration(
+    border2(~width=px(1), double, ~color=aqua),
+    ("border", "1px double aqua"));
+  testDeclaration(
+    border3(~width=px(1), ~style=solid, ~color=slategray),
+    ("border", "1px solid slategray"));
 
   testDeclaration(
     borderWidth(px(2)),

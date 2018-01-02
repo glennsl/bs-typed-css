@@ -220,7 +220,28 @@ function paddingLeft(value) {
         ];
 }
 
-function border(width, style, color) {
+function border(value) {
+  return /* tuple */[
+          "border",
+          value
+        ];
+}
+
+function border2(width, color, style) {
+  var value;
+  if (width) {
+    var w = width[0];
+    value = color ? "" + (String(w) + (" " + (String(style) + (" " + (String(color[0]) + ""))))) : "" + (String(w) + (" " + (String(style) + "")));
+  } else {
+    value = color ? "" + (String(style) + (" " + (String(color[0]) + ""))) : style;
+  }
+  return /* tuple */[
+          "border",
+          value
+        ];
+}
+
+function border3(width, style, color) {
   return /* tuple */[
           "border",
           "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
@@ -882,6 +903,8 @@ exports.paddingRight         = paddingRight;
 exports.paddingBottom        = paddingBottom;
 exports.paddingLeft          = paddingLeft;
 exports.border               = border;
+exports.border2              = border2;
+exports.border3              = border3;
 exports.borderWidth          = borderWidth;
 exports.borderTopWidth       = borderTopWidth;
 exports.borderRightWidth     = borderRightWidth;

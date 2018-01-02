@@ -19,8 +19,8 @@ module Types = {
   type declaration;
   type marginWidth  = [`length | `percentage | `auto];
   type paddingWidth = [`length | `percentage];
-  type borderWidth  = [`thin | `medium | `thick | `length];
-  type borderStyle  = [`none | `hidden | `dotted | `dashed | `solid | `double | `groove | `ridge | `inset | `outset];
+  type lineWidth    = [`thin | `medium | `thick | `length];
+  type lineStyle    = [`none | `hidden | `dotted | `dashed | `solid | `double | `groove | `ridge | `inset | `outset];
 };
 
 
@@ -253,12 +253,12 @@ module type Values = {
   let none: value([`none]);
   let auto: value([`auto]);
 
-  /* borderWidth */
+  /* lineWidth */
   let thin:   value([`thin]);
   let medium: value([`medium]);
   let thick:  value([`thick]);
 
-  /* borderStyle */
+  /* lineStyle */
   let hidden: value([`hidden]);
   let dotted: value([`dotted]);
   let dashed: value([`dashed]);
@@ -314,20 +314,24 @@ module type Declarations = {
   let paddingBottom:  value([< paddingWidth | `universal]) => declaration;
   let paddingLeft:    value([< paddingWidth | `universal]) => declaration;
 
-  /* TODO: border: inherit etc. */
-  let border:             (~width:  value([< borderWidth]),
-                           ~style:  value([< borderStyle]),
-                           ~color:  value([< color])) => declaration;
-  let borderWidth:        value([< borderWidth | `universal]) => declaration;
-  let borderTopWidth:     value([< borderWidth | `universal]) => declaration;
-  let borderRightWidth:   value([< borderWidth | `universal]) => declaration;
-  let borderBottomWidth:  value([< borderWidth | `universal]) => declaration;
-  let borderLeftWidth:    value([< borderWidth | `universal]) => declaration;
-  let borderStyle:        value([< borderStyle | `universal]) => declaration;
-  let borderTopStyle:     value([< borderStyle | `universal]) => declaration;
-  let borderRightStyle:   value([< borderStyle | `universal]) => declaration;
-  let borderBottomStyle:  value([< borderStyle | `universal]) => declaration;
-  let borderLeftStyle:    value([< borderStyle | `universal]) => declaration;
+  /* border */
+  let border:             value([< lineStyle | `universal]) => declaration;
+  let border2:            (~width: value([< lineWidth])=?,
+                           ~color: value([< color])=?,
+                           value([< lineStyle])) => declaration;
+  let border3:            (~width: value([< lineWidth]),
+                           ~style: value([< lineStyle]),
+                           ~color: value([< color])) => declaration;
+  let borderWidth:        value([< lineWidth | `universal]) => declaration;
+  let borderTopWidth:     value([< lineWidth | `universal]) => declaration;
+  let borderRightWidth:   value([< lineWidth | `universal]) => declaration;
+  let borderBottomWidth:  value([< lineWidth | `universal]) => declaration;
+  let borderLeftWidth:    value([< lineWidth | `universal]) => declaration;
+  let borderStyle:        value([< lineStyle | `universal]) => declaration;
+  let borderTopStyle:     value([< lineStyle | `universal]) => declaration;
+  let borderRightStyle:   value([< lineStyle | `universal]) => declaration;
+  let borderBottomStyle:  value([< lineStyle | `universal]) => declaration;
+  let borderLeftStyle:    value([< lineStyle | `universal]) => declaration;
   let borderColor:        value([< color | `universal]) => declaration;
   let borderTopColor:     value([< color | `universal]) => declaration;
   let borderRightColor:   value([< color | `universal]) => declaration;

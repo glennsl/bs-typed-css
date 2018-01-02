@@ -75,9 +75,29 @@ describe("padding", (function () {
       }));
 
 describe("border", (function () {
-        TestHelpers.testDeclaration(Glamor.border(Glamor.px(1), Glamor.solid, Glamor.transparent), /* tuple */[
+        TestHelpers.testDeclaration(Glamor.border(Glamor.none), /* tuple */[
               "border",
-              "1px solid transparent"
+              "none"
+            ]);
+        TestHelpers.testDeclaration(Glamor.border2(/* None */0, /* None */0, Glamor.ridge), /* tuple */[
+              "border",
+              "ridge"
+            ]);
+        TestHelpers.testDeclaration(Glamor.border2(/* Some */[Glamor.px(1)], /* None */0, Glamor.dashed), /* tuple */[
+              "border",
+              "1px dashed"
+            ]);
+        TestHelpers.testDeclaration(Glamor.border2(/* None */0, /* Some */[Glamor.green], Glamor.inset), /* tuple */[
+              "border",
+              "inset green"
+            ]);
+        TestHelpers.testDeclaration(Glamor.border2(/* Some */[Glamor.px(1)], /* Some */[Glamor.aqua], Glamor.$$double), /* tuple */[
+              "border",
+              "1px double aqua"
+            ]);
+        TestHelpers.testDeclaration(Glamor.border3(Glamor.px(1), Glamor.solid, Glamor.slategray), /* tuple */[
+              "border",
+              "1px solid slategray"
             ]);
         TestHelpers.testDeclaration(Glamor.borderWidth(Glamor.px(2)), /* tuple */[
               "borderWidth",

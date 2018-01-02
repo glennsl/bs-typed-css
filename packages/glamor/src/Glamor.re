@@ -1,6 +1,11 @@
 include CssCore.Types;
 
+
+/*********
+ * Internal helpers
+ */
 external asValue : string => value(_) = "%identity";
+external getValue : value(_) => string = "%identity";
 
 type decl('a) = (string, value('a));
 external asDeclaration : decl(_) => declaration = "%identity";
@@ -267,7 +272,19 @@ let paddingBottom = value =>
 let paddingLeft = value =>
   ("paddingLeft", value) |> asDeclaration;
 
-let border = (~width, ~style, ~color) =>
+let border = value =>
+  ("border", value) |> asDeclaration;
+let border2 = (~width=?, ~color=?, style) => {
+  let value =
+    switch ((width, color)) {
+    | (Some(w), Some(c))  => {j|$w $style $c|j}
+    | (Some(w), None)     => {j|$w $style|j}
+    | (None, Some(c))     => {j|$style $c|j}
+    | (None, None)        => getValue(style)
+    };
+  ("border", value |> asValue) |> asDeclaration
+};
+let border3 = (~width, ~style, ~color) =>
   ("border", {j|$width $style $color|j} |> asValue) |> asDeclaration;
 let borderWidth = value =>
   ("borderWidth", value) |> asDeclaration;
@@ -300,6 +317,10 @@ let borderBottomColor = value =>
 let borderLeftColor = value =>
   ("borderLeftColor", value) |> asDeclaration;
 
+
+/*********
+ * Glamor
+ */
 let css = declarations =>
   declarations |> List.map(getDeclaration)
                |> Js.Dict.fromList;
