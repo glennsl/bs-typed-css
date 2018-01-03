@@ -6,6 +6,8 @@ var Glamor      = require("../src/Glamor.bs.js");
 var $$String    = require("bs-platform/lib/js/string.js");
 var TestHelpers = require("./TestHelpers.bs.js");
 
+var linear = "linear";
+
 function ident(prim) {
   return prim;
 }
@@ -13,6 +15,17 @@ function ident(prim) {
 function transitionProperty(v) {
   return /* tuple */[
           "transitionProperty",
+          v
+        ];
+}
+
+function transitionValue(prop, time, timingFunction) {
+  return "" + (String(prop) + (" " + (String(time) + (" " + (String(timingFunction) + "")))));
+}
+
+function transition(v) {
+  return /* tuple */[
+          "transition",
           v
         ];
 }
@@ -44,18 +57,52 @@ describe("many - coercion", (function () {
               "transitionProperty",
               "foo"
             ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              many(/* :: */[
+                    Glamor.all,
+                    /* :: */[
+                      "bar",
+                      /* [] */0
+                    ]
+                  ])
+            ], /* tuple */[
+              "transitionProperty",
+              "all, bar"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              many(/* [] */0)
+            ], /* tuple */[
+              "transitionProperty",
+              ""
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transition",
+              Glamor.none
+            ], /* tuple */[
+              "transition",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transition",
+              transitionValue(Glamor.all, Glamor.s(1), linear)
+            ], /* tuple */[
+              "transition",
+              "all 1s linear"
+            ]);
         return TestHelpers.testDeclaration(/* tuple */[
-                    "transitionProperty",
+                    "transition",
                     many(/* :: */[
-                          Glamor.all,
+                          transitionValue(Glamor.all, Glamor.s(1), linear),
                           /* :: */[
-                            "bar",
+                            transitionValue("foo", Glamor.ms(400), linear),
                             /* [] */0
                           ]
                         ])
                   ], /* tuple */[
-                    "transitionProperty",
-                    "all, bar"
+                    "transition",
+                    "all 1s linear, foo 400ms linear"
                   ]);
       }));
 
@@ -86,22 +133,57 @@ describe("many - conversion function", (function () {
               "transitionProperty",
               "foo"
             ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              many(/* :: */[
+                    Glamor.all,
+                    /* :: */[
+                      "bar",
+                      /* [] */0
+                    ]
+                  ])
+            ], /* tuple */[
+              "transitionProperty",
+              "all, bar"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              many(/* [] */0)
+            ], /* tuple */[
+              "transitionProperty",
+              ""
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transition",
+              Glamor.none
+            ], /* tuple */[
+              "transition",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transition",
+              transitionValue(Glamor.all, Glamor.s(1), linear)
+            ], /* tuple */[
+              "transition",
+              "all 1s linear"
+            ]);
         return TestHelpers.testDeclaration(/* tuple */[
-                    "transitionProperty",
+                    "transition",
                     many(/* :: */[
-                          Glamor.all,
+                          transitionValue(Glamor.all, Glamor.s(1), linear),
                           /* :: */[
-                            "bar",
+                            transitionValue("foo", Glamor.ms(400), linear),
                             /* [] */0
                           ]
                         ])
                   ], /* tuple */[
-                    "transitionProperty",
-                    "all, bar"
+                    "transition",
+                    "all 1s linear, foo 400ms linear"
                   ]);
       }));
 
 describe("cons - function", (function () {
+        var empty = "";
         var cons = function (v, vs) {
           if (vs === "") {
             return v;
@@ -130,16 +212,52 @@ describe("cons - function", (function () {
               "transitionProperty",
               "foo"
             ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              cons(Glamor.all, cons("bar", empty))
+            ], /* tuple */[
+              "transitionProperty",
+              "all, bar"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              empty
+            ], /* tuple */[
+              "transitionProperty",
+              ""
+            ]);
+        var cons$1 = function (v, vs) {
+          if (vs === "") {
+            return v;
+          } else {
+            return "" + (String(v) + (", " + (String(vs) + "")));
+          }
+        };
+        TestHelpers.testDeclaration(/* tuple */[
+              "transition",
+              Glamor.none
+            ], /* tuple */[
+              "transition",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transition",
+              transitionValue(Glamor.all, Glamor.s(1), linear)
+            ], /* tuple */[
+              "transition",
+              "all 1s linear"
+            ]);
         return TestHelpers.testDeclaration(/* tuple */[
-                    "transitionProperty",
-                    cons(Glamor.all, cons("bar", ""))
+                    "transition",
+                    cons$1(transitionValue(Glamor.all, Glamor.s(1), linear), cons$1(transitionValue("foo", Glamor.ms(400), linear), ""))
                   ], /* tuple */[
-                    "transitionProperty",
-                    "all, bar"
+                    "transition",
+                    "all 1s linear, foo 400ms linear"
                   ]);
       }));
 
 describe("cons - infix operator", (function () {
+        var empty = "";
         var $star$star = function (v, vs) {
           if (vs === "") {
             return v;
@@ -168,15 +286,53 @@ describe("cons - infix operator", (function () {
               "transitionProperty",
               "foo"
             ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              $star$star(Glamor.all, $star$star("bar", empty))
+            ], /* tuple */[
+              "transitionProperty",
+              "all, bar"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              empty
+            ], /* tuple */[
+              "transitionProperty",
+              ""
+            ]);
+        var $star$star$1 = function (v, vs) {
+          if (vs === "") {
+            return v;
+          } else {
+            return "" + (String(v) + (", " + (String(vs) + "")));
+          }
+        };
+        TestHelpers.testDeclaration(/* tuple */[
+              "transition",
+              Glamor.none
+            ], /* tuple */[
+              "transition",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transition",
+              transitionValue(Glamor.all, Glamor.s(1), linear)
+            ], /* tuple */[
+              "transition",
+              "all 1s linear"
+            ]);
         return TestHelpers.testDeclaration(/* tuple */[
-                    "transitionProperty",
-                    $star$star(Glamor.all, $star$star("bar", ""))
+                    "transition",
+                    $star$star$1(transitionValue(Glamor.all, Glamor.s(1), linear), $star$star$1(transitionValue("foo", Glamor.ms(400), linear), ""))
                   ], /* tuple */[
-                    "transitionProperty",
-                    "all, bar"
+                    "transition",
+                    "all 1s linear, foo 400ms linear"
                   ]);
       }));
 
+exports.linear             = linear;
 exports.ident              = ident;
 exports.transitionProperty = transitionProperty;
+exports.transitionValue    = transitionValue;
+exports.transition         = transition;
 /*  Not a pure module */
