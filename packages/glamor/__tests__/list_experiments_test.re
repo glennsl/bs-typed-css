@@ -207,3 +207,47 @@ describe("cons - infix operator", () => {
     )),
     ("transition", "all 1s linear, foo 400ms linear"));
 });
+
+describe("plural propoerty function", () => {
+  let transitionProperties: list(value([< propV])) => declaration =
+    fun | [] => ("transitionProperty", "none") |> Obj.magic
+        | vs => ("transitionProperty", String.concat(", ", vs |> Obj.magic)) |> Obj.magic;
+  let transitions: list((value([< `all | `ident]), time, timingFunction)) => declaration =
+    fun | [] => ("transition", "none") |> Obj.magic
+        | vs => ("transition", String.concat(", ", vs |> Obj.magic)) |> Obj.magic;
+
+  testDeclaration(
+    transitionProperty(none),
+    ("transitionProperty", "none"));
+  testDeclaration(
+    transitionProperty(all),
+    ("transitionProperty", "all"));
+  testDeclaration(
+    transitionProperty(ident("foo")),
+    ("transitionProperty", "foo"));
+  testDeclaration(
+    transitionProperties([all, ident("bar")]),
+    ("transitionProperty", "all, bar"));
+  testDeclaration(
+    transitionProperties([]),
+    ("transitionProperty", "none"));
+
+
+  /* The transitionValue function serves the same purpose as the prop function here */
+  testDeclaration(
+    transition(none),
+    ("transition", "none"));
+  testDeclaration(
+    transition(
+      transitionValue(all, s(1.), linear)),
+    ("transition", "all 1s linear"));
+  testDeclaration(
+    transitions([
+      (all, s(1.), linear),
+      (ident("foo"), ms(400), linear)
+    ]),
+    ("transition", "all 1s linear, foo 400ms linear"));
+  testDeclaration(
+    transitions([]),
+    ("transition", "none"));
+});

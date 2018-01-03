@@ -330,6 +330,106 @@ describe("cons - infix operator", (function () {
                   ]);
       }));
 
+describe("plural propoerty function", (function () {
+        var transitionProperties = function (vs) {
+          if (vs) {
+            return /* tuple */[
+                    "transitionProperty",
+                    $$String.concat(", ", vs)
+                  ];
+          } else {
+            return /* tuple */[
+                    "transitionProperty",
+                    "none"
+                  ];
+          }
+        };
+        var transitions = function (vs) {
+          if (vs) {
+            return /* tuple */[
+                    "transition",
+                    $$String.concat(", ", vs)
+                  ];
+          } else {
+            return /* tuple */[
+                    "transition",
+                    "none"
+                  ];
+          }
+        };
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              Glamor.none
+            ], /* tuple */[
+              "transitionProperty",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              Glamor.all
+            ], /* tuple */[
+              "transitionProperty",
+              "all"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transitionProperty",
+              "foo"
+            ], /* tuple */[
+              "transitionProperty",
+              "foo"
+            ]);
+        TestHelpers.testDeclaration(transitionProperties(/* :: */[
+                  Glamor.all,
+                  /* :: */[
+                    "bar",
+                    /* [] */0
+                  ]
+                ]), /* tuple */[
+              "transitionProperty",
+              "all, bar"
+            ]);
+        TestHelpers.testDeclaration(transitionProperties(/* [] */0), /* tuple */[
+              "transitionProperty",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transition",
+              Glamor.none
+            ], /* tuple */[
+              "transition",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(/* tuple */[
+              "transition",
+              transitionValue(Glamor.all, Glamor.s(1), linear)
+            ], /* tuple */[
+              "transition",
+              "all 1s linear"
+            ]);
+        TestHelpers.testDeclaration(transitions(/* :: */[
+                  /* tuple */[
+                    Glamor.all,
+                    Glamor.s(1),
+                    linear
+                  ],
+                  /* :: */[
+                    /* tuple */[
+                      "foo",
+                      Glamor.ms(400),
+                      linear
+                    ],
+                    /* [] */0
+                  ]
+                ]), /* tuple */[
+              "transition",
+              "all 1s linear, foo 400ms linear"
+            ]);
+        return TestHelpers.testDeclaration(transitions(/* [] */0), /* tuple */[
+                    "transition",
+                    "none"
+                  ]);
+      }));
+
 exports.linear             = linear;
 exports.ident              = ident;
 exports.transitionProperty = transitionProperty;
