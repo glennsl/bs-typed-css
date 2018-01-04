@@ -6,15 +6,16 @@
 type declaration;
 
  /* values */
-type value('a)  = 'a constraint [>] = 'a;
-type universal  = value([`universal]);
-type length     = value([`length]);
-type percentage = value([`percentage]);
-type angle      = value([`angle]);
-type time       = value([`time]);
-type uri        = value([`uri]);
-/*type counter  = value([`counter]);*/
-type color      = value([`color]);
+type value('a) constraint 'a = [>];
+type universal      = value([`universal]);
+type length         = value([`length]);
+type percentage     = value([`percentage]);
+type angle          = value([`angle]);
+type time           = value([`time]);
+type uri            = value([`uri]);
+/*type counter      = value([`counter]);*/
+type color          = value([`color]);
+type customIdent    = value([`customIdent]);
 
 /* aliases for property values */
 type marginWidth  = [`length | `percentage | `auto];
@@ -250,6 +251,125 @@ module type Values = {
   let yellow: color;
   let yellowgreen: color;
 
+
+  /**
+   * Custom Identfier
+   */
+  let ident: string => customIdent;
+
+ /**
+   * Animatable Properties
+   */
+  module AnimatableProperty: {
+    let all: customIdent;
+    let backdropFilter: customIdent;
+    let background: customIdent;
+    let backgroundColor: customIdent;
+    let backgroundPosition: customIdent;
+    let backgroundSize: customIdent;
+    let border: customIdent;
+    let borderBottom: customIdent;
+    let borderBottomColor: customIdent;
+    let borderBottomLeftRadius: customIdent;
+    let borderBottomRightRadius: customIdent;
+    let borderBottomWidth: customIdent;
+    let borderColor: customIdent;
+    let borderLeft: customIdent;
+    let borderLeftColor: customIdent;
+    let borderLeftWidth: customIdent;
+    let borderRadius: customIdent;
+    let borderRight: customIdent;
+    let borderRightColor: customIdent;
+    let borderRightWidth: customIdent;
+    let borderTop: customIdent;
+    let borderTopColor: customIdent;
+    let borderTopLeftRadius: customIdent;
+    let borderTopRightRadius: customIdent;
+    let borderTopWidth: customIdent;
+    let borderWidth: customIdent;
+    let bottom: customIdent;
+    let boxShadow: customIdent;
+    let caretColor: customIdent;
+    let clip: customIdent;
+    let clipPath: customIdent;
+    let color: customIdent;
+    let columnCount: customIdent;
+    let columnGap: customIdent;
+    let columnRule: customIdent;
+    let columnRuleColor: customIdent;
+    let columnRuleWidth: customIdent;
+    let columnWidth: customIdent;
+    let columns: customIdent;
+    let filter: customIdent;
+    let flex: customIdent;
+    let flexBasis: customIdent;
+    let flexGrow: customIdent;
+    let flexShrink: customIdent;
+    let font: customIdent;
+    let fontSize: customIdent;
+    let fontSizeAdjust: customIdent;
+    let fontStretch: customIdent;
+    let fontVariationSettings: customIdent;
+    let fontWeight: customIdent;
+    let gridColumnGap: customIdent;
+    let gridGap: customIdent;
+    let gridRowGap: customIdent;
+    let height: customIdent;
+    let left: customIdent;
+    let letterSpacing: customIdent;
+    let lineHeight: customIdent;
+    let margin: customIdent;
+    let marginBottom: customIdent;
+    let marginLeft: customIdent;
+    let marginRight: customIdent;
+    let marginTop: customIdent;
+    let mask: customIdent;
+    let maskBorder: customIdent;
+    let maskPosition: customIdent;
+    let maskSize: customIdent;
+    let maxHeight: customIdent;
+    let maxWidth: customIdent;
+    let minHeight: customIdent;
+    let minWidth: customIdent;
+    let objectPosition: customIdent;
+    let offset: customIdent;
+    let offsetAnchor: customIdent;
+    let offsetDistance: customIdent;
+    let offsetPath: customIdent;
+    let offsetRotate: customIdent;
+    let opacity: customIdent;
+    let order: customIdent;
+    let outline: customIdent;
+    let outlineColor: customIdent;
+    let outlineOffset: customIdent;
+    let outlineWidth: customIdent;
+    let padding: customIdent;
+    let paddingBottom: customIdent;
+    let paddingLeft: customIdent;
+    let paddingRight: customIdent;
+    let paddingTop: customIdent;
+    let right: customIdent;
+    let scrollSnapCoordinate: customIdent;
+    let scrollSnapDestination: customIdent;
+    let shapeImageThreshold: customIdent;
+    let shapeMargin: customIdent;
+    let shapeOutside: customIdent;
+    let tabSize: customIdent;
+    let textDecoration: customIdent;
+    let textDecorationColor: customIdent;
+    let textEmphasis: customIdent;
+    let textEmphasisColor: customIdent;
+    let textIndent: customIdent;
+    let textShadow: customIdent;
+    let top: customIdent;
+    let transform: customIdent;
+    let transformOrigin: customIdent;
+    let verticalAlign: customIdent;
+    let visibility: customIdent;
+    let width: customIdent;
+    let wordSpacing: customIdent;
+    let zIndex: customIdent;
+  };
   /**
    * Ad-hoc values
    */
@@ -273,7 +393,8 @@ module type Values = {
   let outset: value([`outset]);
 
   /* transition */
-  let all: value([`all]);
+  /*let all: value([`all]);*/
+
 };
 
 
@@ -321,11 +442,11 @@ module type Properties = {
   /* border */
   let border:             value([< lineStyle | `universal]) => declaration;
   let border2:            (~width: value([< lineWidth])=?,
-                           ~color: value([< color])=?,
+                           ~color: value([< `color])=?,
                            value([< lineStyle])) => declaration;
   let border3:            (~width: value([< lineWidth]),
                            ~style: value([< lineStyle]),
-                           ~color: value([< color])) => declaration;
+                           ~color: value([< `color])) => declaration;
   let borderWidth:        value([< lineWidth | `universal]) => declaration;
   let borderTopWidth:     value([< lineWidth | `universal]) => declaration;
   let borderRightWidth:   value([< lineWidth | `universal]) => declaration;
@@ -336,11 +457,11 @@ module type Properties = {
   let borderRightStyle:   value([< lineStyle | `universal]) => declaration;
   let borderBottomStyle:  value([< lineStyle | `universal]) => declaration;
   let borderLeftStyle:    value([< lineStyle | `universal]) => declaration;
-  let borderColor:        value([< color | `universal]) => declaration;
-  let borderTopColor:     value([< color | `universal]) => declaration;
-  let borderRightColor:   value([< color | `universal]) => declaration;
-  let borderBottomColor:  value([< color | `universal]) => declaration;
-  let borderLeftColor:    value([< color | `universal]) => declaration;
+  let borderColor:        value([< `color | `universal]) => declaration;
+  let borderTopColor:     value([< `color | `universal]) => declaration;
+  let borderRightColor:   value([< `color | `universal]) => declaration;
+  let borderBottomColor:  value([< `color | `universal]) => declaration;
+  let borderLeftColor:    value([< `color | `universal]) => declaration;
 
   let borderRadius:             value([< `length | `percentage | `universal]) => declaration;
   /* TODO?: borderRadius2-4 */

@@ -64,6 +64,10 @@ describe("color", () => {
   /* lots of colors that are inlined */
 });
 
+describe("customIdent", () => {
+  testValue( ident("foo"), "foo");
+});
+
 describe("ad-hoc", () => {
   testValue( none, "none");
   testValue( auto, "auto");
@@ -82,5 +86,5 @@ describe("ad-hoc", () => {
   testValue( inset,  "inset");
   testValue( outset, "outset");
 
-  testValue( all, "all");
+  /*testValue( all, "all");*/
 });

@@ -5,7 +5,8 @@ open Glamor;
 
 type timingFunction = value([`timingFunction]);
 let linear: timingFunction = "linear" |> Obj.magic;
-let ident: string => value(_) = Obj.magic;
+let ident: string => value([`ident]) = Obj.magic;
+let all: value([`all]) = "all" |> Obj.magic;
 
 type propV = [ `all | `ident];
 type prop = value(propV);
@@ -17,11 +18,12 @@ let transitionProperty: value([< `none | propV | vlist(propV) | `universal]) => 
 type singleTransition = value([`singleTransition]);
 let transitionValue = (prop: value([< propV]), time: time, timingFunction: timingFunction): singleTransition =>
   {j|$prop $time $timingFunction|j} |> Obj.magic;
-let transition: value([< singleTransition | vlist(singleTransition) | `none | `universal]) => declaration =
+let transition: value([< `singleTransition | vlist(singleTransition) | `none | `universal]) => declaration =
   v => ("transition", v) |> Obj.magic;
 
 let _ =
 
+/* These broke when removing the equality between `value('a)` and `'a`
 describe("many - coercion", () => {
   let many = values => String.concat(", ", values |> List.map(Obj.magic)) |> Obj.magic;
   
@@ -40,7 +42,7 @@ describe("many - coercion", () => {
     ("transitionProperty", "all, bar"));
   testDeclaration(
     transitionProperty(
-      many([])), /* shouldn't be allowed */
+      many([])), /* shouldn't be allowed? */
     ("transitionProperty", ""));
 
 
@@ -58,6 +60,7 @@ describe("many - coercion", () => {
     ])),
     ("transition", "all 1s linear, foo 400ms linear"));
 });
+
 
 describe("many - conversion function", () => {
   let many = values => String.concat(", ", values |> List.map(Obj.magic)) |> Obj.magic;
@@ -78,7 +81,7 @@ describe("many - conversion function", () => {
       many([prop(all), prop(ident("bar"))])),
     ("transitionProperty", "all, bar"));
   testDeclaration(
-    transitionProperty(many([])), /* shouldn't be allowed */
+    transitionProperty(many([])), /* shouldn't be allowed? */
     ("transitionProperty", ""));
 
 
@@ -97,11 +100,12 @@ describe("many - conversion function", () => {
     ])),
     ("transition", "all 1s linear, foo 400ms linear"));
 });
+*/
 
 describe("cons - function", () => {
   let empty: value(vlist(_)) =
     "" |> Obj.magic;
-  let cons = (v: value([< prop]), vs: value(vlist(propV))): value(vlist(propV)) =>
+  let cons = (v: value([< propV]), vs: value(vlist(propV))): value(vlist(propV)) =>
     switch (Obj.magic(vs)) {
     | "" => v |> Obj.magic
     | vs => {j|$v, $vs|j} |> Obj.magic
@@ -121,7 +125,7 @@ describe("cons - function", () => {
       cons(all, cons(ident("bar"), empty))),
     ("transitionProperty", "all, bar"));
   testDeclaration(
-    transitionProperty(empty), /* shouldn't be allowed */
+    transitionProperty(empty), /* shouldn't be allowed? */
     ("transitionProperty", ""));
 
 
@@ -129,7 +133,7 @@ describe("cons - function", () => {
   module Transition = {
     let empty: value(vlist(_)) =
       "" |> Obj.magic;
-    let cons = (v: singleTransition, vs: value(vlist([`singleTransition]))): value(vlist([`singleTransition])) =>
+    let cons = (v: singleTransition, vs: value(vlist(singleTransition))): value(vlist(singleTransition)) =>
       switch (Obj.magic(vs)) {
       | "" => v |> Obj.magic
       | vs => {j|$v, $vs|j} |> Obj.magic
@@ -157,7 +161,7 @@ describe("cons - infix operator", () => {
 
   let empty: value([vlist(propV)]) =
     "" |> Obj.magic;
-  let (**) = (v: value([< prop]), vs: value(vlist(propV))): value(vlist(propV)) =>
+  let (**) = (v: value([< propV]), vs: value(vlist(propV))): value(vlist(propV)) =>
     switch (Obj.magic(vs)) {
     | "" => v |> Obj.magic
     | vs => {j|$v, $vs|j} |> Obj.magic
@@ -177,7 +181,7 @@ describe("cons - infix operator", () => {
       all ** ident("bar") ** empty),
     ("transitionProperty", "all, bar"));
   testDeclaration(
-    transitionProperty(empty), /* shouldn't be allowed */
+    transitionProperty(empty), /* shouldn't be allowed? */
     ("transitionProperty", ""));
 
 
@@ -185,7 +189,7 @@ describe("cons - infix operator", () => {
   module Transition = {
     let empty: value(vlist(_)) =
       "" |> Obj.magic;
-    let (**) = (v: singleTransition, vs: value(vlist([`singleTransition]))): value(vlist([`singleTransition])) =>
+    let (**) = (v: singleTransition, vs: value(vlist(singleTransition))): value(vlist(singleTransition)) =>
       switch (Obj.magic(vs)) {
       | "" => v |> Obj.magic
       | vs => {j|$v, $vs|j} |> Obj.magic
@@ -212,9 +216,9 @@ describe("plural propoerty function", () => {
   let transitionProperties: list(value([< propV])) => declaration =
     fun | [] => ("transitionProperty", "none") |> Obj.magic
         | vs => ("transitionProperty", String.concat(", ", vs |> Obj.magic)) |> Obj.magic;
-  let transitions: list((value([< `all | `ident]), time, timingFunction)) => declaration =
+  let transitions: list((value([< `all | `ident]), time, timingFunction, time)) => declaration =
     fun | [] => ("transition", "none") |> Obj.magic
-        | vs => ("transition", String.concat(", ", vs |> Obj.magic)) |> Obj.magic;
+        | vs => ("transition", vs |> List.map(((prop, dur, fn, delay)) => {j|$prop $dur $fn $delay|j}) |> String.concat(", ")) |> Obj.magic;
 
   testDeclaration(
     transitionProperty(none),
@@ -226,7 +230,7 @@ describe("plural propoerty function", () => {
     transitionProperty(ident("foo")),
     ("transitionProperty", "foo"));
   testDeclaration(
-    transitionProperties([all, ident("bar")]),
+    transitionProperties([ident("all") /* all -- should be allowed */, ident("bar")]),
     ("transitionProperty", "all, bar"));
   testDeclaration(
     transitionProperties([]),
@@ -237,16 +241,18 @@ describe("plural propoerty function", () => {
   testDeclaration(
     transition(none),
     ("transition", "none"));
+  /* should be allowed
   testDeclaration(
     transition(
-      transitionValue(all, s(1.), linear)),
+      (all, s(1.), linear)),
     ("transition", "all 1s linear"));
+  */
   testDeclaration(
     transitions([
-      (all, s(1.), linear),
-      (ident("foo"), ms(400), linear)
+      (ident("all") /* all -- should be allowed */, s(1.), linear, ms(200)),
+      (ident("foo"), ms(400), linear, s(1.2))
     ]),
-    ("transition", "all 1s linear, foo 400ms linear"));
+    ("transition", "all 1s linear 200ms, foo 400ms linear 1.2s"));
   testDeclaration(
     transitions([]),
     ("transition", "none"));
