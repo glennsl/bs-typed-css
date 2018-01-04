@@ -16,6 +16,7 @@ type uri            = value([`uri]);
 /*type counter      = value([`counter]);*/
 type color          = value([`color]);
 type customIdent    = value([`customIdent]);
+type timingFunction = value([`timingFunction]);
 
 /* aliases for property values */
 type marginWidth  = [`length | `percentage | `auto];
@@ -370,6 +371,21 @@ module type Values = {
     let wordSpacing: customIdent;
     let zIndex: customIdent;
   };
+
+  /**
+   * Timing Function
+   */
+  let linear:       timingFunction;
+  let ease:         timingFunction;
+  let easeIn:       timingFunction;
+  let easeOut:      timingFunction;
+  let easeInOut:    timingFunction;
+  let cubicBezier:  ((float, float), (float, float)) => timingFunction; /* TODO labeled arguments? */
+  let stepStart:    timingFunction;
+  let stepEnd:      timingFunction;
+  let steps:        (int, value([< `start | `end_])) => timingFunction;
+  let frames:       int => timingFunction;
+
   /**
    * Ad-hoc values
    */
@@ -394,6 +410,12 @@ module type Values = {
 
   /* transition */
   /*let all: value([`all]);*/
+
+  /* timing function */
+  let start: value([`start]);
+  let end_: value([`end_]);
+
+
 
 };
 

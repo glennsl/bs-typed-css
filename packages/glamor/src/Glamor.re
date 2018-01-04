@@ -336,6 +336,22 @@ module AnimatableProperty = {
   let wordSpacing = "word-spacing" |> asValue;
   let zIndex = "z-index" |> asValue;
 };
+
+/* Timing Fucntion */
+let linear = "linear" |> asValue;
+let ease = "ease" |> asValue;
+let easeIn = "ease-in" |> asValue;
+let easeOut = "ease-out" |> asValue;
+let easeInOut = "ease-in-out" |> asValue;
+let cubicBezier = ((x1, y1), (x2, y2)) =>
+  {j|cubic-bezier($x1, $y1, $x2, $y2)|j} |> asValue;
+let stepStart = "step-start" |> asValue;
+let stepEnd = "step-end" |> asValue;
+let steps = (n, pos) =>
+  {j|steps($n, $pos)|j} |> asValue;
+let frames = n =>
+  {j|frames($n)|j} |> asValue;
+
 /* ad-hoc */
 let none = "none" |> asValue;
 let auto = "auto" |> asValue;
@@ -355,6 +371,9 @@ let inset = "inset" |> asValue;
 let outset = "outset" |> asValue;
 
 /*let all = "all" |> asValue;*/
+
+let start = "start" |> asValue;
+let end_ = "end" |> asValue;
 
 /*********
  * Properties

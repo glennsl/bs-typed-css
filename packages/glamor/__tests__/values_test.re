@@ -68,6 +68,19 @@ describe("customIdent", () => {
   testValue( ident("foo"), "foo");
 });
 
+describe("timingFunction", () => {
+  testValue( linear,                              "linear");
+  testValue( ease,                                "ease");
+  testValue( easeIn,                              "ease-in");
+  testValue( easeOut,                             "ease-out");
+  testValue( easeInOut,                           "ease-in-out");
+  testValue( cubicBezier((1., 0.4), (2.3, 5.1)),  "cubic-bezier(1, 0.4, 2.3, 5.1)");
+  testValue( stepStart,                           "step-start");
+  testValue( stepEnd,                             "step-end");
+  testValue( steps(2, start),                     "steps(2, start)");
+  testValue( frames(4),                           "frames(4)");
+});
+
 describe("ad-hoc", () => {
   testValue( none, "none");
   testValue( auto, "auto");
@@ -87,4 +100,7 @@ describe("ad-hoc", () => {
   testValue( outset, "outset");
 
   /*testValue( all, "all");*/
+
+  testValue( start, "start");
+  testValue( end_,  "end");
 });

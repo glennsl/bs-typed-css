@@ -59,6 +59,29 @@ describe("color", (function () {
         return TestHelpers.testValue(Glamor.transparent, "transparent");
       }));
 
+describe("customIdent", (function () {
+        return TestHelpers.testValue(Glamor.ident("foo"), "foo");
+      }));
+
+describe("timingFunction", (function () {
+        TestHelpers.testValue(Glamor.linear, "linear");
+        TestHelpers.testValue(Glamor.ease, "ease");
+        TestHelpers.testValue(Glamor.easeIn, "ease-in");
+        TestHelpers.testValue(Glamor.easeOut, "ease-out");
+        TestHelpers.testValue(Glamor.easeInOut, "ease-in-out");
+        TestHelpers.testValue(Glamor.cubicBezier(/* tuple */[
+                  1,
+                  0.4
+                ], /* tuple */[
+                  2.3,
+                  5.1
+                ]), "cubic-bezier(1, 0.4, 2.3, 5.1)");
+        TestHelpers.testValue(Glamor.stepStart, "step-start");
+        TestHelpers.testValue(Glamor.stepEnd, "step-end");
+        TestHelpers.testValue(Glamor.steps(2, Glamor.start), "steps(2, start)");
+        return TestHelpers.testValue(Glamor.frames(4), "frames(4)");
+      }));
+
 describe("ad-hoc", (function () {
         TestHelpers.testValue(Glamor.none, "none");
         TestHelpers.testValue(Glamor.auto, "auto");
@@ -74,7 +97,8 @@ describe("ad-hoc", (function () {
         TestHelpers.testValue(Glamor.ridge, "ridge");
         TestHelpers.testValue(Glamor.inset, "inset");
         TestHelpers.testValue(Glamor.outset, "outset");
-        return TestHelpers.testValue(Glamor.all, "all");
+        TestHelpers.testValue(Glamor.start, "start");
+        return TestHelpers.testValue(Glamor.end_, "end");
       }));
 
 /*  Not a pure module */
