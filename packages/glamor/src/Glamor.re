@@ -477,6 +477,28 @@ let borderBottomLeftRadius = value =>
 let borderBottomLeftRadius2 = (~v, ~h) =>
   prop("borderBottomLeftRadius", {j|$v $h|j} |> asValue);
 
+let transitionProperty = v =>
+  prop("transitionProperty", v);
+let transitionProperties =
+  fun | [] => prop("transitionProperty", "none" |> asValue)
+      | vs => prop("transitionProperty", vs |> List.map(getValue) |> String.concat(", ") |> asValue);
+let transitionDuration = v =>
+  prop("transitionDuration", v);
+let transitionDurations = vs =>
+  prop("transitionDuration", vs |> List.map(getValue) |> String.concat(", ") |> asValue);
+let transitionTimingFunction = v =>
+  prop("transitionTimingFunction", v);
+let transitionTimingFunctions = vs =>
+  prop("transitionTimingFunction", vs |> List.map(getValue) |> String.concat(", ") |> asValue);
+let transitionDelay = v =>
+  prop("transitionDelay", v);
+let transitionDelays = vs =>
+  prop("transitionDelay", vs |> List.map(getValue) |> String.concat(", ") |> asValue);
+let transition = v =>
+  prop("transition", v);
+let transitions =
+  fun | [] => prop("transition", "none" |> asValue)
+      | vs => prop("transition", vs |> List.map(((prop, dur, fn, delay)) => {j|$prop $dur $fn $delay|j}) |> String.concat(", ") |> asValue);
 
 /*********
  * Glamor

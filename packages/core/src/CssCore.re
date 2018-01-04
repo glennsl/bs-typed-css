@@ -18,12 +18,15 @@ type color          = value([`color]);
 type customIdent    = value([`customIdent]);
 type timingFunction = value([`timingFunction]);
 
-/* aliases for property values */
-type marginWidth  = [`length | `percentage | `auto];
-type paddingWidth = [`length | `percentage];
-type lineWidth    = [`thin | `medium | `thick | `length];
-type lineStyle    = [`none | `hidden | `dotted | `dashed | `solid | `double | `groove | `ridge | `inset | `outset];
+/* property-specific */
+type marginWidth              = [`length | `percentage | `auto];
+type paddingWidth             = [`length | `percentage];
+type lineWidth                = [`thin | `medium | `thick | `length];
+type lineStyle                = [`none | `hidden | `dotted | `dashed | `solid | `double | `groove | `ridge | `inset | `outset];
 
+type singleTransitionProperty = [`customIdent];
+/* TODO: use record? or function with optional args? */
+type singleTransition('a)     = (value([< singleTransitionProperty] as 'a), time, timingFunction, time);
 
 /*********
  * Values
@@ -430,20 +433,20 @@ module type Properties = {
    */
 
   /* margin */
-  let margin:       value([< marginWidth | `universal]) => declaration;
-  let margin2:      (~v:      value([< marginWidth]),
-                     ~h:      value([< marginWidth])) => declaration;
-  let margin3:      (~top:    value([< marginWidth]),
-                     ~h:      value([< marginWidth]),
-                     ~bottom: value([< marginWidth])) => declaration;
-  let margin4:      (~top:    value([< marginWidth]),
-                     ~right:  value([< marginWidth]),
-                     ~bottom: value([< marginWidth]),
-                     ~left:   value([< marginWidth])) => declaration;
-  let marginTop:    value([< marginWidth | `universal]) => declaration;
-  let marginRight:  value([< marginWidth | `universal]) => declaration;
-  let marginBottom: value([< marginWidth | `universal]) => declaration;
-  let marginLeft:   value([< marginWidth | `universal]) => declaration;
+  let margin:         value([< marginWidth | `universal]) => declaration;
+  let margin2:        (~v:      value([< marginWidth]),
+                       ~h:      value([< marginWidth])) => declaration;
+  let margin3:        (~top:    value([< marginWidth]),
+                       ~h:      value([< marginWidth]),
+                       ~bottom: value([< marginWidth])) => declaration;
+  let margin4:        (~top:    value([< marginWidth]),
+                       ~right:  value([< marginWidth]),
+                       ~bottom: value([< marginWidth]),
+                       ~left:   value([< marginWidth])) => declaration;
+  let marginTop:      value([< marginWidth | `universal]) => declaration;
+  let marginRight:    value([< marginWidth | `universal]) => declaration;
+  let marginBottom:   value([< marginWidth | `universal]) => declaration;
+  let marginLeft:     value([< marginWidth | `universal]) => declaration;
 
   /* padding */
   let padding:        value([< paddingWidth | `universal]) => declaration;
@@ -500,4 +503,26 @@ module type Properties = {
   let borderBottomLeftRadius2:  (~v:value([< `length | `percentage | `universal]),
                                  ~h:value([< `length | `percentage | `universal])) => declaration;
 
+
+  /**
+   * Transitions
+   */
+  /* TODO: The values of these longhand properties are related to each other, e.g.
+   * the 2nd value of transition-duration applies only to the 2nd value of
+   * transition-property. I wonder if this is actually useful for some purpose
+   * other than shooting yourself in the foot, or if it'd be better to just remove
+   * them.
+   * 
+   * TODO: Remove singleTransitionProperty from the singulat value?
+   */
+  let transitionProperty:         value([< `none | singleTransitionProperty | `universal]) => declaration;
+  let transitionProperties:       list(value([< singleTransitionProperty])) => declaration;
+  let transitionDuration:         value([< `time | `universal]) => declaration;
+  let transitionDurations:        list(time) => declaration;
+  let transitionTimingFunction:   value([< `timingFunction | `universal]) => declaration;
+  let transitionTimingFunctions:  list(timingFunction) => declaration;
+  let transitionDelay:            value([< `time | `universal]) => declaration;
+  let transitionDelays:           list(time) => declaration;
+  let transition:                 value([< `none | `universal]) => declaration;
+  let transitions:                list(singleTransition('a)) => declaration;
 };
