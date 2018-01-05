@@ -2,7 +2,6 @@
 'use strict';
 
 var Jest    = require("@glennsl/bs-jest/src/jest.js");
-var Glamor  = require("../src/Glamor.bs.js");
 var Js_dict = require("bs-platform/lib/js/js_dict.js");
 
 function testDeclaration(decl, expected) {
@@ -11,7 +10,7 @@ function testDeclaration(decl, expected) {
                 return Jest.Expect[/* toEqual */12](Js_dict.fromList(/* :: */[
                                 expected,
                                 /* [] */0
-                              ]), Jest.Expect[/* expect */0](Glamor.css(/* :: */[
+                              ]), Jest.Expect[/* expect */0](Js_dict.fromList(/* :: */[
                                     decl,
                                     /* [] */0
                                   ])));
