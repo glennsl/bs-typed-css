@@ -1,4 +1,5 @@
-open CssCore;
+module Core = CssCore;
+open Core;
 
 
 /*********
@@ -375,6 +376,7 @@ let outset = "outset" |> asValue;
 let start = "start" |> asValue;
 let end_ = "end" |> asValue;
 
+
 /*********
  * Properties
  */
@@ -500,9 +502,12 @@ let transitions =
   fun | [] => prop("transition", "none" |> asValue)
       | vs => prop("transition", vs |> List.map(((prop, dur, fn, delay)) => {j|$prop $dur $fn $delay|j}) |> String.concat(", ") |> asValue);
 
+
 /*********
  * Glamor
  */
+[@bs.module "glamor"] external css : Js.Dict.t(value(_)) => string = "";
 let css = declarations =>
   declarations |> List.map(getDeclaration)
-               |> Js.Dict.fromList;
+               |> Js.Dict.fromList
+               |> css;

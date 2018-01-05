@@ -1,5 +1,5 @@
 {
-  "name": "typed-css-glamor",
+  "name": "typed-glamor",
   "version": "0.1.0",
   "scripts": {
     "build": "bsb -make-world",
@@ -16,6 +16,7 @@
   "author": "glennsl",
   "license": "MIT",
   "dependencies": {
+    "glamor": "^2.20.40",
     "typed-css-core": "../core"
   },
   "devDependencies": {

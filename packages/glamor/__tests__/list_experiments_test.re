@@ -1,7 +1,7 @@
 open Jest;
 open TestHelpers;
-open CssCore;
 open Glamor;
+open Core;
 
 type timingFunction = value([`timingFunction]);
 let linear: timingFunction = "linear" |> Obj.magic;

@@ -3,6 +3,7 @@
 
 var List     = require("bs-platform/lib/js/list.js");
 var $$String = require("bs-platform/lib/js/string.js");
+var Glamor   = require("glamor");
 var Js_dict  = require("bs-platform/lib/js/js_dict.js");
 
 function em(n) {
@@ -647,10 +648,12 @@ function transitions(vs) {
 }
 
 function css(declarations) {
-  return Js_dict.fromList(List.map((function (prim) {
-                    return prim;
-                  }), declarations));
+  return Glamor.css(Js_dict.fromList(List.map((function (prim) {
+                        return prim;
+                      }), declarations)));
 }
+
+var Core = /* CssCore */[];
 
 var inherit_ = "inherit";
 
@@ -1004,6 +1007,7 @@ var start = "start";
 
 var end_ = "end";
 
+exports.Core                      = Core;
 exports.inherit_                  = inherit_;
 exports.initial                   = initial;
 exports.unset                     = unset;
@@ -1267,4 +1271,4 @@ exports.transitionDelays          = transitionDelays;
 exports.transition                = transition;
 exports.transitions               = transitions;
 exports.css                       = css;
-/* Js_dict Not a pure module */
+/* glamor Not a pure module */

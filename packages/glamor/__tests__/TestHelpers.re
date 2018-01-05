@@ -1,7 +1,7 @@
 open Jest;
 open Expect;
-open CssCore;
 open Glamor;
+open Core;
 
 let testDeclaration = (decl: declaration, expected) => {
   let name = Js.Json.stringify(decl |> Obj.magic);
