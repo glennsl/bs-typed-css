@@ -8,12 +8,20 @@ module Styles = {
     let element = "div";
 
     let css = () => [
-      border3(~width=thick, ~style=solid, ~color=green)
+      border3(~width=thick, ~style=solid, ~color=green),
     ];
   });
 
   module Stateless = (val StyleContainer.stateless([
-    border3(~width=thick, ~style=solid, ~color=blue)
+    border3(~width=thick, ~style=solid, ~color=blue),
+
+    select("& *", [
+      border3(~width=thin, ~style=dashed, ~color=green),
+
+      hover([
+        borderColor(red)
+      ])
+    ])
   ]));
 };
 

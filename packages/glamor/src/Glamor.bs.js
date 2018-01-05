@@ -647,6 +647,19 @@ function transitions(vs) {
   }
 }
 
+function select(selector, declarations) {
+  return /* tuple */[
+          selector,
+          Js_dict.fromList(List.map((function (prim) {
+                      return prim;
+                    }), declarations))
+        ];
+}
+
+function hover(declarations) {
+  return select(":hover", declarations);
+}
+
 function css(declarations) {
   return Glamor.css(Js_dict.fromList(List.map((function (prim) {
                         return prim;
@@ -1270,5 +1283,7 @@ exports.transitionDelay           = transitionDelay;
 exports.transitionDelays          = transitionDelays;
 exports.transition                = transition;
 exports.transitions               = transitions;
+exports.select                    = select;
+exports.hover                     = hover;
 exports.css                       = css;
 /* glamor Not a pure module */

@@ -25,7 +25,19 @@ var Root = StyleContainer$StyledReact.Make(/* module */[
 
 var Stateless = StyleContainer$StyledReact.stateless(/* None */0, /* :: */[
       Glamor.border3(Glamor.thick, Glamor.solid, Glamor.blue),
-      /* [] */0
+      /* :: */[
+        Glamor.select("& *", /* :: */[
+              Glamor.border3(Glamor.thin, Glamor.dashed, Glamor.green),
+              /* :: */[
+                Glamor.hover(/* :: */[
+                      Glamor.borderColor(Glamor.red),
+                      /* [] */0
+                    ]),
+                /* [] */0
+              ]
+            ]),
+        /* [] */0
+      ]
     ]);
 
 var Styles = /* module */[

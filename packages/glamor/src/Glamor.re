@@ -11,6 +11,11 @@ external getValue : value(_) => string = "%identity";
 type decl('a) = (string, value('a));
 external asDeclaration : decl(_) => declaration = "%identity";
 external getDeclaration : declaration => decl(_) = "%identity";
+let asDict : list(declaration) => Js.Dict.t(value(_)) = declarations =>
+  declarations |> List.map(getDeclaration)
+               |> Js.Dict.fromList;
+external selectorAsDeclaration : ((string, Js.Dict.t(value(_)))) => declaration = "%identity";
+
 
 let prop = name =>
   value => (name, value) |> asDeclaration;
@@ -504,10 +509,18 @@ let transitions =
 
 
 /*********
+ * Selectors
+ */
+let select = (selector, declarations) =>
+  (selector, declarations |> asDict) |> selectorAsDeclaration;
+
+let hover = declarations =>
+  select(":hover", declarations);
+
+
+/*********
  * Glamor
  */
 [@bs.module "glamor"] external css : Js.Dict.t(value(_)) => string = "";
 let css = declarations =>
-  declarations |> List.map(getDeclaration)
-               |> Js.Dict.fromList
-               |> css;
+  declarations |> asDict |> css;
