@@ -524,3 +524,6 @@ let hover = declarations =>
 [@bs.module "glamor"] external css : Js.Dict.t(value(_)) => string = "";
 let css = declarations =>
   declarations |> asDict |> css;
+
+let null =
+  Js.null |> Obj.magic;

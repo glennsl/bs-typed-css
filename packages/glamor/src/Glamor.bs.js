@@ -666,6 +666,8 @@ function css(declarations) {
                       }), declarations)));
 }
 
+var $$null = null;
+
 var Core = /* CssCore */[];
 
 var inherit_ = "inherit";
@@ -1286,4 +1288,5 @@ exports.transitions               = transitions;
 exports.select                    = select;
 exports.hover                     = hover;
 exports.css                       = css;
-/* glamor Not a pure module */
+exports.$$null                    = $$null;
+/* null Not a pure module */
