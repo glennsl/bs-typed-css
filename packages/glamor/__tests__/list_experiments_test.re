@@ -103,13 +103,15 @@ describe("many - conversion function", () => {
 */
 
 describe("cons - function", () => {
-  let empty: value(vlist(_)) =
-    "" |> Obj.magic;
-  let cons = (v: value([< propV]), vs: value(vlist(propV))): value(vlist(propV)) =>
-    switch (Obj.magic(vs)) {
-    | "" => v |> Obj.magic
-    | vs => {j|$v, $vs|j} |> Obj.magic
-    };
+  module TransitionProperty = {
+    let empty: value(vlist(_)) =
+      "" |> Obj.magic;
+    let cons = (v: value([< propV]), vs: value(vlist(propV))): value(vlist(propV)) =>
+      switch (Obj.magic(vs)) {
+      | "" => v |> Obj.magic
+      | vs => {j|$v, $vs|j} |> Obj.magic
+      };
+  };
   
   testDeclaration(
     transitionProperty(none),
@@ -121,11 +123,12 @@ describe("cons - function", () => {
     transitionProperty(ident("foo")),
     ("transitionProperty", "foo"));
   testDeclaration(
-    transitionProperty(
-      cons(all, cons(ident("bar"), empty))),
+    transitionProperty(TransitionProperty.(
+      cons(all, cons(ident("bar"), empty))
+    )),
     ("transitionProperty", "all, bar"));
   testDeclaration(
-    transitionProperty(empty), /* shouldn't be allowed? */
+    transitionProperty(TransitionProperty.empty), /* shouldn't be allowed? */
     ("transitionProperty", ""));
 
 
@@ -159,13 +162,15 @@ describe("cons - function", () => {
 describe("cons - infix operator", () => {
   /* 4.04 enables overloading the actual list syntax, which would be nice */
 
-  let empty: value([vlist(propV)]) =
-    "" |> Obj.magic;
-  let (**) = (v: value([< propV]), vs: value(vlist(propV))): value(vlist(propV)) =>
-    switch (Obj.magic(vs)) {
-    | "" => v |> Obj.magic
-    | vs => {j|$v, $vs|j} |> Obj.magic
-    };
+  module TransitionProperty = {
+    let empty: value([vlist(propV)]) =
+      "" |> Obj.magic;
+    let (**) = (v: value([< propV]), vs: value(vlist(propV))): value(vlist(propV)) =>
+      switch (Obj.magic(vs)) {
+      | "" => v |> Obj.magic
+      | vs => {j|$v, $vs|j} |> Obj.magic
+      };
+  };
   
   testDeclaration(
     transitionProperty(none),
@@ -177,11 +182,13 @@ describe("cons - infix operator", () => {
     transitionProperty(ident("foo")),
     ("transitionProperty", "foo"));
   testDeclaration(
-    transitionProperty(
-      all ** ident("bar") ** empty),
+    transitionProperty({
+      open! TransitionProperty;
+      all ** ident("bar") ** empty
+    }),
     ("transitionProperty", "all, bar"));
   testDeclaration(
-    transitionProperty(empty), /* shouldn't be allowed? */
+    transitionProperty(TransitionProperty.empty), /* shouldn't be allowed? */
     ("transitionProperty", ""));
 
 
@@ -204,11 +211,12 @@ describe("cons - infix operator", () => {
       transitionValue(all, s(1.), linear)),
     ("transition", "all 1s linear"));
   testDeclaration(
-    transition(Transition.(
+    transition({
+      open! Transition;
       transitionValue(all, s(1.), linear) **
       transitionValue(ident("foo"), ms(400), linear) **
       empty
-    )),
+    }),
     ("transition", "all 1s linear, foo 400ms linear"));
 });
 
