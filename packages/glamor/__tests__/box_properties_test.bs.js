@@ -99,6 +99,38 @@ describe("border", (function () {
               "border",
               "1px solid slategray"
             ]);
+        TestHelpers.testDeclaration(Glamor.borderTop(Glamor.none), /* tuple */[
+              "borderTop",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderTop3(Glamor.px(1), Glamor.solid, Glamor.slategray), /* tuple */[
+              "borderTop",
+              "1px solid slategray"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderRight(Glamor.none), /* tuple */[
+              "borderRight",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderRight3(Glamor.px(1), Glamor.solid, Glamor.slategray), /* tuple */[
+              "borderRight",
+              "1px solid slategray"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderBottom(Glamor.none), /* tuple */[
+              "borderBottom",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderBottom3(Glamor.px(1), Glamor.solid, Glamor.slategray), /* tuple */[
+              "borderBottom",
+              "1px solid slategray"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderLeft(Glamor.none), /* tuple */[
+              "borderLeft",
+              "none"
+            ]);
+        TestHelpers.testDeclaration(Glamor.borderLeft3(Glamor.px(1), Glamor.solid, Glamor.slategray), /* tuple */[
+              "borderLeft",
+              "1px solid slategray"
+            ]);
         TestHelpers.testDeclaration(Glamor.borderWidth(Glamor.px(2)), /* tuple */[
               "borderWidth",
               "2px"

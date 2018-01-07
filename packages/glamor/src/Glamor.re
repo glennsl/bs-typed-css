@@ -433,6 +433,22 @@ let border2 = (~width=?, ~color=?, style) => {
 };
 let border3 = (width, style, color) =>
   prop("border", {j|$width $style $color|j} |> Value.pack);
+let borderTop = value =>
+  prop("borderTop", value);
+let borderTop3 = (width, style, color) =>
+  prop("borderTop", {j|$width $style $color|j} |> Value.pack);
+let borderRight = value =>
+  prop("borderRight", value);
+let borderRight3 = (width, style, color) =>
+  prop("borderRight", {j|$width $style $color|j} |> Value.pack);
+let borderBottom = value =>
+  prop("borderBottom", value);
+let borderBottom3 = (width, style, color) =>
+  prop("borderBottom", {j|$width $style $color|j} |> Value.pack);
+let borderLeft = value =>
+  prop("borderLeft", value);
+let borderLeft3 = (width, style, color) =>
+  prop("borderLeft", {j|$width $style $color|j} |> Value.pack);
 let borderWidth = value =>
   prop("borderWidth", value);
 let borderTopWidth = value =>

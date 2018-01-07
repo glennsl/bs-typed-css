@@ -385,6 +385,62 @@ function border3(width, style, color) {
         ];
 }
 
+function borderTop(value) {
+  return /* tuple */[
+          "borderTop",
+          value
+        ];
+}
+
+function borderTop3(width, style, color) {
+  return /* tuple */[
+          "borderTop",
+          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
+        ];
+}
+
+function borderRight(value) {
+  return /* tuple */[
+          "borderRight",
+          value
+        ];
+}
+
+function borderRight3(width, style, color) {
+  return /* tuple */[
+          "borderRight",
+          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
+        ];
+}
+
+function borderBottom(value) {
+  return /* tuple */[
+          "borderBottom",
+          value
+        ];
+}
+
+function borderBottom3(width, style, color) {
+  return /* tuple */[
+          "borderBottom",
+          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
+        ];
+}
+
+function borderLeft(value) {
+  return /* tuple */[
+          "borderLeft",
+          value
+        ];
+}
+
+function borderLeft3(width, style, color) {
+  return /* tuple */[
+          "borderLeft",
+          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
+        ];
+}
+
 function borderWidth(value) {
   return /* tuple */[
           "borderWidth",
@@ -1328,6 +1384,14 @@ exports.paddingLeft               = paddingLeft;
 exports.border                    = border;
 exports.border2                   = border2;
 exports.border3                   = border3;
+exports.borderTop                 = borderTop;
+exports.borderTop3                = borderTop3;
+exports.borderRight               = borderRight;
+exports.borderRight3              = borderRight3;
+exports.borderBottom              = borderBottom;
+exports.borderBottom3             = borderBottom3;
+exports.borderLeft                = borderLeft;
+exports.borderLeft3               = borderLeft3;
 exports.borderWidth               = borderWidth;
 exports.borderTopWidth            = borderTopWidth;
 exports.borderRightWidth          = borderRightWidth;

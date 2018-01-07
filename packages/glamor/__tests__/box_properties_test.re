@@ -81,6 +81,31 @@ describe("border", () => {
     ("border", "1px solid slategray"));
 
   testDeclaration(
+    borderTop(none),
+    ("borderTop", "none"));
+  testDeclaration(
+    borderTop3(px(1), solid, slategray),
+    ("borderTop", "1px solid slategray"));
+  testDeclaration(
+    borderRight(none),
+    ("borderRight", "none"));
+  testDeclaration(
+    borderRight3(px(1), solid, slategray),
+    ("borderRight", "1px solid slategray"));
+  testDeclaration(
+    borderBottom(none),
+    ("borderBottom", "none"));
+  testDeclaration(
+    borderBottom3(px(1), solid, slategray),
+    ("borderBottom", "1px solid slategray"));
+  testDeclaration(
+    borderLeft(none),
+    ("borderLeft", "none"));
+  testDeclaration(
+    borderLeft3(px(1), solid, slategray),
+    ("borderLeft", "1px solid slategray"));
+
+  testDeclaration(
     borderWidth(px(2)),
     ("borderWidth", "2px"));
   testDeclaration(

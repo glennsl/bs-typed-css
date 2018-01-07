@@ -486,6 +486,22 @@ module type Properties = {
   let border3:            (value([< lineWidth]),
                            value([< lineStyle]),
                            value([< `color])) => declaration;
+  let borderTop:          value([< lineStyle | `universal]) => declaration;
+  let borderTop3:         (value([< lineWidth]),
+                           value([< lineStyle]),
+                           value([< `color])) => declaration;
+  let borderRight:         value([< lineStyle | `universal]) => declaration;
+  let borderRight3:       (value([< lineWidth]),
+                           value([< lineStyle]),
+                           value([< `color])) => declaration;
+  let borderBottom:        value([< lineStyle | `universal]) => declaration;
+  let borderBottom3:      (value([< lineWidth]),
+                           value([< lineStyle]),
+                           value([< `color])) => declaration;
+  let borderLeft:         value([< lineStyle | `universal]) => declaration;
+  let borderLeft3:        (value([< lineWidth]),
+                           value([< lineStyle]),
+                           value([< `color])) => declaration;
   let borderWidth:        value([< lineWidth | `universal]) => declaration;
   let borderTopWidth:     value([< lineWidth | `universal]) => declaration;
   let borderRightWidth:   value([< lineWidth | `universal]) => declaration;
