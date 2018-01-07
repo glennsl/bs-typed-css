@@ -98,7 +98,18 @@ describe("ad-hoc", (function () {
         TestHelpers.testValue(Glamor.inset, "inset");
         TestHelpers.testValue(Glamor.outset, "outset");
         TestHelpers.testValue(Glamor.start, "start");
-        return TestHelpers.testValue(Glamor.end_, "end");
+        TestHelpers.testValue(Glamor.end_, "end");
+        TestHelpers.testValue(Glamor.repeat, "repeat");
+        TestHelpers.testValue(Glamor.repeatX, "repeat-x");
+        TestHelpers.testValue(Glamor.repeatY, "repeat-y");
+        TestHelpers.testValue(Glamor.noRepeat, "no-repeat");
+        TestHelpers.testValue(Glamor.scroll, "scroll");
+        TestHelpers.testValue(Glamor.fixed, "fixed");
+        TestHelpers.testValue(Glamor.center, "center");
+        TestHelpers.testValue(Glamor.top, "top");
+        TestHelpers.testValue(Glamor.right, "right");
+        TestHelpers.testValue(Glamor.bottom, "bottom");
+        return TestHelpers.testValue(Glamor.left, "left");
       }));
 
 /*  Not a pure module */

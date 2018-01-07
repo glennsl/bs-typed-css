@@ -367,6 +367,19 @@ let outset = "outset" |> Value.pack;
 let start = "start" |> Value.pack;
 let end_ = "end" |> Value.pack;
 
+let repeat = "repeat" |> Value.pack;
+let repeatX = "repeat-x" |> Value.pack;
+let repeatY = "repeat-y" |> Value.pack;
+let noRepeat = "no-repeat" |> Value.pack;
+
+let scroll = "scroll" |> Value.pack;
+let fixed = "fixed" |> Value.pack;
+
+let center = "center" |> Value.pack;
+let top = "top" |> Value.pack;
+let right = "right" |> Value.pack;
+let bottom = "bottom" |> Value.pack;
+let left = "left" |> Value.pack;
 
 /*********
  * Properties
@@ -469,6 +482,23 @@ let borderBottomLeftRadius = value =>
   prop("borderBottomLeftRadius", value);
 let borderBottomLeftRadius2 = (~v, ~h) =>
   prop("borderBottomLeftRadius", {j|$v $h|j} |> Value.pack);
+
+let color = v =>
+  prop("color", v);
+let background = v =>
+  prop("background", v);
+let backgroundColor = v =>
+  prop("backgroundColor", v);
+let backgroundImage = v =>
+  prop("backgroundImage", v);
+let backgroundRepeat = v =>
+  prop("backgroundRepeat", v);
+let backgroundAttachment = v =>
+  prop("backgroundAttachment", v);
+let backgroundPosition = v =>
+  prop("backgroundPosition", v);
+let backgroundPosition2 = (~h, ~v) =>
+  prop("backgroundPosition", {j|$h $v|j} |> Value.pack);
 
 let transitionProperty = v =>
   prop("transitionProperty", v);

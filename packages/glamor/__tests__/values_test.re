@@ -103,4 +103,18 @@ describe("ad-hoc", () => {
 
   testValue( start, "start");
   testValue( end_,  "end");
+
+  testValue( repeat,    "repeat");
+  testValue( repeatX,   "repeat-x");
+  testValue( repeatY,   "repeat-y");
+  testValue( noRepeat,  "no-repeat");
+
+  testValue( scroll,  "scroll");
+  testValue( fixed,   "fixed");
+
+  testValue( center,  "center");
+  testValue( top,     "top");
+  testValue( right,   "right");
+  testValue( bottom,  "bottom");
+  testValue( left,    "left");
 });

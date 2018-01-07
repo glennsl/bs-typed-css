@@ -418,8 +418,22 @@ module type Values = {
   let start: value([`start]);
   let end_: value([`end_]);
 
+  /* backgroundRepeat */
+  let repeat:   value([`repeat]);
+  let repeatX:  value([`repeatX]);
+  let repeatY:  value([`repeatY]);
+  let noRepeat: value([`noRepeat]);
 
+  /* backgroundAttachment */
+  let scroll: value([`scroll]);
+  let fixed:  value([`fixed]);
 
+  /* backgroundPosition */
+  let center: value([`center]);
+  let top:    value([`top]);
+  let right:  value([`right]);
+  let bottom: value([`bottom]);
+  let left:   value([`left]);
 };
 
 
@@ -502,6 +516,20 @@ module type Properties = {
   let borderBottomLeftRadius:   value([< `length | `percentage | `universal]) => declaration;
   let borderBottomLeftRadius2:  (~v:value([< `length | `percentage | `universal]),
                                  ~h:value([< `length | `percentage | `universal])) => declaration;
+
+
+  /**
+   * Colors and Backgrounds
+   */
+  let color:                value([< `color | `universal]) => declaration;
+  let background:           value([< `color | `uri | `none | `universal]) => declaration;
+  let backgroundColor:      value([< `color | `universal]) => declaration;
+  let backgroundImage:      value([< `uri | `none | `universal]) => declaration;
+  let backgroundRepeat:     value([< `repeat | `repeatX | `repeatY | `noRepeat | `universal]) => declaration;
+  let backgroundAttachment: value([< `scroll | `fixed | `universal]) => declaration;
+  let backgroundPosition:   value([< `universal]) => declaration;
+  let backgroundPosition2:  (~h: value([< `percentage | `length | `left | `center | `right]),
+                             ~v: value([< `percentage | `length | `top | `center | `bottom])) => declaration;
 
 
   /**

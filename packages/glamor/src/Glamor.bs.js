@@ -553,6 +553,62 @@ function borderBottomLeftRadius2(v, h) {
         ];
 }
 
+function color(v) {
+  return /* tuple */[
+          "color",
+          v
+        ];
+}
+
+function background(v) {
+  return /* tuple */[
+          "background",
+          v
+        ];
+}
+
+function backgroundColor(v) {
+  return /* tuple */[
+          "backgroundColor",
+          v
+        ];
+}
+
+function backgroundImage(v) {
+  return /* tuple */[
+          "backgroundImage",
+          v
+        ];
+}
+
+function backgroundRepeat(v) {
+  return /* tuple */[
+          "backgroundRepeat",
+          v
+        ];
+}
+
+function backgroundAttachment(v) {
+  return /* tuple */[
+          "backgroundAttachment",
+          v
+        ];
+}
+
+function backgroundPosition(v) {
+  return /* tuple */[
+          "backgroundPosition",
+          v
+        ];
+}
+
+function backgroundPosition2(h, v) {
+  return /* tuple */[
+          "backgroundPosition",
+          "" + (String(h) + (" " + (String(v) + "")))
+        ];
+}
+
 function transitionProperty(v) {
   return /* tuple */[
           "transitionProperty",
@@ -1010,6 +1066,28 @@ var start = "start";
 
 var end_ = "end";
 
+var repeat = "repeat";
+
+var repeatX = "repeat-x";
+
+var repeatY = "repeat-y";
+
+var noRepeat = "no-repeat";
+
+var scroll = "scroll";
+
+var fixed = "fixed";
+
+var center = "center";
+
+var top = "top";
+
+var right = "right";
+
+var bottom = "bottom";
+
+var left = "left";
+
 exports.Core                      = Core;
 exports.inherit_                  = inherit_;
 exports.initial                   = initial;
@@ -1220,6 +1298,17 @@ exports.inset                     = inset;
 exports.outset                    = outset;
 exports.start                     = start;
 exports.end_                      = end_;
+exports.repeat                    = repeat;
+exports.repeatX                   = repeatX;
+exports.repeatY                   = repeatY;
+exports.noRepeat                  = noRepeat;
+exports.scroll                    = scroll;
+exports.fixed                     = fixed;
+exports.center                    = center;
+exports.top                       = top;
+exports.right                     = right;
+exports.bottom                    = bottom;
+exports.left                      = left;
 exports.margin                    = margin;
 exports.margin2                   = margin2;
 exports.margin3                   = margin3;
@@ -1263,6 +1352,14 @@ exports.borderBottomRightRadius   = borderBottomRightRadius;
 exports.borderBottomRightRadius2  = borderBottomRightRadius2;
 exports.borderBottomLeftRadius    = borderBottomLeftRadius;
 exports.borderBottomLeftRadius2   = borderBottomLeftRadius2;
+exports.color                     = color;
+exports.background                = background;
+exports.backgroundColor           = backgroundColor;
+exports.backgroundImage           = backgroundImage;
+exports.backgroundRepeat          = backgroundRepeat;
+exports.backgroundAttachment      = backgroundAttachment;
+exports.backgroundPosition        = backgroundPosition;
+exports.backgroundPosition2       = backgroundPosition2;
 exports.transitionProperty        = transitionProperty;
 exports.transitionProperties      = transitionProperties;
 exports.transitionDuration        = transitionDuration;
