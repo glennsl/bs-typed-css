@@ -3,28 +3,25 @@ open Expect;
 open Glamor;
 open Core;
 
-type decl('a) = (string, string);
-external getValue : value(_) => string = "%identity";
-external getDeclaration : declaration => decl(_) = "%identity";
-[@bs.val] external stringifyDeclaration : declaration => string = "JSON.stringify";
-external getSelector : declaration => (string, Js.Dict.t(string)) = "%identity";
-let asDict : list(declaration) => Js.Dict.t(string) = declarations =>
-  declarations |> List.map(getDeclaration)
-               |> Js.Dict.fromList;
+include Glamor__InternalHelpers;
 
-let testDeclaration = (decl, expected) =>
+[@bs.val] external stringifyDeclaration : declaration => string = "JSON.stringify";
+let asDeclaration : ((string, string)) => declaration = Obj.magic;
+
+let testDeclaration = (decl, expected) => {
   test(decl |> stringifyDeclaration, () =>
-    expect(Js.Dict.fromList([decl |> getDeclaration])) |> toEqual(Js.Dict.fromList([expected])));
+    expect(decl) |> toEqual(expected |> asDeclaration));
+};
 
 let testValue = (value, expected) => {
-  let stringValue: string = value |> getValue;
+  let stringValue: string = value |> Value.unpack;
   test(stringValue, () =>
     expect(stringValue) |> toEqual(expected))
 };
 
-let testSelector = (selector, expected) => {
-  let (k, decls) = selector |> getSelector;
-  let (k', decl') = expected;
+let testSelector = (selector, expected: (string, list((string, string)))) => {
+  let (k, decls) = selector |> Selector.unpack;
+  let (k', decls') = expected;
   test(k, () => 
-    expect((k, decls)) |> toEqual((k', decl' |> Js.Dict.fromList)));
+    expect((k, decls)) |> toEqual((k', decls' |> List.map(asDeclaration) |> Declarations.toDict)));
 };

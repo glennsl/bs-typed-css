@@ -1,6 +1,6 @@
 /*include (module type of CssCore.Types);*/
 module Core: {
-  include (module type of CssCore);
+  include (module type of Glamor__Core.Core);
 };
 open Core;
 include Values;

@@ -1,4 +1,3 @@
-open Jest;
 open TestHelpers;
 open Glamor;
 
