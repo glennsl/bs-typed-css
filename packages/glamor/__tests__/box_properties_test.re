@@ -77,7 +77,7 @@ describe("border", () => {
     border2(~width=px(1), double, ~color=aqua),
     ("border", "1px double aqua"));
   testDeclaration(
-    border3(~width=px(1), ~style=solid, ~color=slategray),
+    border3(px(1), solid, slategray),
     ("border", "1px solid slategray"));
 
   testDeclaration(

@@ -431,7 +431,7 @@ let border2 = (~width=?, ~color=?, style) => {
     };
   prop("border", value |> Value.pack)
 };
-let border3 = (~width, ~style, ~color) =>
+let border3 = (width, style, color) =>
   prop("border", {j|$width $style $color|j} |> Value.pack);
 let borderWidth = value =>
   prop("borderWidth", value);

@@ -483,9 +483,9 @@ module type Properties = {
   let border2:            (~width: value([< lineWidth])=?,
                            ~color: value([< `color])=?,
                            value([< lineStyle])) => declaration;
-  let border3:            (~width: value([< lineWidth]),
-                           ~style: value([< lineStyle]),
-                           ~color: value([< `color])) => declaration;
+  let border3:            (value([< lineWidth]),
+                           value([< lineStyle]),
+                           value([< `color])) => declaration;
   let borderWidth:        value([< lineWidth | `universal]) => declaration;
   let borderTopWidth:     value([< lineWidth | `universal]) => declaration;
   let borderRightWidth:   value([< lineWidth | `universal]) => declaration;
