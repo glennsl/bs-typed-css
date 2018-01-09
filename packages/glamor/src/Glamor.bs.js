@@ -900,6 +900,20 @@ function css(declarations) {
 
 var $$null = null;
 
+function unsafe(property, value) {
+  return /* tuple */[
+          property,
+          value
+        ];
+}
+
+function label(label$1) {
+  return /* tuple */[
+          "label",
+          label$1
+        ];
+}
+
 var Core = /* CssCore */[];
 
 var inherit_ = "inherit";
@@ -1615,4 +1629,6 @@ exports.target                    = target;
 exports.valid                     = valid;
 exports.css                       = css;
 exports.$$null                    = $$null;
+exports.unsafe                    = unsafe;
+exports.label                     = label;
 /* null Not a pure module */

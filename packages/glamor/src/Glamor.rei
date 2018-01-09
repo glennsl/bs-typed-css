@@ -54,3 +54,5 @@ let valid: list(declaration) => declaration;
 let css: list(declaration) => string;
 
 let null: value(_);
+let unsafe: (string, string) => declaration;
+let label: string => declaration;

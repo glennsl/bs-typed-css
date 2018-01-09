@@ -599,3 +599,9 @@ let css = declarations =>
 
 let null =
   Js.null |> Obj.magic;
+
+let unsafe = (property, value) =>
+  prop(property, value |> Value.pack);
+
+let label = label =>
+  prop("label", label |> Value.pack);
