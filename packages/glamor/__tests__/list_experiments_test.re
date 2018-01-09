@@ -104,7 +104,7 @@ describe("many - conversion function", () => {
 
 describe("cons - function", () => {
   module TransitionProperty = {
-    let empty: value(vlist(_)) =
+    let empty_: value(vlist(_)) =
       "" |> Obj.magic;
     let cons = (v: value([< propV]), vs: value(vlist(propV))): value(vlist(propV)) =>
       switch (Obj.magic(vs)) {
@@ -124,17 +124,17 @@ describe("cons - function", () => {
     ("transitionProperty", "foo"));
   testDeclaration(
     transitionProperty(TransitionProperty.(
-      cons(all, cons(ident("bar"), empty))
+      cons(all, cons(ident("bar"), empty_))
     )),
     ("transitionProperty", "all, bar"));
   testDeclaration(
-    transitionProperty(TransitionProperty.empty), /* shouldn't be allowed? */
+    transitionProperty(TransitionProperty.empty_), /* shouldn't be allowed? */
     ("transitionProperty", ""));
 
 
   /* Seems cons can't be generalized. That's unfortunate */
   module Transition = {
-    let empty: value(vlist(_)) =
+    let empty_: value(vlist(_)) =
       "" |> Obj.magic;
     let cons = (v: singleTransition, vs: value(vlist(singleTransition))): value(vlist(singleTransition)) =>
       switch (Obj.magic(vs)) {
@@ -154,7 +154,7 @@ describe("cons - function", () => {
     transition(Transition.(
       cons(transitionValue(all, s(1.), linear),
       cons(transitionValue(ident("foo"), ms(400), linear),
-      empty))
+      empty_))
     )),
     ("transition", "all 1s linear, foo 400ms linear"));
 });

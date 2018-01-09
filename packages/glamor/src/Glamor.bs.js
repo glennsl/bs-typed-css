@@ -751,6 +751,10 @@ function transitions(vs) {
   }
 }
 
+function anplusb(a, b) {
+  return "" + (String(a) + ("n+(" + (String(b) + ")")));
+}
+
 function select(selector, declarations) {
   return /* tuple */[
           selector,
@@ -758,8 +762,136 @@ function select(selector, declarations) {
         ];
 }
 
+function active(declarations) {
+  return select(":active", declarations);
+}
+
+function checked(declarations) {
+  return select(":checked", declarations);
+}
+
+function dir(dir$1, declarations) {
+  return select(":lang(" + (String(dir$1) + ")"), declarations);
+}
+
+function disabled(declarations) {
+  return select(":disabled", declarations);
+}
+
+function empty(declarations) {
+  return select(":empty", declarations);
+}
+
+function enabled(declarations) {
+  return select(":enabled", declarations);
+}
+
+function first(declarations) {
+  return select(":first", declarations);
+}
+
+function firstChild(declarations) {
+  return select(":first-child", declarations);
+}
+
+function firstOfType(declarations) {
+  return select(":first-of-type", declarations);
+}
+
+function fullscreen(declarations) {
+  return select(":fullscreen", declarations);
+}
+
+function focus(declarations) {
+  return select(":focus", declarations);
+}
+
 function hover(declarations) {
   return select(":hover", declarations);
+}
+
+function visited(declarations) {
+  return select(":visited", declarations);
+}
+
+function indeterminate(declarations) {
+  return select(":indeterminate", declarations);
+}
+
+function invalid(declarations) {
+  return select(":invalid", declarations);
+}
+
+function lang(lang$1, declarations) {
+  return select(":any(" + (String(lang$1) + ")"), declarations);
+}
+
+function lastChild(declarations) {
+  return select(":last-child", declarations);
+}
+
+function lastOfType(declarations) {
+  return select(":last-of-type", declarations);
+}
+
+function link(declarations) {
+  return select(":link", declarations);
+}
+
+function nthChild(pattern, declarations) {
+  return select(":nth-child(" + (String(pattern) + ")"), declarations);
+}
+
+function nthLastChild(pattern, declarations) {
+  return select(":nth-last-child(" + (String(pattern) + ")"), declarations);
+}
+
+function nthLastOfType(pattern, declarations) {
+  return select(":nth-last-of-type(" + (String(pattern) + ")"), declarations);
+}
+
+function nthOfType(pattern, declarations) {
+  return select(":nth-of-type(" + (String(pattern) + ")"), declarations);
+}
+
+function onlyChild(declarations) {
+  return select(":only-child", declarations);
+}
+
+function onlyOfType(declarations) {
+  return select(":only-of-type", declarations);
+}
+
+function optional(declarations) {
+  return select(":optional", declarations);
+}
+
+function outOfRange(declarations) {
+  return select(":out-of-range", declarations);
+}
+
+function readWrite(declarations) {
+  return select(":read-write", declarations);
+}
+
+function required(declarations) {
+  return select(":required", declarations);
+}
+
+function root(declarations) {
+  return select(":root", declarations);
+}
+
+function scope(declarations) {
+  return select(":scope", declarations);
+}
+
+function target(declarations) {
+  return select(":target", declarations);
+}
+
+function valid(declarations) {
+  return select(":valid", declarations);
 }
 
 function css(declarations) {
@@ -1144,6 +1276,14 @@ var bottom = "bottom";
 
 var left = "left";
 
+var ltr = "ltr";
+
+var rtl = "rtl";
+
+var odd = "odd";
+
+var even = "even";
+
 exports.Core                      = Core;
 exports.inherit_                  = inherit_;
 exports.initial                   = initial;
@@ -1434,8 +1574,45 @@ exports.transitionDelay           = transitionDelay;
 exports.transitionDelays          = transitionDelays;
 exports.transition                = transition;
 exports.transitions               = transitions;
+exports.ltr                       = ltr;
+exports.rtl                       = rtl;
+exports.odd                       = odd;
+exports.even                      = even;
+exports.anplusb                   = anplusb;
 exports.select                    = select;
+exports.active                    = active;
+exports.checked                   = checked;
+exports.dir                       = dir;
+exports.disabled                  = disabled;
+exports.empty                     = empty;
+exports.enabled                   = enabled;
+exports.first                     = first;
+exports.firstChild                = firstChild;
+exports.firstOfType               = firstOfType;
+exports.fullscreen                = fullscreen;
+exports.focus                     = focus;
 exports.hover                     = hover;
+exports.visited                   = visited;
+exports.indeterminate             = indeterminate;
+exports.invalid                   = invalid;
+exports.lang                      = lang;
+exports.lastChild                 = lastChild;
+exports.lastOfType                = lastOfType;
+exports.link                      = link;
+exports.nthChild                  = nthChild;
+exports.nthLastChild              = nthLastChild;
+exports.nthLastOfType             = nthLastOfType;
+exports.nthOfType                 = nthOfType;
+exports.onlyChild                 = onlyChild;
+exports.onlyOfType                = onlyOfType;
+exports.optional                  = optional;
+exports.outOfRange                = outOfRange;
+exports.readWrite                 = readWrite;
+exports.required                  = required;
+exports.root                      = root;
+exports.scope                     = scope;
+exports.target                    = target;
+exports.valid                     = valid;
 exports.css                       = css;
 exports.$$null                    = $$null;
 /* null Not a pure module */

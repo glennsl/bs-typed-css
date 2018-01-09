@@ -33,7 +33,7 @@ function transition(v) {
 }
 
 describe("cons - function", (function () {
-        var empty = "";
+        var empty_ = "";
         var cons = function (v, vs) {
           if (vs === "") {
             return v;
@@ -64,14 +64,14 @@ describe("cons - function", (function () {
             ]);
         TestHelpers.testDeclaration(/* tuple */[
               "transitionProperty",
-              cons(all, cons("bar", empty))
+              cons(all, cons("bar", empty_))
             ], /* tuple */[
               "transitionProperty",
               "all, bar"
             ]);
         TestHelpers.testDeclaration(/* tuple */[
               "transitionProperty",
-              empty
+              empty_
             ], /* tuple */[
               "transitionProperty",
               ""

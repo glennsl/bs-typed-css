@@ -543,12 +543,52 @@ let transitions =
 /*********
  * Selectors
  */
+type nth = [`anplusb | `even | `odd];
+
+let ltr = "ltr" |> Value.pack;
+let rtl = "rtl" |> Value.pack;
+
+let odd     = "odd" |> Value.pack;
+let even    = "even" |> Value.pack;
+let anplusb = (a, b) => {j|$(a)n+($b)|j} |> Value.pack;
+
 let select = (selector, declarations) =>
   (selector, declarations |> Declarations.toDict) |> Selector.pack;
 
-let hover = declarations =>
-  select(":hover", declarations);
-
+let active          = declarations => select(":active", declarations);
+/*let any             = ;*/
+let checked         = declarations => select(":checked", declarations);
+let dir             = (dir, declarations) => select({j|:lang($dir)|j}, declarations);
+let disabled        = declarations => select(":disabled", declarations);
+let empty           = declarations => select(":empty", declarations);
+let enabled         = declarations => select(":enabled", declarations);
+let first           = declarations => select(":first", declarations);
+let firstChild      = declarations => select(":first-child", declarations);
+let firstOfType     = declarations => select(":first-of-type", declarations);
+let fullscreen      = declarations => select(":fullscreen", declarations);
+let focus           = declarations => select(":focus", declarations);
+let hover           = declarations => select(":hover", declarations);
+let visited         = declarations => select(":visited", declarations);
+let indeterminate   = declarations => select(":indeterminate", declarations);
+let invalid         = declarations => select(":invalid", declarations);
+let lang            = (lang, declarations) => select({j|:any($lang)|j}, declarations);
+let lastChild       = declarations => select(":last-child", declarations);
+let lastOfType      = declarations => select(":last-of-type", declarations);
+let link            = declarations => select(":link", declarations);
+let nthChild        = (pattern, declarations) => select({j|:nth-child($pattern)|j}, declarations);
+let nthLastChild    = (pattern, declarations) => select({j|:nth-last-child($pattern)|j}, declarations);
+let nthLastOfType   = (pattern, declarations) => select({j|:nth-last-of-type($pattern)|j}, declarations);
+let nthOfType       = (pattern, declarations) => select({j|:nth-of-type($pattern)|j}, declarations);
+let onlyChild       = declarations => select(":only-child", declarations);
+let onlyOfType      = declarations => select(":only-of-type", declarations);
+let optional        = declarations => select(":optional", declarations);
+let outOfRange      = declarations => select(":out-of-range", declarations);
+let readWrite       = declarations => select(":read-write", declarations);
+let required        = declarations => select(":required", declarations);
+let root            = declarations => select(":root", declarations);
+let scope           = declarations => select(":scope", declarations);
+let target          = declarations => select(":target", declarations);
+let valid           = declarations => select(":valid", declarations);
 
 /*********
  * Glamor
