@@ -6,9 +6,6 @@ open Core;
 include Values;
 include Properties;
 
-let ltr: value([`ltr]);
-let rtl: value([`rtl]);
-
 let odd: value([`odd]);
 let even: value([`even]);
 let anplusb: (int, int) => value([`anplusb]);

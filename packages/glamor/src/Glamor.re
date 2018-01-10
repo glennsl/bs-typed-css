@@ -362,6 +362,48 @@ let ridge = "ridge" |> Value.pack;
 let inset = "inset" |> Value.pack;
 let outset = "outset" |> Value.pack;
 
+let inline = "inline" |> Value.pack;
+let block = "block" |> Value.pack;
+let listItem = "list-item" |> Value.pack;
+let inlineBlock = "inline-block" |> Value.pack;
+let table = "table" |> Value.pack;
+let inlineTable = "inline-table" |> Value.pack;
+let tableRowGroup = "table-row-group" |> Value.pack;
+let tableHeaderGroup = "table-header-group" |> Value.pack;
+let tableFooterGroup = "table-footer-group" |> Value.pack;
+let tableRow = "table-row" |> Value.pack;
+let tableColumnGroup = "table-column-group" |> Value.pack;
+let tableColumn = "table-column" |> Value.pack;
+let tableCell = "table-cell" |> Value.pack;
+let tableCaption = "table-caption" |> Value.pack;
+
+let static = "static" |> Value.pack;
+let relative = "relative" |> Value.pack;
+let absolute = "absolute" |> Value.pack;
+let fixed = "fixed" |> Value.pack;
+
+let left = "left" |> Value.pack;
+let right = "right" |> Value.pack;
+
+let both = "both" |> Value.pack;
+
+let ltr = "ltr" |> Value.pack;
+let rtl = "rtl" |> Value.pack;
+
+let normal = "normal" |> Value.pack;
+let embed = "embed" |> Value.pack;
+let bidiOverride = "bidi-override" |> Value.pack;
+
+let baseline = "baseline" |> Value.pack;
+let sub = "sub" |> Value.pack;
+let super = "super" |> Value.pack;
+let top = "top" |> Value.pack;
+let textTop = "text-top" |> Value.pack;
+let middle = "middle" |> Value.pack;
+let bottom = "bottom" |> Value.pack;
+let textBottom = "text-bottom" |> Value.pack;
+
+
 /*let all = "all" |> Value.pack;*/
 
 let start = "start" |> Value.pack;
@@ -373,13 +415,11 @@ let repeatY = "repeat-y" |> Value.pack;
 let noRepeat = "no-repeat" |> Value.pack;
 
 let scroll = "scroll" |> Value.pack;
-let fixed = "fixed" |> Value.pack;
 
 let center = "center" |> Value.pack;
-let top = "top" |> Value.pack;
-let right = "right" |> Value.pack;
-let bottom = "bottom" |> Value.pack;
-let left = "left" |> Value.pack;
+
+let int = n => string_of_int(n) |> Value.pack;
+let num = f => Js.String.make(f) |> Value.pack;
 
 /*********
  * Properties
@@ -499,6 +539,45 @@ let borderBottomLeftRadius = value =>
 let borderBottomLeftRadius2 = (~v, ~h) =>
   prop("borderBottomLeftRadius", {j|$v $h|j} |> Value.pack);
 
+let display = v =>
+  prop("display", v);
+let position = v =>
+  prop("position", v);
+let offsetTop = v =>
+  prop("top", v);
+let offsetRight = v =>
+  prop("right", v);
+let offsetBottom = v =>
+  prop("bottom", v);
+let offsetLeft = v =>
+  prop("left", v);
+let float = v =>
+  prop("float", v);
+let clear = v =>
+  prop("clear", v);
+let zIndex = v =>
+  prop("zIndex", v);
+let direction = v =>
+  prop("direction", v);
+let unicodeBidi = v =>
+  prop("unicodeBidi", v);
+let width = v =>
+  prop("width", v);
+let minWidth = v =>
+  prop("minWidth", v);
+let maxWidth = v =>
+  prop("maxWidth", v);
+let height = v =>
+  prop("height", v);
+let minHeight = v =>
+  prop("minHeight", v);
+let maxHeight = v =>
+  prop("maxHeight", v);
+let lineHeight = v =>
+  prop("lineHeight", v);
+let verticalAlign = v =>
+  prop("verticalAlign", v);
+
 let color = v =>
   prop("color", v);
 let background = v =>
@@ -544,9 +623,6 @@ let transitions =
  * Selectors
  */
 type nth = [`anplusb | `even | `odd];
-
-let ltr = "ltr" |> Value.pack;
-let rtl = "rtl" |> Value.pack;
 
 let odd     = "odd" |> Value.pack;
 let even    = "even" |> Value.pack;

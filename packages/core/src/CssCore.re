@@ -411,6 +411,56 @@ module type Values = {
   let inset:  value([`inset]);
   let outset: value([`outset]);
 
+  /* display */
+  let inline            : value([`inline]);
+  let block             : value([`block]);
+  let listItem          : value([`listItem]);
+  let inlineBlock       : value([`inlineBlock]);
+  let table             : value([`table]);
+  let inlineTable       : value([`inlineTable]);
+  let tableRowGroup     : value([`tableRowGroup]);
+  let tableHeaderGroup  : value([`tableHeaderGroup]);
+  let tableFooterGroup  : value([`tableFooterGroup]);
+  let tableRow          : value([`tableRow]);
+  let tableColumnGroup  : value([`tableColumnGroup]);
+  let tableColumn       : value([`tableColumn]);
+  let tableCell         : value([`tableCell]);
+  let tableCaption      : value([`tableCaption]);
+
+  /* position */
+  let static:   value([`static]);
+  let relative: value([`relative]);
+  let absolute: value([`absolute]);
+  let fixed:    value([`fixed]);
+
+  /* float */
+  let left:   value([`left]);
+  let right:  value([`right]);
+
+  /* clear */
+  /*let left:   value([`left]); -- already defined */
+  /*let right:  value([`right]); -- already defined */
+  let both:   value([`both]);
+
+  /* direction */
+  let ltr: value([`ltr]);
+  let rtl: value([`rtl]);
+
+  /* unicodeBidi */
+  let normal:       value([`normal]);
+  let embed:        value([`embed]);
+  let bidiOverride: value([`bidiOverride]);
+
+  /* verticalAlign */
+  let baseline:   value([`baseline]);
+  let sub:        value([`sub]);
+  let super:      value([`super]);
+  let top:        value([`top]);
+  let textTop:    value([`textTop]);
+  let middle:     value([`middle]);
+  let bottom:     value([`bottom]);
+  let textBottom: value([`textBottom]);
+
   /* transition */
   /*let all: value([`all]);*/
 
@@ -426,14 +476,21 @@ module type Values = {
 
   /* backgroundAttachment */
   let scroll: value([`scroll]);
-  let fixed:  value([`fixed]);
+  /*let fixed:  value([`fixed]); -- already defined */
 
   /* backgroundPosition */
   let center: value([`center]);
-  let top:    value([`top]);
-  let right:  value([`right]);
-  let bottom: value([`bottom]);
-  let left:   value([`left]);
+  /*let top:    value([`top]); -- already defined */
+  /*let right:  value([`right]); -- already defined */
+  /*let bottom: value([`bottom]); -- already defined */
+  /* let left:   value([`left]); -- already defined */
+
+
+  /**
+   * Primitives
+   */
+  let int:    int => value([`integer]);
+  let num:    float => value([`number]);
 };
 
 
@@ -532,6 +589,34 @@ module type Properties = {
   let borderBottomLeftRadius:   value([< `length | `percentage | `universal]) => declaration;
   let borderBottomLeftRadius2:  (~v:value([< `length | `percentage | `universal]),
                                  ~h:value([< `length | `percentage | `universal])) => declaration;
+
+
+  /**
+   * Visual formatting model
+   */
+  let display:        value([< `inline | `block | `listItem | `inlineBlock | `table
+                             | `inlineTable | `tableRowGroup | `tableHeaderGroup
+                             | `tableFooterGroup | `tableRow | `tableColumnGroup
+                             | `tableColumn | `tableCell | `tableCaption | `none | `universal]) => declaration;
+  let position:       value([< `static | `relative | `absolute | `fixed | `universal]) => declaration;
+  let offsetTop:      value([< `length | `percentage | `auto | `universal]) => declaration;
+  let offsetRight:    value([< `length | `percentage | `auto | `universal]) => declaration;
+  let offsetBottom:   value([< `length | `percentage | `auto | `universal]) => declaration;
+  let offsetLeft:     value([< `length | `percentage | `auto | `universal]) => declaration;
+  let float:          value([< `left | `right | `none | `universal]) => declaration;
+  let clear:          value([< `none | `left | `right | `both | `universal]) => declaration;
+  let zIndex:         value([< `auto | `integer | `universal]) => declaration;
+  let direction:      value([< `ltr | `rtl | `universal]) => declaration;
+  let unicodeBidi:    value([< `normal | `embed | `bidiOverride | `universal]) => declaration;
+  let width:          value([< `length | `percentage | `auto | `universal]) => declaration;
+  let minWidth:       value([< `length | `percentage | `universal]) => declaration;
+  let maxWidth:       value([< `length | `percentage | `none | `universal]) => declaration;
+  let height:         value([< `length | `percentage | `auto | `universal]) => declaration;
+  let minHeight:      value([< `length | `percentage | `universal]) => declaration;
+  let maxHeight:      value([< `length | `percentage | `none | `universal]) => declaration;
+  let lineHeight:     value([< `normal | `number | `length | `percentage | `universal]) => declaration;
+  let verticalAlign:  value([< `baseline | `sub | `super | `top | `textTop | `middle
+                             | `bottom | `textBottom | `percentage | `length | `universal]) => declaration;
 
 
   /**

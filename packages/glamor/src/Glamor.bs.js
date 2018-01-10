@@ -4,6 +4,7 @@
 var List                    = require("bs-platform/lib/js/list.js");
 var $$String                = require("bs-platform/lib/js/string.js");
 var Glamor                  = require("glamor");
+var Pervasives              = require("bs-platform/lib/js/pervasives.js");
 var Glamor__InternalHelpers = require("./Glamor__InternalHelpers.bs.js");
 
 function em(n) {
@@ -243,6 +244,12 @@ function steps(n, pos) {
 
 function frames(n) {
   return "frames(" + (String(n) + ")");
+}
+
+var $$int = Pervasives.string_of_int;
+
+function num(f) {
+  return String(f);
 }
 
 function margin(value) {
@@ -606,6 +613,139 @@ function borderBottomLeftRadius2(v, h) {
   return /* tuple */[
           "borderBottomLeftRadius",
           "" + (String(v) + (" " + (String(h) + "")))
+        ];
+}
+
+function display(v) {
+  return /* tuple */[
+          "display",
+          v
+        ];
+}
+
+function position(v) {
+  return /* tuple */[
+          "position",
+          v
+        ];
+}
+
+function offsetTop(v) {
+  return /* tuple */[
+          "top",
+          v
+        ];
+}
+
+function offsetRight(v) {
+  return /* tuple */[
+          "right",
+          v
+        ];
+}
+
+function offsetBottom(v) {
+  return /* tuple */[
+          "bottom",
+          v
+        ];
+}
+
+function offsetLeft(v) {
+  return /* tuple */[
+          "left",
+          v
+        ];
+}
+
+function $$float(v) {
+  return /* tuple */[
+          "float",
+          v
+        ];
+}
+
+function clear(v) {
+  return /* tuple */[
+          "clear",
+          v
+        ];
+}
+
+function zIndex(v) {
+  return /* tuple */[
+          "zIndex",
+          v
+        ];
+}
+
+function direction(v) {
+  return /* tuple */[
+          "direction",
+          v
+        ];
+}
+
+function unicodeBidi(v) {
+  return /* tuple */[
+          "unicodeBidi",
+          v
+        ];
+}
+
+function width(v) {
+  return /* tuple */[
+          "width",
+          v
+        ];
+}
+
+function minWidth(v) {
+  return /* tuple */[
+          "minWidth",
+          v
+        ];
+}
+
+function maxWidth(v) {
+  return /* tuple */[
+          "maxWidth",
+          v
+        ];
+}
+
+function height(v) {
+  return /* tuple */[
+          "height",
+          v
+        ];
+}
+
+function minHeight(v) {
+  return /* tuple */[
+          "minHeight",
+          v
+        ];
+}
+
+function maxHeight(v) {
+  return /* tuple */[
+          "maxHeight",
+          v
+        ];
+}
+
+function lineHeight(v) {
+  return /* tuple */[
+          "lineHeight",
+          v
+        ];
+}
+
+function verticalAlign(v) {
+  return /* tuple */[
+          "verticalAlign",
+          v
         ];
 }
 
@@ -1264,6 +1404,74 @@ var inset = "inset";
 
 var outset = "outset";
 
+var inline = "inline";
+
+var block = "block";
+
+var listItem = "list-item";
+
+var inlineBlock = "inline-block";
+
+var table = "table";
+
+var inlineTable = "inline-table";
+
+var tableRowGroup = "table-row-group";
+
+var tableHeaderGroup = "table-header-group";
+
+var tableFooterGroup = "table-footer-group";
+
+var tableRow = "table-row";
+
+var tableColumnGroup = "table-column-group";
+
+var tableColumn = "table-column";
+
+var tableCell = "table-cell";
+
+var tableCaption = "table-caption";
+
+var $$static = "static";
+
+var relative = "relative";
+
+var absolute = "absolute";
+
+var fixed = "fixed";
+
+var left = "left";
+
+var right = "right";
+
+var both = "both";
+
+var ltr = "ltr";
+
+var rtl = "rtl";
+
+var normal = "normal";
+
+var embed = "embed";
+
+var bidiOverride = "bidi-override";
+
+var baseline = "baseline";
+
+var sub = "sub";
+
+var $$super = "super";
+
+var top = "top";
+
+var textTop = "text-top";
+
+var middle = "middle";
+
+var bottom = "bottom";
+
+var textBottom = "text-bottom";
+
 var start = "start";
 
 var end_ = "end";
@@ -1278,21 +1486,7 @@ var noRepeat = "no-repeat";
 
 var scroll = "scroll";
 
-var fixed = "fixed";
-
 var center = "center";
-
-var top = "top";
-
-var right = "right";
-
-var bottom = "bottom";
-
-var left = "left";
-
-var ltr = "ltr";
-
-var rtl = "rtl";
 
 var odd = "odd";
 
@@ -1506,6 +1700,40 @@ exports.groove                    = groove;
 exports.ridge                     = ridge;
 exports.inset                     = inset;
 exports.outset                    = outset;
+exports.inline                    = inline;
+exports.block                     = block;
+exports.listItem                  = listItem;
+exports.inlineBlock               = inlineBlock;
+exports.table                     = table;
+exports.inlineTable               = inlineTable;
+exports.tableRowGroup             = tableRowGroup;
+exports.tableHeaderGroup          = tableHeaderGroup;
+exports.tableFooterGroup          = tableFooterGroup;
+exports.tableRow                  = tableRow;
+exports.tableColumnGroup          = tableColumnGroup;
+exports.tableColumn               = tableColumn;
+exports.tableCell                 = tableCell;
+exports.tableCaption              = tableCaption;
+exports.$$static                  = $$static;
+exports.relative                  = relative;
+exports.absolute                  = absolute;
+exports.fixed                     = fixed;
+exports.left                      = left;
+exports.right                     = right;
+exports.both                      = both;
+exports.ltr                       = ltr;
+exports.rtl                       = rtl;
+exports.normal                    = normal;
+exports.embed                     = embed;
+exports.bidiOverride              = bidiOverride;
+exports.baseline                  = baseline;
+exports.sub                       = sub;
+exports.$$super                   = $$super;
+exports.top                       = top;
+exports.textTop                   = textTop;
+exports.middle                    = middle;
+exports.bottom                    = bottom;
+exports.textBottom                = textBottom;
 exports.start                     = start;
 exports.end_                      = end_;
 exports.repeat                    = repeat;
@@ -1513,12 +1741,9 @@ exports.repeatX                   = repeatX;
 exports.repeatY                   = repeatY;
 exports.noRepeat                  = noRepeat;
 exports.scroll                    = scroll;
-exports.fixed                     = fixed;
 exports.center                    = center;
-exports.top                       = top;
-exports.right                     = right;
-exports.bottom                    = bottom;
-exports.left                      = left;
+exports.$$int                     = $$int;
+exports.num                       = num;
 exports.margin                    = margin;
 exports.margin2                   = margin2;
 exports.margin3                   = margin3;
@@ -1570,6 +1795,25 @@ exports.borderBottomRightRadius   = borderBottomRightRadius;
 exports.borderBottomRightRadius2  = borderBottomRightRadius2;
 exports.borderBottomLeftRadius    = borderBottomLeftRadius;
 exports.borderBottomLeftRadius2   = borderBottomLeftRadius2;
+exports.display                   = display;
+exports.position                  = position;
+exports.offsetTop                 = offsetTop;
+exports.offsetRight               = offsetRight;
+exports.offsetBottom              = offsetBottom;
+exports.offsetLeft                = offsetLeft;
+exports.$$float                   = $$float;
+exports.clear                     = clear;
+exports.zIndex                    = zIndex;
+exports.direction                 = direction;
+exports.unicodeBidi               = unicodeBidi;
+exports.width                     = width;
+exports.minWidth                  = minWidth;
+exports.maxWidth                  = maxWidth;
+exports.height                    = height;
+exports.minHeight                 = minHeight;
+exports.maxHeight                 = maxHeight;
+exports.lineHeight                = lineHeight;
+exports.verticalAlign             = verticalAlign;
 exports.color                     = color;
 exports.background                = background;
 exports.backgroundColor           = backgroundColor;
@@ -1588,8 +1832,6 @@ exports.transitionDelay           = transitionDelay;
 exports.transitionDelays          = transitionDelays;
 exports.transition                = transition;
 exports.transitions               = transitions;
-exports.ltr                       = ltr;
-exports.rtl                       = rtl;
 exports.odd                       = odd;
 exports.even                      = even;
 exports.anplusb                   = anplusb;
