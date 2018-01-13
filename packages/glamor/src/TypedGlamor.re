@@ -4,7 +4,7 @@ open Core;
 include TypedGlamor__InternalHelpers;
 
 let prop = name =>
-  value => (name, value) |> Declaration.pack;
+  value => [(name, value)] |> Declaration.pack;
 
 
 /*********
@@ -825,3 +825,12 @@ let unsafe = (property, value) =>
 
 let label = label =>
   prop("label", label |> Value.pack);
+
+let nothing =
+  unsafe("nothing", null);
+
+let add = decls =>
+  decls |> List.map(Declaration.unpack)
+        |> List.flatten
+        |> Declaration.pack;
+

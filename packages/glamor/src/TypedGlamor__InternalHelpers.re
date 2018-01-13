@@ -13,7 +13,7 @@ module Values = {
 };
 
 module Declaration = {
-  type t('a) = (string, value('a));
+  type t('a) = list((string, value('a)));
 
   external pack : t(_) => declaration = "%identity";
   external unpack : declaration => t(_) = "%identity";
@@ -24,6 +24,7 @@ module Declarations = {
   external unpack : list(declaration) => list(Declaration.t(_)) = "%identity";
   let toDict : list(declaration) => Js.Dict.t(value(_)) = declarations =>
     declarations |> unpack
+                 |> List.flatten
                  |> Js.Dict.fromList;
 };
 

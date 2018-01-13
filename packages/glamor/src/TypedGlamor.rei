@@ -6,6 +6,8 @@ open Core;
 include Values;
 include Properties;
 
+let null: value(_);
+
 let odd: value([`odd]);
 let even: value([`even]);
 let anplusb: (int, int) => value([`anplusb]);
@@ -50,6 +52,8 @@ let valid: list(declaration) => declaration;
 
 let css: list(declaration) => string;
 
-let null: value(_);
 let unsafe: (string, string) => declaration;
 let label: string => declaration;
+let nothing: declaration;
+let add: list(declaration) => declaration;
+
