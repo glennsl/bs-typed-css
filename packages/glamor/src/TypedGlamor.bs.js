@@ -553,6 +553,10 @@ function color(v) {
   return prop("color", v);
 }
 
+function opacity(v) {
+  return prop("opacity", String(v));
+}
+
 function background(v) {
   return prop("background", v);
 }
@@ -1861,6 +1865,7 @@ exports.maxHeight                 = maxHeight;
 exports.lineHeight                = lineHeight;
 exports.verticalAlign             = verticalAlign;
 exports.color                     = color;
+exports.opacity                   = opacity;
 exports.background                = background;
 exports.backgroundColor           = backgroundColor;
 exports.backgroundImage           = backgroundImage;

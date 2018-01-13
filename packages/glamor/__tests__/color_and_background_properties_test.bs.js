@@ -9,6 +9,11 @@ TestHelpers.testDeclaration(TypedGlamor.color(TypedGlamor.lemonchiffon), /* tupl
       "lemonchiffon"
     ]);
 
+TestHelpers.testDeclaration(TypedGlamor.opacity(0.325), /* tuple */[
+      "opacity",
+      "0.325"
+    ]);
+
 TestHelpers.testDeclaration(TypedGlamor.background(TypedGlamor.none), /* tuple */[
       "background",
       "none"

@@ -719,6 +719,7 @@ module type Properties = {
    * Colors and Backgrounds
    */
   let color:                value([< `color | `universal]) => declaration;
+  let opacity:              float => declaration;
   let background:           value([< `color | `uri | `none | `universal]) => declaration;
   let backgroundColor:      value([< `color | `universal]) => declaration;
   let backgroundImage:      value([< `uri | `none | `universal]) => declaration;

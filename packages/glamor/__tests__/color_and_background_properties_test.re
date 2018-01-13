@@ -8,6 +8,10 @@ testDeclaration(
   ("color", "lemonchiffon"));
 
 testDeclaration(
+  opacity(0.325),
+  ("opacity", "0.325"));
+
+testDeclaration(
   background(none),
   ("background", "none"));
 testDeclaration(

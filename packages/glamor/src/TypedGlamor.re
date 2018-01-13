@@ -671,6 +671,8 @@ let verticalAlign = v =>
 
 let color = v =>
   prop("color", v);
+let opacity = v =>
+  prop("opacity", num(v));
 let background = v =>
   prop("background", v);
 let backgroundColor = v =>
