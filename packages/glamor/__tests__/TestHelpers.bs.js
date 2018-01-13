@@ -6,13 +6,19 @@ var List                         = require("bs-platform/lib/js/list.js");
 var Pervasives                   = require("bs-platform/lib/js/pervasives.js");
 var TypedGlamor__InternalHelpers = require("../src/TypedGlamor__InternalHelpers.bs.js");
 
-function asDeclaration(prim) {
-  return prim;
+function asDeclaration(pair) {
+  return /* :: */[
+          pair,
+          /* [] */0
+        ];
 }
 
 function testDeclaration(decl, expected) {
   return Jest.test(JSON.stringify(decl), (function () {
-                return Jest.Expect[/* toEqual */12](expected, Jest.Expect[/* expect */0](decl));
+                return Jest.Expect[/* toEqual */12](/* :: */[
+                            expected,
+                            /* [] */0
+                          ], Jest.Expect[/* expect */0](decl));
               }));
 }
 

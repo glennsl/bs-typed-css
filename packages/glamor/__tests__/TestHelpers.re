@@ -6,7 +6,7 @@ open Core;
 include TypedGlamor__InternalHelpers;
 
 [@bs.val] external stringifyDeclaration : declaration => string = "JSON.stringify";
-let asDeclaration : ((string, string)) => declaration = Obj.magic;
+let asDeclaration : ((string, string)) => declaration = pair => Obj.magic([pair]);
 
 let testDeclaration = (decl, expected) => {
   test(decl |> stringifyDeclaration, () =>
