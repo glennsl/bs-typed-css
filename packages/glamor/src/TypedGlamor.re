@@ -390,7 +390,6 @@ let both = "both" |> Value.pack;
 let ltr = "ltr" |> Value.pack;
 let rtl = "rtl" |> Value.pack;
 
-let normal = "normal" |> Value.pack;
 let embed = "embed" |> Value.pack;
 let bidiOverride = "bidi-override" |> Value.pack;
 
@@ -418,8 +417,59 @@ let scroll = "scroll" |> Value.pack;
 
 let center = "center" |> Value.pack;
 
+/* fontFamilies */
+let serif = "serif";
+let sansSerif = "sans-serif";
+let cursive = "cursive";
+let fantasy = "fantasy";
+let monospace = "monospace";
+
+/* fontStyle */
+let normal = "normal" |> Value.pack;
+let italic = "italic" |> Value.pack;
+let oblique = "oblique" |> Value.pack;
+
+/* fontVariant */
+let smallCaps = "small-caps" |> Value.pack;
+
+/* fontWeight */
+let bold = "bold" |> Value.pack;
+let bolder = "bolder" |> Value.pack;
+let lighter = "lighter" |> Value.pack;
+let _100 = "100" |> Value.pack;
+let _200 = "200" |> Value.pack;
+let _300 = "300" |> Value.pack;
+let _400 = "400" |> Value.pack;
+let _500 = "500" |> Value.pack;
+let _600 = "600" |> Value.pack;
+let _700 = "700" |> Value.pack;
+let _800 = "800" |> Value.pack;
+let _900 = "900" |> Value.pack;
+
+/* fontSize */
+let xxSmall = "xx-small" |> Value.pack;
+let xSmall = "x-small" |> Value.pack;
+let small = "small" |> Value.pack;
+let meduium = "meduium" |> Value.pack;
+let large = "large" |> Value.pack;
+let xLarge = "x-large" |> Value.pack;
+let xxLarge = "xx-large" |> Value.pack;
+let larger = "larger" |> Value.pack;
+let smaller = "smaller" |> Value.pack;
+
+/* fontSize */
+let caption = "caption" |> Value.pack;
+let icon = "icon" |> Value.pack;
+let menu = "menu" |> Value.pack;
+let messageBox = "message-box" |> Value.pack;
+let smallCaption = "small-caption" |> Value.pack;
+let statusBar = "status-bar" |> Value.pack;
+
+
+/* primitives */
 let int = n => string_of_int(n) |> Value.pack;
 let num = f => Js.String.make(f) |> Value.pack;
+
 
 /*********
  * Properties
@@ -594,6 +644,21 @@ let backgroundPosition = v =>
   prop("backgroundPosition", v);
 let backgroundPosition2 = (~h, ~v) =>
   prop("backgroundPosition", {j|$h $v|j} |> Value.pack);
+
+let fontFamily = v =>
+  prop("fontFamily", v);
+let fontFamilies = vs =>
+  prop("fontFamily", vs |> List.map(Value.pack) |> Values.join);
+let fontStyle = v =>
+  prop("fontStyle", v);
+let fontVariant = v =>
+  prop("fontVariant", v);
+let fontWeight = v =>
+  prop("fontWeight", v);
+let fontSize = v =>
+  prop("fontSize", v);
+let font = v =>
+  prop("font", v);
 
 let transitionProperty = v =>
   prop("transitionProperty", v);

@@ -485,6 +485,57 @@ module type Values = {
   /*let bottom: value([`bottom]); -- already defined */
   /* let left:   value([`left]); -- already defined */
 
+  /* fontFamilies */
+  let serif:      string;
+  let sansSerif:  string;
+  let cursive:    string;
+  let fantasy:    string;
+  let monospace:  string;
+
+  /* fontStyle */
+
+  /*let normal:   value([`normal]); -- already defined */
+  let italic:   value([`italic]);
+  let oblique:  value([`oblique]);
+
+  /* fontVariant */
+  /*let normal:   value([`normal]); -- already defined */
+  let smallCaps:   value([`smallCaps]);
+
+  /* fontWeight */
+  /*let normal:   value([`normal]); -- already defined */
+  let bold:     value([`normal]);
+  let bolder:   value([`normal]);
+  let lighter:  value([`normal]);
+  let _100:     value([`_100]);
+  let _200:     value([`_200]);
+  let _300:     value([`_300]);
+  let _400:     value([`_400]);
+  let _500:     value([`_500]);
+  let _600:     value([`_600]);
+  let _700:     value([`_700]);
+  let _800:     value([`_800]);
+  let _900:     value([`_900]);
+
+  /* fontSize */
+  let xxSmall:  value([`xxSmall]);
+  let xSmall:   value([`xSmall]);
+  let small:    value([`small]);
+  let meduium:  value([`medium]);
+  let large:    value([`large]);
+  let xLarge:   value([`xLarge]);
+  let xxLarge:  value([`xxLarge]);
+  let larger:   value([`larger]);
+  let smaller:  value([`smaller]);
+
+  /* fontSize */
+  let caption:      value([`caption]);
+  let icon:         value([`icon]);
+  let menu:         value([`menu]);
+  let messageBox:   value([`messageBox]);
+  let smallCaption: value([`smallCaption]);
+  let statusBar:    value([`statusBar]);
+
 
   /**
    * Primitives
@@ -614,7 +665,7 @@ module type Properties = {
   let height:         value([< `length | `percentage | `auto | `universal]) => declaration;
   let minHeight:      value([< `length | `percentage | `universal]) => declaration;
   let maxHeight:      value([< `length | `percentage | `none | `universal]) => declaration;
-  let lineHeight:     value([< `normal | `number | `length | `percentage | `universal]) => declaration;
+  let lineHeight:     value([< `normal | `number | `length | `percentage | `universal]) => declaration; /* TODO? move to fonts */
   let verticalAlign:  value([< `baseline | `sub | `super | `top | `textTop | `middle
                              | `bottom | `textBottom | `percentage | `length | `universal]) => declaration;
 
@@ -634,6 +685,23 @@ module type Properties = {
 
 
   /**
+   * Fonts
+   */
+  let fontFamily:   value([< `universal]) => declaration;
+  let fontFamilies: list(string) => declaration;
+  let fontStyle:    value([< `normal | `italic | `oblique | `universal]) => declaration;
+  let fontVariant:  value([< `normal | `smallCaps | `universal]) => declaration;
+  let fontWeight:   value([< `normal | `bold | `bolder | `lighter | `_100
+                           |`_200 | `_300 | `_400 | `_500 | `_600 | `_700
+                           | `_800 | `_900 | `universal]) => declaration;
+  let fontSize:     value([< `xxSmall | `xSmall | `small | `medium | `large
+                           | `xLarge | `xxLarge | `larger | `smaller | `length
+                           | `percentage | `universal]) => declaration;
+  let font:         value([< `caption | `icon | `menu | `messageBox
+                           | `smallCaption | `statusBar | `universal]) => declaration;
+  /*TODO? let fontX*/
+
+  /**
    * Transitions
    */
   /* TODO: The values of these longhand properties are related to each other, e.g.
@@ -642,7 +710,7 @@ module type Properties = {
    * other than shooting yourself in the foot, or if it'd be better to just remove
    * them.
    * 
-   * TODO: Remove singleTransitionProperty from the singulat value?
+   * TODO? Remove singleTransitionProperty from the singulat value
    */
   let transitionProperty:         value([< `none | singleTransitionProperty | `universal]) => declaration;
   let transitionProperties:       list(value([< singleTransitionProperty])) => declaration;

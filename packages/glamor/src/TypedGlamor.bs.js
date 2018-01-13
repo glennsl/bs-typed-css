@@ -805,6 +805,57 @@ function backgroundPosition2(h, v) {
         ];
 }
 
+function fontFamily(v) {
+  return /* tuple */[
+          "fontFamily",
+          v
+        ];
+}
+
+function fontFamilies(vs) {
+  return /* tuple */[
+          "fontFamily",
+          TypedGlamor__InternalHelpers.Values[/* join */0](List.map((function (prim) {
+                      return prim;
+                    }), vs))
+        ];
+}
+
+function fontStyle(v) {
+  return /* tuple */[
+          "fontStyle",
+          v
+        ];
+}
+
+function fontVariant(v) {
+  return /* tuple */[
+          "fontVariant",
+          v
+        ];
+}
+
+function fontWeight(v) {
+  return /* tuple */[
+          "fontWeight",
+          v
+        ];
+}
+
+function fontSize(v) {
+  return /* tuple */[
+          "fontSize",
+          v
+        ];
+}
+
+function font(v) {
+  return /* tuple */[
+          "font",
+          v
+        ];
+}
+
 function transitionProperty(v) {
   return /* tuple */[
           "transitionProperty",
@@ -1488,6 +1539,76 @@ var scroll = "scroll";
 
 var center = "center";
 
+var serif = "serif";
+
+var sansSerif = "sans-serif";
+
+var cursive = "cursive";
+
+var fantasy = "fantasy";
+
+var monospace = "monospace";
+
+var italic = "italic";
+
+var oblique = "oblique";
+
+var smallCaps = "small-caps";
+
+var bold = "bold";
+
+var bolder = "bolder";
+
+var lighter = "lighter";
+
+var _100 = "100";
+
+var _200 = "200";
+
+var _300 = "300";
+
+var _400 = "400";
+
+var _500 = "500";
+
+var _600 = "600";
+
+var _700 = "700";
+
+var _800 = "800";
+
+var _900 = "900";
+
+var xxSmall = "xx-small";
+
+var xSmall = "x-small";
+
+var small = "small";
+
+var meduium = "meduium";
+
+var large = "large";
+
+var xLarge = "x-large";
+
+var xxLarge = "xx-large";
+
+var larger = "larger";
+
+var smaller = "smaller";
+
+var caption = "caption";
+
+var icon = "icon";
+
+var menu = "menu";
+
+var messageBox = "message-box";
+
+var smallCaption = "small-caption";
+
+var statusBar = "status-bar";
+
 var odd = "odd";
 
 var even = "even";
@@ -1742,6 +1863,41 @@ exports.repeatY                   = repeatY;
 exports.noRepeat                  = noRepeat;
 exports.scroll                    = scroll;
 exports.center                    = center;
+exports.serif                     = serif;
+exports.sansSerif                 = sansSerif;
+exports.cursive                   = cursive;
+exports.fantasy                   = fantasy;
+exports.monospace                 = monospace;
+exports.italic                    = italic;
+exports.oblique                   = oblique;
+exports.smallCaps                 = smallCaps;
+exports.bold                      = bold;
+exports.bolder                    = bolder;
+exports.lighter                   = lighter;
+exports._100                      = _100;
+exports._200                      = _200;
+exports._300                      = _300;
+exports._400                      = _400;
+exports._500                      = _500;
+exports._600                      = _600;
+exports._700                      = _700;
+exports._800                      = _800;
+exports._900                      = _900;
+exports.xxSmall                   = xxSmall;
+exports.xSmall                    = xSmall;
+exports.small                     = small;
+exports.meduium                   = meduium;
+exports.large                     = large;
+exports.xLarge                    = xLarge;
+exports.xxLarge                   = xxLarge;
+exports.larger                    = larger;
+exports.smaller                   = smaller;
+exports.caption                   = caption;
+exports.icon                      = icon;
+exports.menu                      = menu;
+exports.messageBox                = messageBox;
+exports.smallCaption              = smallCaption;
+exports.statusBar                 = statusBar;
 exports.$$int                     = $$int;
 exports.num                       = num;
 exports.margin                    = margin;
@@ -1822,6 +1978,13 @@ exports.backgroundRepeat          = backgroundRepeat;
 exports.backgroundAttachment      = backgroundAttachment;
 exports.backgroundPosition        = backgroundPosition;
 exports.backgroundPosition2       = backgroundPosition2;
+exports.fontFamily                = fontFamily;
+exports.fontFamilies              = fontFamilies;
+exports.fontStyle                 = fontStyle;
+exports.fontVariant               = fontVariant;
+exports.fontWeight                = fontWeight;
+exports.fontSize                  = fontSize;
+exports.font                      = font;
 exports.transitionProperty        = transitionProperty;
 exports.transitionProperties      = transitionProperties;
 exports.transitionDuration        = transitionDuration;
