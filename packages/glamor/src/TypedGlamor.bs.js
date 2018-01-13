@@ -856,6 +856,55 @@ function font(v) {
         ];
 }
 
+function textIndent(v) {
+  return /* tuple */[
+          "textIndent",
+          v
+        ];
+}
+
+function textAlign(v) {
+  return /* tuple */[
+          "textAlign",
+          v
+        ];
+}
+
+function textDecoration(v) {
+  return /* tuple */[
+          "textDecoration",
+          v
+        ];
+}
+
+function letterSpacing(v) {
+  return /* tuple */[
+          "letterSpacing",
+          v
+        ];
+}
+
+function wordSpacing(v) {
+  return /* tuple */[
+          "wrdSpacing",
+          v
+        ];
+}
+
+function textTransform(v) {
+  return /* tuple */[
+          "textTransform",
+          v
+        ];
+}
+
+function whiteSpace(v) {
+  return /* tuple */[
+          "whiteSpace",
+          v
+        ];
+}
+
 function transitionProperty(v) {
   return /* tuple */[
           "transitionProperty",
@@ -1609,6 +1658,30 @@ var smallCaption = "small-caption";
 
 var statusBar = "status-bar";
 
+var justify = "justify";
+
+var underline = "underline";
+
+var overline = "overline";
+
+var lineThrough = "line-through";
+
+var blink = "blink";
+
+var capitalize = "capitalize";
+
+var uppercase = "uppercase";
+
+var lowercase = "lowercase";
+
+var pre = "pre";
+
+var nowrap = "nowrap";
+
+var preWrap = "pre-wrap";
+
+var preLine = "pre-line";
+
 var odd = "odd";
 
 var even = "even";
@@ -1898,6 +1971,18 @@ exports.menu                      = menu;
 exports.messageBox                = messageBox;
 exports.smallCaption              = smallCaption;
 exports.statusBar                 = statusBar;
+exports.justify                   = justify;
+exports.underline                 = underline;
+exports.overline                  = overline;
+exports.lineThrough               = lineThrough;
+exports.blink                     = blink;
+exports.capitalize                = capitalize;
+exports.uppercase                 = uppercase;
+exports.lowercase                 = lowercase;
+exports.pre                       = pre;
+exports.nowrap                    = nowrap;
+exports.preWrap                   = preWrap;
+exports.preLine                   = preLine;
 exports.$$int                     = $$int;
 exports.num                       = num;
 exports.margin                    = margin;
@@ -1985,6 +2070,13 @@ exports.fontVariant               = fontVariant;
 exports.fontWeight                = fontWeight;
 exports.fontSize                  = fontSize;
 exports.font                      = font;
+exports.textIndent                = textIndent;
+exports.textAlign                 = textAlign;
+exports.textDecoration            = textDecoration;
+exports.letterSpacing             = letterSpacing;
+exports.wordSpacing               = wordSpacing;
+exports.textTransform             = textTransform;
+exports.whiteSpace                = whiteSpace;
 exports.transitionProperty        = transitionProperty;
 exports.transitionProperties      = transitionProperties;
 exports.transitionDuration        = transitionDuration;

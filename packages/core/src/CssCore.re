@@ -536,6 +536,29 @@ module type Values = {
   let smallCaption: value([`smallCaption]);
   let statusBar:    value([`statusBar]);
 
+  /* textAlign */
+  /*let left:     value([`left]); -- already defined */
+  /*let right:    value([`right]); -- already defined */
+  /*let center:   value([`center]); -- already defined */
+  let justify:  value([`justify]);
+
+  /* textDecoration */
+  let underline:    value([`underline]);
+  let overline:     value([`overline]);
+  let lineThrough:  value([`lineThrough]);
+  let blink:        value([`blink]);
+
+  /* textTransform */
+  let capitalize: value([`capitalize]);
+  let uppercase:  value([`uppercase]);
+  let lowercase:  value([`lowercase]);
+
+  /* whiteSpace */
+  let pre:      value([`pre]);
+  let nowrap:   value([`nowrap]);
+  let preWrap:  value([`preWrap]);
+  let preLine:  value([`preLine]);
+
 
   /**
    * Primitives
@@ -700,6 +723,19 @@ module type Properties = {
   let font:         value([< `caption | `icon | `menu | `messageBox
                            | `smallCaption | `statusBar | `universal]) => declaration;
   /*TODO? let fontX*/
+
+
+  /**
+   * Text
+   */
+  let textIndent:     value([< `length | `percentage | `universal]) => declaration;
+  let textAlign:      value([< `left | `right | `center | `justify | `universal]) => declaration;
+  let textDecoration: value([< `none | `underline | `overline | `lineThrough | `blink | `universal]) => declaration;
+  let letterSpacing:  value([< `normal | `length | `universal]) => declaration;
+  let wordSpacing:    value([< `normal | `length | `universal]) => declaration;
+  let textTransform:  value([< `capitalize | `uppercase | `lowercase | `none | `universal]) => declaration;
+  let whiteSpace:     value([< `normal | `pre | `nowrap | `preWrap | `preLine | `universal]) => declaration;
+
 
   /**
    * Transitions

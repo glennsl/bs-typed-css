@@ -465,6 +465,25 @@ let messageBox = "message-box" |> Value.pack;
 let smallCaption = "small-caption" |> Value.pack;
 let statusBar = "status-bar" |> Value.pack;
 
+/* textAlign */
+let justify = "justify" |> Value.pack;
+
+/* textDecoration */
+let underline = "underline" |> Value.pack;
+let overline = "overline" |> Value.pack;
+let lineThrough = "line-through" |> Value.pack;
+let blink = "blink" |> Value.pack;
+
+/* textTransform */
+let capitalize = "capitalize" |> Value.pack;
+let uppercase = "uppercase" |> Value.pack;
+let lowercase = "lowercase" |> Value.pack;
+
+/* whiteSpace */
+let pre = "pre" |> Value.pack;
+let nowrap = "nowrap" |> Value.pack;
+let preWrap = "pre-wrap" |> Value.pack;
+let preLine = "pre-line" |> Value.pack;
 
 /* primitives */
 let int = n => string_of_int(n) |> Value.pack;
@@ -659,6 +678,21 @@ let fontSize = v =>
   prop("fontSize", v);
 let font = v =>
   prop("font", v);
+
+let textIndent = v =>
+  prop("textIndent", v);
+let textAlign = v =>
+  prop("textAlign", v);
+let textDecoration = v =>
+  prop("textDecoration", v);
+let letterSpacing = v =>
+  prop("letterSpacing", v);
+let wordSpacing = v =>
+  prop("wrdSpacing", v);
+let textTransform = v =>
+  prop("textTransform", v);
+let whiteSpace = v =>
+  prop("whiteSpace", v);
 
 let transitionProperty = v =>
   prop("transitionProperty", v);
