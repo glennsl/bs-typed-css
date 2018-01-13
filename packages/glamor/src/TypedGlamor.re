@@ -773,7 +773,7 @@ let even    = "even" |> Value.pack;
 let anplusb = (a, b) => {j|$(a)n+($b)|j} |> Value.pack;
 
 let select = (selector, declarations) =>
-  (selector, declarations |> Declarations.toDict) |> Selector.pack;
+  [(selector, declarations |> Declarations.toDict)] |> Selector.pack;
 
 let active          = declarations => select(":active", declarations);
 /*let any             = ;*/

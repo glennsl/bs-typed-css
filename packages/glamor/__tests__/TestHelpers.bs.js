@@ -3,6 +3,7 @@
 
 var Jest                         = require("@glennsl/bs-jest/src/jest.js");
 var List                         = require("bs-platform/lib/js/list.js");
+var Pervasives                   = require("bs-platform/lib/js/pervasives.js");
 var TypedGlamor__InternalHelpers = require("../src/TypedGlamor__InternalHelpers.bs.js");
 
 function asDeclaration(prim) {
@@ -22,10 +23,17 @@ function testValue(value, expected) {
 }
 
 function testSelector(selector, expected) {
+  var match;
+  try {
+    match = List.hd(selector);
+  }
+  catch (exn){
+    match = Pervasives.failwith("selector should be singular");
+  }
   var decls$prime = expected[1];
   var k$prime = expected[0];
-  var decls = selector[1];
-  var k = selector[0];
+  var decls = match[1];
+  var k = match[0];
   return Jest.test(k, (function () {
                 return Jest.Expect[/* toEqual */12](/* tuple */[
                             k$prime,

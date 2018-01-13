@@ -741,9 +741,12 @@ function anplusb(a, b) {
 }
 
 function select(selector, declarations) {
-  return /* tuple */[
-          selector,
-          TypedGlamor__InternalHelpers.Declarations[/* toDict */0](declarations)
+  return /* :: */[
+          /* tuple */[
+            selector,
+            TypedGlamor__InternalHelpers.Declarations[/* toDict */0](declarations)
+          ],
+          /* [] */0
         ];
 }
 
