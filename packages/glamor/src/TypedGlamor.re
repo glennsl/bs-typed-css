@@ -380,6 +380,8 @@ let tableColumnGroup = "table-column-group" |> Value.pack;
 let tableColumn = "table-column" |> Value.pack;
 let tableCell = "table-cell" |> Value.pack;
 let tableCaption = "table-caption" |> Value.pack;
+let flex = "flex" |> Value.pack;
+let inlineFlex = "inlineFlex" |> Value.pack;
 
 let static = "static" |> Value.pack;
 let relative = "relative" |> Value.pack;
@@ -511,6 +513,28 @@ let progress = "progress" |> Value.pack;
 
 /* outlineColor */
 let invert = "invert" |> Value.pack;
+
+/* flexDirection */
+let row = "row" |> Value.pack;
+let rowReverse = "row-reverse" |> Value.pack;
+let column = "column" |> Value.pack;
+let columnReverse = "column-reverse" |> Value.pack;
+
+/* flexWrap */
+let wrap = "wrap" |> Value.pack;
+let wrapReverse = "wrap-reverse" |> Value.pack;
+
+/* flexBasis */
+let content = "content" |> Value.pack;
+
+/* justifyContent */
+let flexStart = "flex-start" |> Value.pack;
+let flexEnd = "flex-end" |> Value.pack;
+let spaceBetween = "space-between" |> Value.pack;
+let spaceAround = "space-around" |> Value.pack;
+
+/* alignitems */
+let stretch = "stretch" |> Value.pack;
 
 
 /* primitives */
@@ -777,6 +801,34 @@ let transitions =
   fun | [] => prop("transition", "none" |> Value.pack)
       | vs => prop("transition", vs |> List.map(((prop, dur, fn, delay)) => {j|$prop $dur $fn $delay|j}) |> String.concat(", ") |> Value.pack);
 
+let flexDirection = v =>
+  prop("flexDirection", v);
+let flexWrap = v =>
+  prop("flexWrap", v);
+let flexFlow = v =>
+  prop("flexFlow", v);
+let flexFlow2 = (direction, wrap) =>
+  prop("flexFlow", {j|$direction $wrap|j} |> Value.pack);
+let order = v =>
+  prop("order", int(v));
+let flex_ = v =>
+  prop("flex", v);
+let flex3 = (~grow, ~shrink, basis) =>
+  prop("flex", {j|$grow $shrink $basis|j} |> Value.pack);
+let flexGrow = v =>
+  prop("flexGrow", num(v));
+let flexShrink = v =>
+  prop("flexShrink", num(v));
+let flexBasis = v =>
+  prop("flexBasis", v);
+let justifyContent = v =>
+  prop("justifyContent", v);
+let alignItems = v =>
+  prop("alignItems", v);
+let alignSelf = v =>
+  prop("alignSelf", v);
+let alignContent = v =>
+  prop("alignContent", v);
 
 /*********
  * Selectors

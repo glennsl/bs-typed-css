@@ -756,6 +756,62 @@ function transitions(vs) {
   }
 }
 
+function flexDirection(v) {
+  return prop("flexDirection", v);
+}
+
+function flexWrap(v) {
+  return prop("flexWrap", v);
+}
+
+function flexFlow(v) {
+  return prop("flexFlow", v);
+}
+
+function flexFlow2(direction, wrap) {
+  return prop("flexFlow", "" + (String(direction) + (" " + (String(wrap) + ""))));
+}
+
+function order(v) {
+  return prop("order", Pervasives.string_of_int(v));
+}
+
+function flex_(v) {
+  return prop("flex", v);
+}
+
+function flex3(grow, shrink, basis) {
+  return prop("flex", "" + (String(grow) + (" " + (String(shrink) + (" " + (String(basis) + ""))))));
+}
+
+function flexGrow(v) {
+  return prop("flexGrow", String(v));
+}
+
+function flexShrink(v) {
+  return prop("flexShrink", String(v));
+}
+
+function flexBasis(v) {
+  return prop("flexBasis", v);
+}
+
+function justifyContent(v) {
+  return prop("justifyContent", v);
+}
+
+function alignItems(v) {
+  return prop("alignItems", v);
+}
+
+function alignSelf(v) {
+  return prop("alignSelf", v);
+}
+
+function alignContent(v) {
+  return prop("alignContent", v);
+}
+
 function anplusb(a, b) {
   return "" + (String(a) + ("n+(" + (String(b) + ")")));
 }
@@ -1304,6 +1360,10 @@ var tableCell = "table-cell";
 
 var tableCaption = "table-caption";
 
+var flex = "flex";
+
+var inlineFlex = "inlineFlex";
+
 var $$static = "static";
 
 var relative = "relative";
@@ -1491,6 +1551,30 @@ var help = "help";
 var progress = "progress";
 
 var invert = "invert";
+
+var row = "row";
+
+var rowReverse = "row-reverse";
+
+var column = "column";
+
+var columnReverse = "column-reverse";
+
+var wrap = "wrap";
+
+var wrapReverse = "wrap-reverse";
+
+var content = "content";
+
+var flexStart = "flex-start";
+
+var flexEnd = "flex-end";
+
+var spaceBetween = "space-between";
+
+var spaceAround = "space-around";
+
+var stretch = "stretch";
 
 var odd = "odd";
 
@@ -1719,6 +1803,8 @@ exports.tableColumnGroup          = tableColumnGroup;
 exports.tableColumn               = tableColumn;
 exports.tableCell                 = tableCell;
 exports.tableCaption              = tableCaption;
+exports.flex                      = flex;
+exports.inlineFlex                = inlineFlex;
 exports.$$static                  = $$static;
 exports.relative                  = relative;
 exports.absolute                  = absolute;
@@ -1815,6 +1901,18 @@ exports.wait                      = wait;
 exports.help                      = help;
 exports.progress                  = progress;
 exports.invert                    = invert;
+exports.row                       = row;
+exports.rowReverse                = rowReverse;
+exports.column                    = column;
+exports.columnReverse             = columnReverse;
+exports.wrap                      = wrap;
+exports.wrapReverse               = wrapReverse;
+exports.content                   = content;
+exports.flexStart                 = flexStart;
+exports.flexEnd                   = flexEnd;
+exports.spaceBetween              = spaceBetween;
+exports.spaceAround               = spaceAround;
+exports.stretch                   = stretch;
 exports.$$int                     = $$int;
 exports.num                       = num;
 exports.margin                    = margin;
@@ -1930,6 +2028,20 @@ exports.transitionDelay           = transitionDelay;
 exports.transitionDelays          = transitionDelays;
 exports.transition                = transition;
 exports.transitions               = transitions;
+exports.flexDirection             = flexDirection;
+exports.flexWrap                  = flexWrap;
+exports.flexFlow                  = flexFlow;
+exports.flexFlow2                 = flexFlow2;
+exports.order                     = order;
+exports.flex_                     = flex_;
+exports.flex3                     = flex3;
+exports.flexGrow                  = flexGrow;
+exports.flexShrink                = flexShrink;
+exports.flexBasis                 = flexBasis;
+exports.justifyContent            = justifyContent;
+exports.alignItems                = alignItems;
+exports.alignSelf                 = alignSelf;
+exports.alignContent              = alignContent;
 exports.$$null                    = $$null;
 exports.odd                       = odd;
 exports.even                      = even;

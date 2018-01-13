@@ -423,20 +423,22 @@ module type Values = {
   let outset: value([`outset]);
 
   /* display */
-  let inline            : value([`inline]);
-  let block             : value([`block]);
-  let listItem          : value([`listItem]);
-  let inlineBlock       : value([`inlineBlock]);
-  let table             : value([`table]);
-  let inlineTable       : value([`inlineTable]);
-  let tableRowGroup     : value([`tableRowGroup]);
-  let tableHeaderGroup  : value([`tableHeaderGroup]);
-  let tableFooterGroup  : value([`tableFooterGroup]);
-  let tableRow          : value([`tableRow]);
-  let tableColumnGroup  : value([`tableColumnGroup]);
-  let tableColumn       : value([`tableColumn]);
-  let tableCell         : value([`tableCell]);
-  let tableCaption      : value([`tableCaption]);
+  let inline:           value([`inline]);
+  let block:            value([`block]);
+  let listItem:         value([`listItem]);
+  let inlineBlock:      value([`inlineBlock]);
+  let table:            value([`table]);
+  let inlineTable:      value([`inlineTable]);
+  let tableRowGroup:    value([`tableRowGroup]);
+  let tableHeaderGroup: value([`tableHeaderGroup]);
+  let tableFooterGroup: value([`tableFooterGroup]);
+  let tableRow:         value([`tableRow]);
+  let tableColumnGroup: value([`tableColumnGroup]);
+  let tableColumn:      value([`tableColumn]);
+  let tableCell:        value([`tableCell]);
+  let tableCaption:     value([`tableCaption]);
+  let flex:             value([`flex]);
+  let inlineFlex:       value([`inlineFlex]);
 
   /* position */
   let static:   value([`static]);
@@ -601,11 +603,34 @@ module type Values = {
   /* outlineColor */
   let invert: value([`invert]);
 
+  /* flexDirection */
+  let row:            value([`row]);
+  let rowReverse:     value([`rowReverse]);
+  let column:         value([`column]);
+  let columnReverse:  value([`columnReverse]);
+
+  /* flexWrap */
+  let wrap:         value([`wrap]);
+  let wrapReverse:  value([`wrapReverse]);
+
+  /* flexBasis */
+  let content:  value([`content]);
+
+  /* justifyContent */
+  let flexStart:    value([`flexStart]);
+  let flexEnd:      value([`flexEnd]);
+  let spaceBetween: value([`spaceBetween]);
+  let spaceAround:  value([`spaceAround]);
+
+  /* alignitems */
+  let stretch:  value([`stretch]);
+
+
   /**
    * Primitives
    */
-  let int:    int => value([`integer]);
-  let num:    float => value([`number]);
+  let int:  int => value([`integer]);
+  let num:  float => value([`number]);
 };
 
 
@@ -709,7 +734,8 @@ module type Properties = {
   let display:        value([< `inline | `block | `listItem | `inlineBlock | `table
                              | `inlineTable | `tableRowGroup | `tableHeaderGroup
                              | `tableFooterGroup | `tableRow | `tableColumnGroup
-                             | `tableColumn | `tableCell | `tableCaption | `none | `universal]) => declaration;
+                             | `tableColumn | `tableCell | `tableCaption | `none
+                             | `flex | `inlineFlex | `universal]) => declaration;
   let position:       value([< `static | `relative | `absolute | `fixed | `universal]) => declaration;
   let offsetTop:      value([< `length | `percentage | `auto | `universal]) => declaration;
   let offsetRight:    value([< `length | `percentage | `auto | `universal]) => declaration;
@@ -831,4 +857,28 @@ module type Properties = {
   let transitionDelays:           list(time) => declaration;
   let transition:                 value([< `none | `universal]) => declaration;
   let transitions:                list(singleTransition('a)) => declaration;
+
+
+  /**
+   * Flexible Box Layout Model
+   */
+  let flexDirection:  value([< `row | `rowReverse | `column | `columnReverse | `universal]) => declaration;
+  let flexWrap:       value([< `nowrap | `wrap | `wrapReverse | `universal]) => declaration;
+  let flexFlow:       value([< `row | `rowReverse | `column | `columnReverse
+                             | `nowrap | `wrap | `wrapReverse | `universal]) => declaration;
+  let flexFlow2:      (value([< `row | `rowReverse | `column | `columnReverse]),
+                      value([< `nowrap | `wrap | `wrapReverse])) => declaration;
+  let order:          int => declaration;
+  let flex_:          value([< `content | `auto | `none | `universal]) => declaration;
+  let flex3:          (~grow:   float,
+                       ~shrink: float,
+                       value([< `content | `length | `percentage | `auto])) => declaration;
+  let flexGrow:       float => declaration;
+  let flexShrink:     float => declaration;
+  let flexBasis:      value([< `content | `length | `percentage | `auto | `universal]) => declaration;
+  let justifyContent: value([< `flexStart | `flexEnd | `center | `spaceBetween | `spaceAround | `universal]) => declaration;
+  let alignItems:     value([< `flexStart | `flexEnd | `center | `baseline | `stretch | `universal]) => declaration;
+  let alignSelf:      value([< `auto | `flexStart | `flexEnd | `center | `baseline | `stretch | `universal]) => declaration;
+  let alignContent:   value([< `flexStart | `flexEnd | `center | `spaceBetween | `spaceAround | `stretch | `universal]) => declaration;
+
 };
