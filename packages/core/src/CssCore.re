@@ -559,6 +559,26 @@ module type Values = {
   let preWrap:  value([`preWrap]);
   let preLine:  value([`preLine]);
 
+  /* cursor */
+  let crosshair:  value([`crosshair]);
+  let default:    value([`default]);
+  let pointer:    value([`pointer]);
+  let move:       value([`move]);
+  let eResize:    value([`eResize]);
+  let neResize:   value([`neResize]);
+  let nwResize:   value([`nwResize]);
+  let nResize:    value([`nResize]);
+  let seResize:   value([`seResize]);
+  let swResize:   value([`swResize]);
+  let sResize:    value([`sResize]);
+  let wResize:    value([`wResize]);
+  let text:       value([`text]);
+  let wait:       value([`wait]);
+  let help:       value([`help]);
+  let progress:   value([`progress]);
+
+  /* outlineColor */
+  let invert: value([`invert]);
 
   /**
    * Primitives
@@ -577,7 +597,6 @@ module type Properties = {
    * Box model
    */
 
-  /* margin */
   let margin:         value([< marginWidth | `universal]) => declaration;
   let margin2:        (~v:      value([< marginWidth]),
                        ~h:      value([< marginWidth])) => declaration;
@@ -593,7 +612,6 @@ module type Properties = {
   let marginBottom:   value([< marginWidth | `universal]) => declaration;
   let marginLeft:     value([< marginWidth | `universal]) => declaration;
 
-  /* padding */
   let padding:        value([< paddingWidth | `universal]) => declaration;
   let padding2:       (~v:      value([< paddingWidth]),
                        ~h:      value([< paddingWidth])) => declaration;
@@ -609,7 +627,6 @@ module type Properties = {
   let paddingBottom:  value([< paddingWidth | `universal]) => declaration;
   let paddingLeft:    value([< paddingWidth | `universal]) => declaration;
 
-  /* border */
   let border:             value([< lineStyle | `universal]) => declaration;
   let border2:            (~width: value([< lineWidth])=?,
                            ~color: value([< `color])=?,
@@ -693,6 +710,11 @@ module type Properties = {
                              | `bottom | `textBottom | `percentage | `length | `universal]) => declaration;
 
 
+  /* TODO: Visual effects */
+  /* TODO: Generated content etc... */
+  /* TODO: Paged Media */
+
+
   /**
    * Colors and Backgrounds
    */
@@ -735,6 +757,28 @@ module type Properties = {
   let wordSpacing:    value([< `normal | `length | `universal]) => declaration;
   let textTransform:  value([< `capitalize | `uppercase | `lowercase | `none | `universal]) => declaration;
   let whiteSpace:     value([< `normal | `pre | `nowrap | `preWrap | `preLine | `universal]) => declaration;
+
+
+  /* TODO: Tables */
+  
+
+  /**
+   * User interface
+   */
+  let cursor:       value([< `uri | `auto | `crosshair | `default | `pointer
+                           | `move | `eResize | `neResize | `nwResize | `nResize
+                           | `seResize | `swResize | `sResize | `wResize | `text
+                           | `wait | `help | `progress | `universal]) => declaration;
+  let outline:      value([< lineStyle | `universal]) => declaration;
+  let outline2:     (~width: value([< lineWidth])=?,
+                     ~color: value([< `color])=?,
+                     value([< lineStyle])) => declaration;
+  let outline3:     (value([< lineWidth]),
+                     value([< lineStyle]),
+                     value([< `color])) => declaration;
+  let outlineWidth: value([< lineWidth | `universal]) => declaration;
+  let outlineStyle: value([< lineStyle | `universal]) => declaration;
+  let outlineColor: value([< `color | `invert | `universal]) => declaration;
 
 
   /**

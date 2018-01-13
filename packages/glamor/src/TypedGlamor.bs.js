@@ -905,6 +905,62 @@ function whiteSpace(v) {
         ];
 }
 
+function cursor(v) {
+  return /* tuple */[
+          "cursor",
+          v
+        ];
+}
+
+function outline(value) {
+  return /* tuple */[
+          "outline",
+          value
+        ];
+}
+
+function outline2(width, color, style) {
+  var value;
+  if (width) {
+    var w = width[0];
+    value = color ? "" + (String(w) + (" " + (String(style) + (" " + (String(color[0]) + ""))))) : "" + (String(w) + (" " + (String(style) + "")));
+  } else {
+    value = color ? "" + (String(style) + (" " + (String(color[0]) + ""))) : style;
+  }
+  return /* tuple */[
+          "outline",
+          value
+        ];
+}
+
+function outline3(width, style, color) {
+  return /* tuple */[
+          "outline",
+          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
+        ];
+}
+
+function outlineWidth(v) {
+  return /* tuple */[
+          "outlineWidth",
+          v
+        ];
+}
+
+function outlineStyle(v) {
+  return /* tuple */[
+          "outlineStyle",
+          v
+        ];
+}
+
+function outlineColor(v) {
+  return /* tuple */[
+          "outlineColor",
+          v
+        ];
+}
+
 function transitionProperty(v) {
   return /* tuple */[
           "transitionProperty",
@@ -1682,6 +1738,40 @@ var preWrap = "pre-wrap";
 
 var preLine = "pre-line";
 
+var crosshair = "crosshair";
+
+var $$default = "default";
+
+var pointer = "pointer";
+
+var move = "move";
+
+var eResize = "e-resize";
+
+var neResize = "ne-resize";
+
+var nwResize = "nw-resize";
+
+var nResize = "n-resize";
+
+var seResize = "se-resize";
+
+var swResize = "sw-resize";
+
+var sResize = "s-resize";
+
+var wResize = "w-resize";
+
+var text = "text";
+
+var wait = "wait";
+
+var help = "help";
+
+var progress = "progress";
+
+var invert = "invert";
+
 var odd = "odd";
 
 var even = "even";
@@ -1983,6 +2073,25 @@ exports.pre                       = pre;
 exports.nowrap                    = nowrap;
 exports.preWrap                   = preWrap;
 exports.preLine                   = preLine;
+exports.crosshair                 = crosshair;
+exports.$$default                 = $$default;
+exports.default                   = $$default;
+exports.__esModule                = true;
+exports.pointer                   = pointer;
+exports.move                      = move;
+exports.eResize                   = eResize;
+exports.neResize                  = neResize;
+exports.nwResize                  = nwResize;
+exports.nResize                   = nResize;
+exports.seResize                  = seResize;
+exports.swResize                  = swResize;
+exports.sResize                   = sResize;
+exports.wResize                   = wResize;
+exports.text                      = text;
+exports.wait                      = wait;
+exports.help                      = help;
+exports.progress                  = progress;
+exports.invert                    = invert;
 exports.$$int                     = $$int;
 exports.num                       = num;
 exports.margin                    = margin;
@@ -2077,6 +2186,13 @@ exports.letterSpacing             = letterSpacing;
 exports.wordSpacing               = wordSpacing;
 exports.textTransform             = textTransform;
 exports.whiteSpace                = whiteSpace;
+exports.cursor                    = cursor;
+exports.outline                   = outline;
+exports.outline2                  = outline2;
+exports.outline3                  = outline3;
+exports.outlineWidth              = outlineWidth;
+exports.outlineStyle              = outlineStyle;
+exports.outlineColor              = outlineColor;
 exports.transitionProperty        = transitionProperty;
 exports.transitionProperties      = transitionProperties;
 exports.transitionDuration        = transitionDuration;

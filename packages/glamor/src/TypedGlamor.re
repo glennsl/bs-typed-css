@@ -485,6 +485,28 @@ let nowrap = "nowrap" |> Value.pack;
 let preWrap = "pre-wrap" |> Value.pack;
 let preLine = "pre-line" |> Value.pack;
 
+/* cursor */
+let crosshair = "crosshair" |> Value.pack;
+let default = "default" |> Value.pack;
+let pointer = "pointer" |> Value.pack;
+let move = "move" |> Value.pack;
+let eResize = "e-resize" |> Value.pack;
+let neResize = "ne-resize" |> Value.pack;
+let nwResize = "nw-resize" |> Value.pack;
+let nResize = "n-resize" |> Value.pack;
+let seResize = "se-resize" |> Value.pack;
+let swResize = "sw-resize" |> Value.pack;
+let sResize = "s-resize" |> Value.pack;
+let wResize = "w-resize" |> Value.pack;
+let text = "text" |> Value.pack;
+let wait = "wait" |> Value.pack;
+let help = "help" |> Value.pack;
+let progress = "progress" |> Value.pack;
+
+/* outlineColor */
+let invert = "invert" |> Value.pack;
+
+
 /* primitives */
 let int = n => string_of_int(n) |> Value.pack;
 let num = f => Js.String.make(f) |> Value.pack;
@@ -693,6 +715,29 @@ let textTransform = v =>
   prop("textTransform", v);
 let whiteSpace = v =>
   prop("whiteSpace", v);
+
+let cursor = v =>
+  prop("cursor", v);
+let outline = value =>
+  prop("outline", value);
+let outline2 = (~width=?, ~color=?, style) => {
+  let value =
+    switch ((width, color)) {
+    | (Some(w), Some(c))  => {j|$w $style $c|j}
+    | (Some(w), None)     => {j|$w $style|j}
+    | (None, Some(c))     => {j|$style $c|j}
+    | (None, None)        => Value.unpack(style)
+    };
+  prop("outline", value |> Value.pack)
+};
+let outline3 = (width, style, color) =>
+  prop("outline", {j|$width $style $color|j} |> Value.pack);
+let outlineWidth = v =>
+  prop("outlineWidth", v);
+let outlineStyle = v =>
+  prop("outlineStyle", v);
+let outlineColor = v =>
+  prop("outlineColor", v);
 
 let transitionProperty = v =>
   prop("transitionProperty", v);
