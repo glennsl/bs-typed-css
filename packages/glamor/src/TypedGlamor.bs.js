@@ -129,6 +129,10 @@ function hex(value) {
   return "#" + value.toString(16);
 }
 
+function rect(top, right, bottom, left) {
+  return "rect(" + (String(top) + (", " + (String(right) + (", " + (String(bottom) + (", " + (String(left) + ")")))))));
+}
+
 function ident(prim) {
   return prim;
 }
@@ -547,6 +551,18 @@ function lineHeight(v) {
 
 function verticalAlign(v) {
   return prop("verticalAlign", v);
+}
+
+function overflow(v) {
+  return prop("overflow", v);
+}
+
+function clip(v) {
+  return prop("clip", v);
+}
+
+function visibility(v) {
+  return prop("visibility", v);
 }
 
 function color(v) {
@@ -1328,6 +1344,12 @@ var bottom = "bottom";
 
 var textBottom = "text-bottom";
 
+var visible = "visible";
+
+var scroll = "scroll";
+
+var collapse = "collapse";
+
 var start = "start";
 
 var end_ = "end";
@@ -1339,8 +1361,6 @@ var repeatX = "repeat-x";
 var repeatY = "repeat-y";
 
 var noRepeat = "no-repeat";
-
-var scroll = "scroll";
 
 var center = "center";
 
@@ -1658,6 +1678,7 @@ exports.white                     = white;
 exports.whitesmoke                = whitesmoke;
 exports.yellow                    = yellow;
 exports.yellowgreen               = yellowgreen;
+exports.rect                      = rect;
 exports.ident                     = ident;
 exports.AnimatableProperty        = AnimatableProperty;
 exports.linear                    = linear;
@@ -1718,13 +1739,15 @@ exports.textTop                   = textTop;
 exports.middle                    = middle;
 exports.bottom                    = bottom;
 exports.textBottom                = textBottom;
+exports.visible                   = visible;
+exports.scroll                    = scroll;
+exports.collapse                  = collapse;
 exports.start                     = start;
 exports.end_                      = end_;
 exports.repeat                    = repeat;
 exports.repeatX                   = repeatX;
 exports.repeatY                   = repeatY;
 exports.noRepeat                  = noRepeat;
-exports.scroll                    = scroll;
 exports.center                    = center;
 exports.serif                     = serif;
 exports.sansSerif                 = sansSerif;
@@ -1864,6 +1887,9 @@ exports.minHeight                 = minHeight;
 exports.maxHeight                 = maxHeight;
 exports.lineHeight                = lineHeight;
 exports.verticalAlign             = verticalAlign;
+exports.overflow                  = overflow;
+exports.clip                      = clip;
+exports.visibility                = visibility;
 exports.color                     = color;
 exports.opacity                   = opacity;
 exports.background                = background;

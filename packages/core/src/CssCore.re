@@ -15,6 +15,7 @@ type time           = value([`time]);
 type uri            = value([`uri]);
 /*type counter      = value([`counter]);*/
 type color          = value([`color]);
+type shape          = value([`shape]);
 type customIdent    = value([`customIdent]);
 type timingFunction = value([`timingFunction]);
 
@@ -257,9 +258,19 @@ module type Values = {
 
 
   /**
+   * Shape
+   */
+  let rect: (~top:    value([< `length | `auto]),
+             ~right:  value([< `length | `auto]),
+             ~bottom: value([< `length | `auto]),
+             ~left:   value([< `length | `auto])) => shape;
+
+
+  /**
    * Custom Identfier
    */
   let ident: string => customIdent;
+
 
  /**
    * Animatable Properties
@@ -461,6 +472,16 @@ module type Values = {
   let bottom:     value([`bottom]);
   let textBottom: value([`textBottom]);
 
+  /* overflow */
+  let visible:  value([`visible]);
+  /*let hidden:   value([`hidden]); -- already defined */
+  let scroll:   value([`scroll]);
+
+  /* visibility */
+  /*let visible: value([`visible]); -- already defined */
+  /*let hidden: value([`hidden]); -- already defined */
+  let collapse: value([`collapse]);
+
   /* transition */
   /*let all: value([`all]);*/
 
@@ -475,7 +496,7 @@ module type Values = {
   let noRepeat: value([`noRepeat]);
 
   /* backgroundAttachment */
-  let scroll: value([`scroll]);
+  /*let scroll:  value([`scroll]); -- already defined */
   /*let fixed:  value([`fixed]); -- already defined */
 
   /* backgroundPosition */
@@ -710,7 +731,14 @@ module type Properties = {
                              | `bottom | `textBottom | `percentage | `length | `universal]) => declaration;
 
 
-  /* TODO: Visual effects */
+  /**
+   * Visual effects
+   */
+  let overflow:   value([< `visible | `hidden | `scroll | `auto | `universal]) => declaration;
+  let clip:       value([< `shape | `auto | `universal]) => declaration;
+  let visibility: value([< `visible | `hidden | `collapse | `universal]) => declaration;
+
+
   /* TODO: Generated content etc... */
   /* TODO: Paged Media */
 

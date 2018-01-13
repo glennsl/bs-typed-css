@@ -214,6 +214,10 @@ let whitesmoke = "whitesmoke" |> Value.pack;
 let yellow = "yellow" |> Value.pack;
 let yellowgreen = "yellowgreen" |> Value.pack;
 
+/* shape */
+let rect = (~top, ~right, ~bottom, ~left) =>
+  {j|rect($top, $right, $bottom, $left)|j} |> Value.pack;
+
 /* Custom Identifier */
 let ident = Value.pack;
 
@@ -402,6 +406,10 @@ let middle = "middle" |> Value.pack;
 let bottom = "bottom" |> Value.pack;
 let textBottom = "text-bottom" |> Value.pack;
 
+let visible = "visible" |> Value.pack;
+let scroll = "scroll" |> Value.pack;
+
+let collapse = "collapse" |> Value.pack;
 
 /*let all = "all" |> Value.pack;*/
 
@@ -412,8 +420,6 @@ let repeat = "repeat" |> Value.pack;
 let repeatX = "repeat-x" |> Value.pack;
 let repeatY = "repeat-y" |> Value.pack;
 let noRepeat = "no-repeat" |> Value.pack;
-
-let scroll = "scroll" |> Value.pack;
 
 let center = "center" |> Value.pack;
 
@@ -668,6 +674,13 @@ let lineHeight = v =>
   prop("lineHeight", v);
 let verticalAlign = v =>
   prop("verticalAlign", v);
+
+let overflow = v =>
+  prop("overflow", v);
+let clip = v =>
+  prop("clip", v);
+let visibility = v =>
+  prop("visibility", v);
 
 let color = v =>
   prop("color", v);
