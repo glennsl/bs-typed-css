@@ -5,9 +5,9 @@ var $$Array                    = require("bs-platform/lib/js/array.js");
 var Block                      = require("bs-platform/lib/js/block.js");
 var Curry                      = require("bs-platform/lib/js/curry.js");
 var React                      = require("react");
-var Glamor                     = require("typed-glamor/src/Glamor.bs.js");
 var Caml_obj                   = require("bs-platform/lib/js/caml_obj.js");
 var ReasonReact                = require("reason-react/src/ReasonReact.js");
+var TypedGlamor                = require("typed-glamor/src/TypedGlamor.bs.js");
 var StyleContainer$StyledReact = require("../src/StyleContainer.bs.js");
 
 function text(prim) {
@@ -15,20 +15,20 @@ function text(prim) {
 }
 
 var Stateless = StyleContainer$StyledReact.stateless(/* None */0, /* :: */[
-      Glamor.border3(Glamor.thin, Glamor.solid, Glamor.hex(3822)),
+      TypedGlamor.border3(TypedGlamor.thin, TypedGlamor.solid, TypedGlamor.hex(3822)),
       /* [] */0
     ]);
 
 function css(isSelected) {
   return /* :: */[
-          Glamor.borderBottom3(Glamor.thin, Glamor.dashed, Glamor.hex(3822)),
+          TypedGlamor.borderBottom3(TypedGlamor.thin, TypedGlamor.dashed, TypedGlamor.hex(3822)),
           /* :: */[
-            Glamor.padding2(Glamor.em(1), Glamor.em(2)),
+            TypedGlamor.padding2(TypedGlamor.em(1), TypedGlamor.em(2)),
             /* :: */[
-              Glamor.background(isSelected !== 0 ? Glamor.whitesmoke : Glamor.$$null),
+              TypedGlamor.background(isSelected !== 0 ? TypedGlamor.whitesmoke : TypedGlamor.$$null),
               /* :: */[
-                Glamor.hover(/* :: */[
-                      Glamor.background(Glamor.antiquewhite),
+                TypedGlamor.hover(/* :: */[
+                      TypedGlamor.background(TypedGlamor.antiquewhite),
                       /* [] */0
                     ]),
                 /* [] */0

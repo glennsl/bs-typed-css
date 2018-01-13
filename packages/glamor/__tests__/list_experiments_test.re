@@ -1,6 +1,6 @@
 open Jest;
 open TestHelpers;
-open Glamor;
+open TypedGlamor;
 open Core;
 
 type timingFunction = value([`timingFunction]);

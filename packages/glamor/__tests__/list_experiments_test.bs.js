@@ -2,9 +2,9 @@
 'use strict';
 
 var List        = require("bs-platform/lib/js/list.js");
-var Glamor      = require("../src/Glamor.bs.js");
 var $$String    = require("bs-platform/lib/js/string.js");
 var TestHelpers = require("./TestHelpers.bs.js");
+var TypedGlamor = require("../src/TypedGlamor.bs.js");
 
 var linear = "linear";
 
@@ -43,7 +43,7 @@ describe("cons - function", (function () {
         };
         TestHelpers.testDeclaration(/* tuple */[
               "transitionProperty",
-              Glamor.none
+              TypedGlamor.none
             ], /* tuple */[
               "transitionProperty",
               "none"
@@ -85,21 +85,21 @@ describe("cons - function", (function () {
         };
         TestHelpers.testDeclaration(/* tuple */[
               "transition",
-              Glamor.none
+              TypedGlamor.none
             ], /* tuple */[
               "transition",
               "none"
             ]);
         TestHelpers.testDeclaration(/* tuple */[
               "transition",
-              transitionValue(all, Glamor.s(1), linear)
+              transitionValue(all, TypedGlamor.s(1), linear)
             ], /* tuple */[
               "transition",
               "all 1s linear"
             ]);
         return TestHelpers.testDeclaration(/* tuple */[
                     "transition",
-                    cons$1(transitionValue(all, Glamor.s(1), linear), cons$1(transitionValue("foo", Glamor.ms(400), linear), ""))
+                    cons$1(transitionValue(all, TypedGlamor.s(1), linear), cons$1(transitionValue("foo", TypedGlamor.ms(400), linear), ""))
                   ], /* tuple */[
                     "transition",
                     "all 1s linear, foo 400ms linear"
@@ -117,7 +117,7 @@ describe("cons - infix operator", (function () {
         };
         TestHelpers.testDeclaration(/* tuple */[
               "transitionProperty",
-              Glamor.none
+              TypedGlamor.none
             ], /* tuple */[
               "transitionProperty",
               "none"
@@ -159,21 +159,21 @@ describe("cons - infix operator", (function () {
         };
         TestHelpers.testDeclaration(/* tuple */[
               "transition",
-              Glamor.none
+              TypedGlamor.none
             ], /* tuple */[
               "transition",
               "none"
             ]);
         TestHelpers.testDeclaration(/* tuple */[
               "transition",
-              transitionValue(all, Glamor.s(1), linear)
+              transitionValue(all, TypedGlamor.s(1), linear)
             ], /* tuple */[
               "transition",
               "all 1s linear"
             ]);
         return TestHelpers.testDeclaration(/* tuple */[
                     "transition",
-                    $star$star$1(transitionValue(all, Glamor.s(1), linear), $star$star$1(transitionValue("foo", Glamor.ms(400), linear), ""))
+                    $star$star$1(transitionValue(all, TypedGlamor.s(1), linear), $star$star$1(transitionValue("foo", TypedGlamor.ms(400), linear), ""))
                   ], /* tuple */[
                     "transition",
                     "all 1s linear, foo 400ms linear"
@@ -211,7 +211,7 @@ describe("plural propoerty function", (function () {
         };
         TestHelpers.testDeclaration(/* tuple */[
               "transitionProperty",
-              Glamor.none
+              TypedGlamor.none
             ], /* tuple */[
               "transitionProperty",
               "none"
@@ -246,7 +246,7 @@ describe("plural propoerty function", (function () {
             ]);
         TestHelpers.testDeclaration(/* tuple */[
               "transition",
-              Glamor.none
+              TypedGlamor.none
             ], /* tuple */[
               "transition",
               "none"
@@ -254,16 +254,16 @@ describe("plural propoerty function", (function () {
         TestHelpers.testDeclaration(transitions(/* :: */[
                   /* tuple */[
                     "all",
-                    Glamor.s(1),
+                    TypedGlamor.s(1),
                     linear,
-                    Glamor.ms(200)
+                    TypedGlamor.ms(200)
                   ],
                   /* :: */[
                     /* tuple */[
                       "foo",
-                      Glamor.ms(400),
+                      TypedGlamor.ms(400),
                       linear,
-                      Glamor.s(1.2)
+                      TypedGlamor.s(1.2)
                     ],
                     /* [] */0
                   ]

@@ -1,5 +1,5 @@
 open TestHelpers;
-open Glamor;
+open TypedGlamor;
 
 let _ =
 

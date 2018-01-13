@@ -1,4 +1,4 @@
-open Glamor__Core.Core;
+open TypedGlamor__Core.Core;
 
 module Value = {
   external pack : string => value(_) = "%identity";

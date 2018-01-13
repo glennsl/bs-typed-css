@@ -1,7 +1,7 @@
 let text = ReasonReact.stringToElement;
 
 module Styles = {
-  open Glamor;
+  open TypedGlamor;
 
   module Stateless = (val StyleContainer.stateless([
     border3(thin, solid, hex(0xeee)),

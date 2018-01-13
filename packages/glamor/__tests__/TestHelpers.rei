@@ -1,4 +1,4 @@
-open Glamor;
+open TypedGlamor;
 open Core;
 
 let testDeclaration: (declaration, (string, string)) => unit;

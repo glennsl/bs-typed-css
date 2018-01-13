@@ -1,9 +1,9 @@
 open Jest;
 open Expect;
-open Glamor;
+open TypedGlamor;
 open Core;
 
-include Glamor__InternalHelpers;
+include TypedGlamor__InternalHelpers;
 
 [@bs.val] external stringifyDeclaration : declaration => string = "JSON.stringify";
 let asDeclaration : ((string, string)) => declaration = Obj.magic;

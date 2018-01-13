@@ -1,7 +1,7 @@
-module Core = Glamor__Core.Core;
+module Core = TypedGlamor__Core.Core;
 open Core;
 
-include Glamor__InternalHelpers;
+include TypedGlamor__InternalHelpers;
 
 let prop = name =>
   value => (name, value) |> Declaration.pack;

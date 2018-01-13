@@ -12,7 +12,7 @@ let make = (~css, ~element="div", children) => {
 
 module type Config = {
   type state;
-  let css: state => list(Glamor.Core.declaration);
+  let css: state => list(TypedGlamor.Core.declaration);
   let element: string;
 };
 
@@ -24,7 +24,7 @@ module Make(Config: Config) = {
     render: _self =>
       ReasonReact.createDomElement(
         Config.element,
-        ~props={ "className": Glamor.css(Config.css(state)) },
+        ~props={ "className": TypedGlamor.css(Config.css(state)) },
         children
       )
   };
@@ -33,7 +33,7 @@ module Make(Config: Config) = {
 module type StatelessComponent = {
   let make: array(ReasonReact.reactElement) => ReasonReact.component(ReasonReact.stateless, ReasonReact.noRetainedProps, ReasonReact.actionless);
 };
-let stateless = (~element="div", css: list(Glamor.Core.declaration)) : (module StatelessComponent) =>
+let stateless = (~element="div", css: list(TypedGlamor.Core.declaration)) : (module StatelessComponent) =>
   (module ({
     module M = Make({
       type state = unit;

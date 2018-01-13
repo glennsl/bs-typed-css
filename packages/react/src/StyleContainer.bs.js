@@ -2,8 +2,8 @@
 'use strict';
 
 var Curry       = require("bs-platform/lib/js/curry.js");
-var Glamor      = require("typed-glamor/src/Glamor.bs.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
+var TypedGlamor = require("typed-glamor/src/TypedGlamor.bs.js");
 
 var component = ReasonReact.statelessComponent("Style");
 
@@ -24,7 +24,7 @@ function Make(Config) {
     var newrecord = component.slice();
     newrecord[/* render */9] = (function () {
         return ReasonReact.createDomElement(Config[/* element */1], {
-                    className: Glamor.css(Curry._1(Config[/* css */0], state))
+                    className: TypedGlamor.css(Curry._1(Config[/* css */0], state))
                   }, children);
       });
     return newrecord;
@@ -43,7 +43,7 @@ function stateless($staropt$star, css) {
     var newrecord = component.slice();
     newrecord[/* render */9] = (function () {
         return ReasonReact.createDomElement(element, {
-                    className: Glamor.css(css)
+                    className: TypedGlamor.css(css)
                   }, children);
       });
     return newrecord;
