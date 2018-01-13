@@ -813,9 +813,7 @@ let valid           = declarations => select(":valid", declarations);
 /*********
  * Glamor
  */
-[@bs.module "glamor"] external css : Js.Dict.t(value(_)) => string = "";
-let css = declarations =>
-  declarations |> Declarations.toDict |> css;
+type declarationBlock;
 
 let null =
   Js.null |> Obj.magic;
@@ -834,3 +832,8 @@ let add = decls =>
         |> List.flatten
         |> Declaration.pack;
 
+[@bs.module "glamor"] external css : Js.Dict.t(value(_)) => declarationBlock = "";
+let css = declarations =>
+  declarations |> Declarations.toDict |> css;
+
+let toString = Js.String.make;

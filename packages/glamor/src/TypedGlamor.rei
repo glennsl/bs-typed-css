@@ -6,6 +6,8 @@ open Core;
 include Values;
 include Properties;
 
+type declarationBlock;
+
 let null: value(_);
 
 let odd: value([`odd]);
@@ -50,10 +52,10 @@ let scope: list(declaration) => declaration;
 let target: list(declaration) => declaration;
 let valid: list(declaration) => declaration;
 
-let css: list(declaration) => string;
-
 let unsafe: (string, string) => declaration;
 let label: string => declaration;
 let nothing: declaration;
 let add: list(declaration) => declaration;
 
+let css: list(declaration) => declarationBlock;
+let toString: declarationBlock => string;

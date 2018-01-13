@@ -7,6 +7,16 @@ var Glamor                       = require("glamor");
 var Pervasives                   = require("bs-platform/lib/js/pervasives.js");
 var TypedGlamor__InternalHelpers = require("./TypedGlamor__InternalHelpers.bs.js");
 
+function prop(name, value) {
+  return /* :: */[
+          /* tuple */[
+            name,
+            value
+          ],
+          /* [] */0
+        ];
+}
+
 function em(n) {
   return "" + (String(n) + "em");
 }
@@ -253,122 +263,71 @@ function num(f) {
 }
 
 function margin(value) {
-  return /* tuple */[
-          "margin",
-          value
-        ];
+  return prop("margin", value);
 }
 
 function margin2(v, h) {
-  return /* tuple */[
-          "margin",
-          "" + (String(v) + (" " + (String(h) + "")))
-        ];
+  return prop("margin", "" + (String(v) + (" " + (String(h) + ""))));
 }
 
 function margin3(top, h, bottom) {
-  return /* tuple */[
-          "margin",
-          "" + (String(top) + (" " + (String(h) + (" " + (String(bottom) + "")))))
-        ];
+  return prop("margin", "" + (String(top) + (" " + (String(h) + (" " + (String(bottom) + ""))))));
 }
 
 function margin4(top, right, bottom, left) {
-  return /* tuple */[
-          "margin",
-          "" + (String(top) + (" " + (String(right) + (" " + (String(bottom) + (" " + (String(left) + "")))))))
-        ];
+  return prop("margin", "" + (String(top) + (" " + (String(right) + (" " + (String(bottom) + (" " + (String(left) + ""))))))));
 }
 
 function marginTop(value) {
-  return /* tuple */[
-          "marginTop",
-          value
-        ];
+  return prop("marginTop", value);
 }
 
 function marginRight(value) {
-  return /* tuple */[
-          "marginRight",
-          value
-        ];
+  return prop("marginRight", value);
 }
 
 function marginBottom(value) {
-  return /* tuple */[
-          "marginBottom",
-          value
-        ];
+  return prop("marginBottom", value);
 }
 
 function marginLeft(value) {
-  return /* tuple */[
-          "marginLeft",
-          value
-        ];
+  return prop("marginLeft", value);
 }
 
 function padding(value) {
-  return /* tuple */[
-          "padding",
-          value
-        ];
+  return prop("padding", value);
 }
 
 function padding2(v, h) {
-  return /* tuple */[
-          "padding",
-          "" + (String(v) + (" " + (String(h) + "")))
-        ];
+  return prop("padding", "" + (String(v) + (" " + (String(h) + ""))));
 }
 
 function padding3(top, h, bottom) {
-  return /* tuple */[
-          "padding",
-          "" + (String(top) + (" " + (String(h) + (" " + (String(bottom) + "")))))
-        ];
+  return prop("padding", "" + (String(top) + (" " + (String(h) + (" " + (String(bottom) + ""))))));
 }
 
 function padding4(top, right, bottom, left) {
-  return /* tuple */[
-          "padding",
-          "" + (String(top) + (" " + (String(right) + (" " + (String(bottom) + (" " + (String(left) + "")))))))
-        ];
+  return prop("padding", "" + (String(top) + (" " + (String(right) + (" " + (String(bottom) + (" " + (String(left) + ""))))))));
 }
 
 function paddingTop(value) {
-  return /* tuple */[
-          "paddingTop",
-          value
-        ];
+  return prop("paddingTop", value);
 }
 
 function paddingRight(value) {
-  return /* tuple */[
-          "paddingRight",
-          value
-        ];
+  return prop("paddingRight", value);
 }
 
 function paddingBottom(value) {
-  return /* tuple */[
-          "paddingBottom",
-          value
-        ];
+  return prop("paddingBottom", value);
 }
 
 function paddingLeft(value) {
-  return /* tuple */[
-          "paddingLeft",
-          value
-        ];
+  return prop("paddingLeft", value);
 }
 
 function border(value) {
-  return /* tuple */[
-          "border",
-          value
-        ];
+  return prop("border", value);
 }
 
 function border2(width, color, style) {
@@ -379,544 +338,313 @@ function border2(width, color, style) {
   } else {
     value = color ? "" + (String(style) + (" " + (String(color[0]) + ""))) : style;
   }
-  return /* tuple */[
-          "border",
-          value
-        ];
+  return prop("border", value);
 }
 
 function border3(width, style, color) {
-  return /* tuple */[
-          "border",
-          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
-        ];
+  return prop("border", "" + (String(width) + (" " + (String(style) + (" " + (String(color) + ""))))));
 }
 
 function borderTop(value) {
-  return /* tuple */[
-          "borderTop",
-          value
-        ];
+  return prop("borderTop", value);
 }
 
 function borderTop3(width, style, color) {
-  return /* tuple */[
-          "borderTop",
-          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
-        ];
+  return prop("borderTop", "" + (String(width) + (" " + (String(style) + (" " + (String(color) + ""))))));
 }
 
 function borderRight(value) {
-  return /* tuple */[
-          "borderRight",
-          value
-        ];
+  return prop("borderRight", value);
 }
 
 function borderRight3(width, style, color) {
-  return /* tuple */[
-          "borderRight",
-          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
-        ];
+  return prop("borderRight", "" + (String(width) + (" " + (String(style) + (" " + (String(color) + ""))))));
 }
 
 function borderBottom(value) {
-  return /* tuple */[
-          "borderBottom",
-          value
-        ];
+  return prop("borderBottom", value);
 }
 
 function borderBottom3(width, style, color) {
-  return /* tuple */[
-          "borderBottom",
-          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
-        ];
+  return prop("borderBottom", "" + (String(width) + (" " + (String(style) + (" " + (String(color) + ""))))));
 }
 
 function borderLeft(value) {
-  return /* tuple */[
-          "borderLeft",
-          value
-        ];
+  return prop("borderLeft", value);
 }
 
 function borderLeft3(width, style, color) {
-  return /* tuple */[
-          "borderLeft",
-          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
-        ];
+  return prop("borderLeft", "" + (String(width) + (" " + (String(style) + (" " + (String(color) + ""))))));
 }
 
 function borderWidth(value) {
-  return /* tuple */[
-          "borderWidth",
-          value
-        ];
+  return prop("borderWidth", value);
 }
 
 function borderTopWidth(value) {
-  return /* tuple */[
-          "borderTopWidth",
-          value
-        ];
+  return prop("borderTopWidth", value);
 }
 
 function borderRightWidth(value) {
-  return /* tuple */[
-          "borderRightWidth",
-          value
-        ];
+  return prop("borderRightWidth", value);
 }
 
 function borderBottomWidth(value) {
-  return /* tuple */[
-          "borderBottomWidth",
-          value
-        ];
+  return prop("borderBottomWidth", value);
 }
 
 function borderLeftWidth(value) {
-  return /* tuple */[
-          "borderLeftWidth",
-          value
-        ];
+  return prop("borderLeftWidth", value);
 }
 
 function borderStyle(value) {
-  return /* tuple */[
-          "borderStyle",
-          value
-        ];
+  return prop("borderStyle", value);
 }
 
 function borderTopStyle(value) {
-  return /* tuple */[
-          "borderTopStyle",
-          value
-        ];
+  return prop("borderTopStyle", value);
 }
 
 function borderRightStyle(value) {
-  return /* tuple */[
-          "borderRightStyle",
-          value
-        ];
+  return prop("borderRightStyle", value);
 }
 
 function borderBottomStyle(value) {
-  return /* tuple */[
-          "borderBottomStyle",
-          value
-        ];
+  return prop("borderBottomStyle", value);
 }
 
 function borderLeftStyle(value) {
-  return /* tuple */[
-          "borderLeftStyle",
-          value
-        ];
+  return prop("borderLeftStyle", value);
 }
 
 function borderColor(value) {
-  return /* tuple */[
-          "borderColor",
-          value
-        ];
+  return prop("borderColor", value);
 }
 
 function borderTopColor(value) {
-  return /* tuple */[
-          "borderTopColor",
-          value
-        ];
+  return prop("borderTopColor", value);
 }
 
 function borderRightColor(value) {
-  return /* tuple */[
-          "borderRightColor",
-          value
-        ];
+  return prop("borderRightColor", value);
 }
 
 function borderBottomColor(value) {
-  return /* tuple */[
-          "borderBottomColor",
-          value
-        ];
+  return prop("borderBottomColor", value);
 }
 
 function borderLeftColor(value) {
-  return /* tuple */[
-          "borderLeftColor",
-          value
-        ];
+  return prop("borderLeftColor", value);
 }
 
 function borderRadius(value) {
-  return /* tuple */[
-          "borderRadius",
-          value
-        ];
+  return prop("borderRadius", value);
 }
 
 function borderTopRightRadius(value) {
-  return /* tuple */[
-          "borderTopRightRadius",
-          value
-        ];
+  return prop("borderTopRightRadius", value);
 }
 
 function borderTopRightRadius2(v, h) {
-  return /* tuple */[
-          "borderTopRightRadius",
-          "" + (String(v) + (" " + (String(h) + "")))
-        ];
+  return prop("borderTopRightRadius", "" + (String(v) + (" " + (String(h) + ""))));
 }
 
 function borderTopLeftRadius(value) {
-  return /* tuple */[
-          "borderTopLeftRadius",
-          value
-        ];
+  return prop("borderTopLeftRadius", value);
 }
 
 function borderTopLeftRadius2(v, h) {
-  return /* tuple */[
-          "borderTopLeftRadius",
-          "" + (String(v) + (" " + (String(h) + "")))
-        ];
+  return prop("borderTopLeftRadius", "" + (String(v) + (" " + (String(h) + ""))));
 }
 
 function borderBottomRightRadius(value) {
-  return /* tuple */[
-          "borderBottomRightRadius",
-          value
-        ];
+  return prop("borderBottomRightRadius", value);
 }
 
 function borderBottomRightRadius2(v, h) {
-  return /* tuple */[
-          "borderBottomRightRadius",
-          "" + (String(v) + (" " + (String(h) + "")))
-        ];
+  return prop("borderBottomRightRadius", "" + (String(v) + (" " + (String(h) + ""))));
 }
 
 function borderBottomLeftRadius(value) {
-  return /* tuple */[
-          "borderBottomLeftRadius",
-          value
-        ];
+  return prop("borderBottomLeftRadius", value);
 }
 
 function borderBottomLeftRadius2(v, h) {
-  return /* tuple */[
-          "borderBottomLeftRadius",
-          "" + (String(v) + (" " + (String(h) + "")))
-        ];
+  return prop("borderBottomLeftRadius", "" + (String(v) + (" " + (String(h) + ""))));
 }
 
 function display(v) {
-  return /* tuple */[
-          "display",
-          v
-        ];
+  return prop("display", v);
 }
 
 function position(v) {
-  return /* tuple */[
-          "position",
-          v
-        ];
+  return prop("position", v);
 }
 
 function offsetTop(v) {
-  return /* tuple */[
-          "top",
-          v
-        ];
+  return prop("top", v);
 }
 
 function offsetRight(v) {
-  return /* tuple */[
-          "right",
-          v
-        ];
+  return prop("right", v);
 }
 
 function offsetBottom(v) {
-  return /* tuple */[
-          "bottom",
-          v
-        ];
+  return prop("bottom", v);
 }
 
 function offsetLeft(v) {
-  return /* tuple */[
-          "left",
-          v
-        ];
+  return prop("left", v);
 }
 
 function $$float(v) {
-  return /* tuple */[
-          "float",
-          v
-        ];
+  return prop("float", v);
 }
 
 function clear(v) {
-  return /* tuple */[
-          "clear",
-          v
-        ];
+  return prop("clear", v);
 }
 
 function zIndex(v) {
-  return /* tuple */[
-          "zIndex",
-          v
-        ];
+  return prop("zIndex", v);
 }
 
 function direction(v) {
-  return /* tuple */[
-          "direction",
-          v
-        ];
+  return prop("direction", v);
 }
 
 function unicodeBidi(v) {
-  return /* tuple */[
-          "unicodeBidi",
-          v
-        ];
+  return prop("unicodeBidi", v);
 }
 
 function width(v) {
-  return /* tuple */[
-          "width",
-          v
-        ];
+  return prop("width", v);
 }
 
 function minWidth(v) {
-  return /* tuple */[
-          "minWidth",
-          v
-        ];
+  return prop("minWidth", v);
 }
 
 function maxWidth(v) {
-  return /* tuple */[
-          "maxWidth",
-          v
-        ];
+  return prop("maxWidth", v);
 }
 
 function height(v) {
-  return /* tuple */[
-          "height",
-          v
-        ];
+  return prop("height", v);
 }
 
 function minHeight(v) {
-  return /* tuple */[
-          "minHeight",
-          v
-        ];
+  return prop("minHeight", v);
 }
 
 function maxHeight(v) {
-  return /* tuple */[
-          "maxHeight",
-          v
-        ];
+  return prop("maxHeight", v);
 }
 
 function lineHeight(v) {
-  return /* tuple */[
-          "lineHeight",
-          v
-        ];
+  return prop("lineHeight", v);
 }
 
 function verticalAlign(v) {
-  return /* tuple */[
-          "verticalAlign",
-          v
-        ];
+  return prop("verticalAlign", v);
 }
 
 function color(v) {
-  return /* tuple */[
-          "color",
-          v
-        ];
+  return prop("color", v);
 }
 
 function background(v) {
-  return /* tuple */[
-          "background",
-          v
-        ];
+  return prop("background", v);
 }
 
 function backgroundColor(v) {
-  return /* tuple */[
-          "backgroundColor",
-          v
-        ];
+  return prop("backgroundColor", v);
 }
 
 function backgroundImage(v) {
-  return /* tuple */[
-          "backgroundImage",
-          v
-        ];
+  return prop("backgroundImage", v);
 }
 
 function backgroundRepeat(v) {
-  return /* tuple */[
-          "backgroundRepeat",
-          v
-        ];
+  return prop("backgroundRepeat", v);
 }
 
 function backgroundAttachment(v) {
-  return /* tuple */[
-          "backgroundAttachment",
-          v
-        ];
+  return prop("backgroundAttachment", v);
 }
 
 function backgroundPosition(v) {
-  return /* tuple */[
-          "backgroundPosition",
-          v
-        ];
+  return prop("backgroundPosition", v);
 }
 
 function backgroundPosition2(h, v) {
-  return /* tuple */[
-          "backgroundPosition",
-          "" + (String(h) + (" " + (String(v) + "")))
-        ];
+  return prop("backgroundPosition", "" + (String(h) + (" " + (String(v) + ""))));
 }
 
 function fontFamily(v) {
-  return /* tuple */[
-          "fontFamily",
-          v
-        ];
+  return prop("fontFamily", v);
 }
 
 function fontFamilies(vs) {
-  return /* tuple */[
-          "fontFamily",
-          TypedGlamor__InternalHelpers.Values[/* join */0](List.map((function (prim) {
-                      return prim;
-                    }), vs))
-        ];
+  return prop("fontFamily", TypedGlamor__InternalHelpers.Values[/* join */0](List.map((function (prim) {
+                        return prim;
+                      }), vs)));
 }
 
 function fontStyle(v) {
-  return /* tuple */[
-          "fontStyle",
-          v
-        ];
+  return prop("fontStyle", v);
 }
 
 function fontVariant(v) {
-  return /* tuple */[
-          "fontVariant",
-          v
-        ];
+  return prop("fontVariant", v);
 }
 
 function fontWeight(v) {
-  return /* tuple */[
-          "fontWeight",
-          v
-        ];
+  return prop("fontWeight", v);
 }
 
 function fontSize(v) {
-  return /* tuple */[
-          "fontSize",
-          v
-        ];
+  return prop("fontSize", v);
 }
 
 function font(v) {
-  return /* tuple */[
-          "font",
-          v
-        ];
+  return prop("font", v);
 }
 
 function textIndent(v) {
-  return /* tuple */[
-          "textIndent",
-          v
-        ];
+  return prop("textIndent", v);
 }
 
 function textAlign(v) {
-  return /* tuple */[
-          "textAlign",
-          v
-        ];
+  return prop("textAlign", v);
 }
 
 function textDecoration(v) {
-  return /* tuple */[
-          "textDecoration",
-          v
-        ];
+  return prop("textDecoration", v);
 }
 
 function letterSpacing(v) {
-  return /* tuple */[
-          "letterSpacing",
-          v
-        ];
+  return prop("letterSpacing", v);
 }
 
 function wordSpacing(v) {
-  return /* tuple */[
-          "wrdSpacing",
-          v
-        ];
+  return prop("wrdSpacing", v);
 }
 
 function textTransform(v) {
-  return /* tuple */[
-          "textTransform",
-          v
-        ];
+  return prop("textTransform", v);
 }
 
 function whiteSpace(v) {
-  return /* tuple */[
-          "whiteSpace",
-          v
-        ];
+  return prop("whiteSpace", v);
 }
 
 function cursor(v) {
-  return /* tuple */[
-          "cursor",
-          v
-        ];
+  return prop("cursor", v);
 }
 
 function outline(value) {
-  return /* tuple */[
-          "outline",
-          value
-        ];
+  return prop("outline", value);
 }
 
 function outline2(width, color, style) {
@@ -927,122 +655,83 @@ function outline2(width, color, style) {
   } else {
     value = color ? "" + (String(style) + (" " + (String(color[0]) + ""))) : style;
   }
-  return /* tuple */[
-          "outline",
-          value
-        ];
+  return prop("outline", value);
 }
 
 function outline3(width, style, color) {
-  return /* tuple */[
-          "outline",
-          "" + (String(width) + (" " + (String(style) + (" " + (String(color) + "")))))
-        ];
+  return prop("outline", "" + (String(width) + (" " + (String(style) + (" " + (String(color) + ""))))));
 }
 
 function outlineWidth(v) {
-  return /* tuple */[
-          "outlineWidth",
-          v
-        ];
+  return prop("outlineWidth", v);
 }
 
 function outlineStyle(v) {
-  return /* tuple */[
-          "outlineStyle",
-          v
-        ];
+  return prop("outlineStyle", v);
 }
 
 function outlineColor(v) {
-  return /* tuple */[
-          "outlineColor",
-          v
-        ];
+  return prop("outlineColor", v);
 }
 
 function transitionProperty(v) {
-  return /* tuple */[
-          "transitionProperty",
-          v
-        ];
+  return prop("transitionProperty", v);
 }
 
 function transitionProperties(vs) {
   if (vs) {
-    return /* tuple */[
-            "transitionProperty",
-            TypedGlamor__InternalHelpers.Values[/* join */0](vs)
-          ];
+    return prop("transitionProperty", TypedGlamor__InternalHelpers.Values[/* join */0](vs));
   } else {
-    return /* tuple */[
-            "transitionProperty",
-            "none"
+    return /* :: */[
+            /* tuple */[
+              "transitionProperty",
+              "none"
+            ],
+            /* [] */0
           ];
   }
 }
 
 function transitionDuration(v) {
-  return /* tuple */[
-          "transitionDuration",
-          v
-        ];
+  return prop("transitionDuration", v);
 }
 
 function transitionDurations(vs) {
-  return /* tuple */[
-          "transitionDuration",
-          TypedGlamor__InternalHelpers.Values[/* join */0](vs)
-        ];
+  return prop("transitionDuration", TypedGlamor__InternalHelpers.Values[/* join */0](vs));
 }
 
 function transitionTimingFunction(v) {
-  return /* tuple */[
-          "transitionTimingFunction",
-          v
-        ];
+  return prop("transitionTimingFunction", v);
 }
 
 function transitionTimingFunctions(vs) {
-  return /* tuple */[
-          "transitionTimingFunction",
-          TypedGlamor__InternalHelpers.Values[/* join */0](vs)
-        ];
+  return prop("transitionTimingFunction", TypedGlamor__InternalHelpers.Values[/* join */0](vs));
 }
 
 function transitionDelay(v) {
-  return /* tuple */[
-          "transitionDelay",
-          v
-        ];
+  return prop("transitionDelay", v);
 }
 
 function transitionDelays(vs) {
-  return /* tuple */[
-          "transitionDelay",
-          TypedGlamor__InternalHelpers.Values[/* join */0](vs)
-        ];
+  return prop("transitionDelay", TypedGlamor__InternalHelpers.Values[/* join */0](vs));
 }
 
 function transition(v) {
-  return /* tuple */[
-          "transition",
-          v
-        ];
+  return prop("transition", v);
 }
 
 function transitions(vs) {
   if (vs) {
-    return /* tuple */[
-            "transition",
-            $$String.concat(", ", List.map((function (param) {
-                        return "" + (String(param[0]) + (" " + (String(param[1]) + (" " + (String(param[2]) + (" " + (String(param[3]) + "")))))));
-                      }), vs))
-          ];
+    return prop("transition", $$String.concat(", ", List.map((function (param) {
+                          return "" + (String(param[0]) + (" " + (String(param[1]) + (" " + (String(param[2]) + (" " + (String(param[3]) + "")))))));
+                        }), vs)));
   } else {
-    return /* tuple */[
-            "transition",
-            "none"
+    return /* :: */[
+            /* tuple */[
+              "transition",
+              "none"
+            ],
+            /* [] */0
           ];
   }
 }
@@ -1190,24 +879,28 @@ function valid(declarations) {
   return select(":valid", declarations);
 }
 
+var $$null = null;
+
+var unsafe = prop;
+
+function label(label$1) {
+  return prop("label", label$1);
+}
+
+var nothing = unsafe("nothing", $$null);
+
+function add(decls) {
+  return List.flatten(List.map((function (prim) {
+                    return prim;
+                  }), decls));
+}
+
 function css(declarations) {
   return Glamor.css(TypedGlamor__InternalHelpers.Declarations[/* toDict */0](declarations));
 }
 
-var $$null = null;
-
-function unsafe(property, value) {
-  return /* tuple */[
-          property,
-          value
-        ];
-}
-
-function label(label$1) {
-  return /* tuple */[
-          "label",
-          label$1
-        ];
+function toString(prim) {
+  return String(prim);
 }
 
 var Core = /* CssCore */[];
@@ -2203,6 +1896,7 @@ exports.transitionDelay           = transitionDelay;
 exports.transitionDelays          = transitionDelays;
 exports.transition                = transition;
 exports.transitions               = transitions;
+exports.$$null                    = $$null;
 exports.odd                       = odd;
 exports.even                      = even;
 exports.anplusb                   = anplusb;
@@ -2240,8 +1934,10 @@ exports.root                      = root;
 exports.scope                     = scope;
 exports.target                    = target;
 exports.valid                     = valid;
-exports.css                       = css;
-exports.$$null                    = $$null;
 exports.unsafe                    = unsafe;
 exports.label                     = label;
+exports.nothing                   = nothing;
+exports.add                       = add;
+exports.css                       = css;
+exports.toString                  = toString;
 /* null Not a pure module */
