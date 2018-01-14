@@ -753,6 +753,16 @@ let backgroundPosition = v =>
 let backgroundPosition2 = (~h, ~v) =>
   prop("backgroundPosition", {j|$h $v|j} |> Value.pack);
 
+let shadow = (~x, ~y, ~blur=Value.pack(""), ~spread=Value.pack(""), ~inset=false, color) => {
+  let inset   = inset ? "inset" : "";
+  {j|$inset $x $y $blur $spread $color|j} |> Value.pack
+};
+let boxShadow = v =>
+  prop("boxShadow", v);
+let boxShadows =
+  fun | [] => prop("boxShadow", "none" |> Value.pack)
+      | vs => prop("boxShadow", Values.join(vs));
+
 let fontFamily = v =>
   prop("fontFamily", v);
 let fontFamilies = vs =>

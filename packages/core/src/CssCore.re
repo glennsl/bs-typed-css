@@ -808,6 +808,15 @@ module type Properties = {
   let backgroundPosition2:  (~h: value([< `percentage | `length | `zero | `left | `center | `right]),
                              ~v: value([< `percentage | `length | `zero | `top | `center | `bottom])) => declaration;
 
+  let shadow: (~x:      value([< `length | `zero]),
+               ~y:      value([< `length | `zero]),
+               ~blur:   value([< `length | `zero])=?,
+               ~spread: value([< `length | `zero])=?,
+               ~inset:  bool=?,
+               value([< `color])) => value([`shadow]); /* TODO: move to values */
+  let boxShadow:            value([< `none | `universal]) => declaration;
+  let boxShadows:           list(value([`shadow])) => declaration;
+
 
   /**
    * Fonts

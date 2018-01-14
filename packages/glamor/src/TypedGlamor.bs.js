@@ -641,6 +641,32 @@ function backgroundPosition2(h, v) {
   return prop("backgroundPosition", "" + (String(h) + (" " + (String(v) + ""))));
 }
 
+function shadow(x, y, $staropt$star, $staropt$star$1, $staropt$star$2, color) {
+  var blur = $staropt$star ? $staropt$star[0] : "";
+  var spread = $staropt$star$1 ? $staropt$star$1[0] : "";
+  var inset = $staropt$star$2 ? $staropt$star$2[0] : /* false */0;
+  var inset$1 = inset !== 0 ? "inset" : "";
+  return "" + (String(inset$1) + (" " + (String(x) + (" " + (String(y) + (" " + (String(blur) + (" " + (String(spread) + (" " + (String(color) + "")))))))))));
+}
+
+function boxShadow(v) {
+  return prop("boxShadow", v);
+}
+
+function boxShadows(vs) {
+  if (vs) {
+    return prop("boxShadow", TypedGlamor__InternalHelpers.Values[/* join */0](vs));
+  } else {
+    return /* :: */[
+            /* tuple */[
+              "boxShadow",
+              "none"
+            ],
+            /* [] */0
+          ];
+  }
+}
+
 function fontFamily(v) {
   return prop("fontFamily", v);
 }
@@ -2088,6 +2114,9 @@ exports.backgroundRepeat          = backgroundRepeat;
 exports.backgroundAttachment      = backgroundAttachment;
 exports.backgroundPosition        = backgroundPosition;
 exports.backgroundPosition2       = backgroundPosition2;
+exports.shadow                    = shadow;
+exports.boxShadow                 = boxShadow;
+exports.boxShadows                = boxShadows;
 exports.fontFamily                = fontFamily;
 exports.fontFamilies              = fontFamilies;
 exports.fontStyle                 = fontStyle;
