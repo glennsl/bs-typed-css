@@ -905,7 +905,7 @@ module type Properties = {
   let flexFlow2:      (value([< `row | `rowReverse | `column | `columnReverse]),
                       value([< `nowrap | `wrap | `wrapReverse])) => declaration;
   let order:          int => declaration;
-  let flex_:          value([< `content | `auto | `none | `universal]) => declaration;
+  let flex_:          value([< `integer | `content | `auto | `none | `universal]) => declaration;
   let flex3:          (~grow:   float,
                        ~shrink: float,
                        value([< `content | `length | `zero | `percentage | `auto])) => declaration;
