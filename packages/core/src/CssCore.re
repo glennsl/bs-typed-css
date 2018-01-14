@@ -8,6 +8,7 @@ type declaration;
  /* values */
 type value('a) constraint 'a = [>];
 type universal      = value([`universal]);
+type zero           = value([`zero]);
 type length         = value([`length]);
 type percentage     = value([`percentage]);
 type angle          = value([`angle]);
@@ -18,11 +19,12 @@ type color          = value([`color]);
 type shape          = value([`shape]);
 type customIdent    = value([`customIdent]);
 type timingFunction = value([`timingFunction]);
+type transform      = value([`transform]);
 
 /* property-specific */
-type marginWidth              = [`length | `percentage | `auto];
-type paddingWidth             = [`length | `percentage];
-type lineWidth                = [`thin | `medium | `thick | `length];
+type marginWidth              = [`length | `zero | `percentage | `auto];
+type paddingWidth             = [`length | `zero | `percentage];
+type lineWidth                = [`thin | `medium | `thick | `length | `zero];
 type lineStyle                = [`none | `hidden | `dotted | `dashed | `solid | `double | `groove | `ridge | `inset | `outset];
 
 type singleTransitionProperty = [`customIdent];
@@ -67,7 +69,7 @@ module type Values = {
   let pt: float => length;
   let px: int => length;
 
-  let zero: length;
+  let zero: value([`zero]);
 
 
   /**
@@ -260,10 +262,10 @@ module type Values = {
   /**
    * Shape
    */
-  let rect: (~top:    value([< `length | `auto]),
-             ~right:  value([< `length | `auto]),
-             ~bottom: value([< `length | `auto]),
-             ~left:   value([< `length | `auto])) => shape;
+  let rect: (~top:    value([< `length | `zero | `auto]),
+             ~right:  value([< `length | `zero | `auto]),
+             ~bottom: value([< `length | `zero | `auto]),
+             ~left:   value([< `length | `zero | `auto])) => shape;
 
 
   /**
@@ -386,6 +388,7 @@ module type Values = {
     let zIndex: customIdent;
   };
 
+
   /**
    * Timing Function
    */
@@ -399,6 +402,23 @@ module type Values = {
   let stepEnd:      timingFunction;
   let steps:        (int, value([< `start | `end_])) => timingFunction;
   let frames:       int => timingFunction;
+
+
+  /**
+   * Transform
+   */
+  let matrix:     (float, float, float, float, float, float) => transform;
+  let translate:  (value([< `length | `zwro | `percentage]), value([< `length | `zero | `percentage])) => transform;
+  let translateX: value([< `length | `zero | `percentage]) => transform;
+  let translateY: value([< `length | `zero | `percentage]) => transform;
+  let scale:      (float, float) => transform;
+  let scaleX:     float => transform;
+  let scaleY:     float => transform;
+  let rotate:     value([< `angle | `zero]) => transform;
+  /*let skew -- deprecated*/
+  let skewX:      value([< `angle | `zero]) => transform;
+  let skewY:      value([< `angle | `zero]) => transform;
+
 
   /**
    * Ad-hoc values
@@ -603,6 +623,11 @@ module type Values = {
   /* outlineColor */
   let invert: value([`invert]);
 
+  /* transformBox */
+  let borderBox:  value([`borderBox]);
+  let fillBox:    value([`fillBox]);
+  let viewBox:    value([`viewBox]);
+
   /* flexDirection */
   let row:            value([`row]);
   let rowReverse:     value([`rowReverse]);
@@ -712,20 +737,20 @@ module type Properties = {
   let borderBottomColor:  value([< `color | `universal]) => declaration;
   let borderLeftColor:    value([< `color | `universal]) => declaration;
 
-  let borderRadius:             value([< `length | `percentage | `universal]) => declaration;
+  let borderRadius:             value([< `length | `zero | `percentage | `universal]) => declaration;
   /* TODO?: borderRadius2-4 */
-  let borderTopLeftRadius:      value([< `length | `percentage | `universal]) => declaration;
-  let borderTopLeftRadius2:     (~v:value([< `length | `percentage | `universal]),
-                                 ~h:value([< `length | `percentage | `universal])) => declaration;
-  let borderTopRightRadius:     value([< `length | `percentage | `universal]) => declaration;
-  let borderTopRightRadius2:    (~v:value([< `length | `percentage | `universal]),
-                                 ~h:value([< `length | `percentage | `universal])) => declaration;
-  let borderBottomRightRadius:  value([< `length | `percentage | `universal]) => declaration;
-  let borderBottomRightRadius2: (~v:value([< `length | `percentage | `universal]),
-                                 ~h:value([< `length | `percentage | `universal])) => declaration;
-  let borderBottomLeftRadius:   value([< `length | `percentage | `universal]) => declaration;
-  let borderBottomLeftRadius2:  (~v:value([< `length | `percentage | `universal]),
-                                 ~h:value([< `length | `percentage | `universal])) => declaration;
+  let borderTopLeftRadius:      value([< `length | `zero | `percentage | `universal]) => declaration;
+  let borderTopLeftRadius2:     (~v:value([< `length | `zero | `percentage | `universal]),
+                                 ~h:value([< `length | `zero | `percentage | `universal])) => declaration;
+  let borderTopRightRadius:     value([< `length | `zero | `percentage | `universal]) => declaration;
+  let borderTopRightRadius2:    (~v:value([< `length | `zero | `percentage | `universal]),
+                                 ~h:value([< `length | `zero | `percentage | `universal])) => declaration;
+  let borderBottomRightRadius:  value([< `length | `zero | `percentage | `universal]) => declaration;
+  let borderBottomRightRadius2: (~v:value([< `length | `zero | `percentage | `universal]),
+                                 ~h:value([< `length | `zero | `percentage | `universal])) => declaration;
+  let borderBottomLeftRadius:   value([< `length | `zero | `percentage | `universal]) => declaration;
+  let borderBottomLeftRadius2:  (~v:value([< `length | `zero | `percentage | `universal]),
+                                 ~h:value([< `length | `zero | `percentage | `universal])) => declaration;
 
 
   /**
@@ -737,24 +762,24 @@ module type Properties = {
                              | `tableColumn | `tableCell | `tableCaption | `none
                              | `flex | `inlineFlex | `universal]) => declaration;
   let position:       value([< `static | `relative | `absolute | `fixed | `universal]) => declaration;
-  let offsetTop:      value([< `length | `percentage | `auto | `universal]) => declaration;
-  let offsetRight:    value([< `length | `percentage | `auto | `universal]) => declaration;
-  let offsetBottom:   value([< `length | `percentage | `auto | `universal]) => declaration;
-  let offsetLeft:     value([< `length | `percentage | `auto | `universal]) => declaration;
+  let offsetTop:      value([< `length | `zero | `percentage | `auto | `universal]) => declaration;
+  let offsetRight:    value([< `length | `zero | `percentage | `auto | `universal]) => declaration;
+  let offsetBottom:   value([< `length | `zero | `percentage | `auto | `universal]) => declaration;
+  let offsetLeft:     value([< `length | `zero | `percentage | `auto | `universal]) => declaration;
   let float:          value([< `left | `right | `none | `universal]) => declaration;
   let clear:          value([< `none | `left | `right | `both | `universal]) => declaration;
   let zIndex:         value([< `auto | `integer | `universal]) => declaration;
   let direction:      value([< `ltr | `rtl | `universal]) => declaration;
   let unicodeBidi:    value([< `normal | `embed | `bidiOverride | `universal]) => declaration;
-  let width:          value([< `length | `percentage | `auto | `universal]) => declaration;
-  let minWidth:       value([< `length | `percentage | `universal]) => declaration;
-  let maxWidth:       value([< `length | `percentage | `none | `universal]) => declaration;
-  let height:         value([< `length | `percentage | `auto | `universal]) => declaration;
-  let minHeight:      value([< `length | `percentage | `universal]) => declaration;
-  let maxHeight:      value([< `length | `percentage | `none | `universal]) => declaration;
-  let lineHeight:     value([< `normal | `number | `length | `percentage | `universal]) => declaration; /* TODO? move to fonts */
+  let width:          value([< `length | `zero | `percentage | `auto | `universal]) => declaration;
+  let minWidth:       value([< `length | `zero | `percentage | `universal]) => declaration;
+  let maxWidth:       value([< `length | `zero | `percentage | `none | `universal]) => declaration;
+  let height:         value([< `length | `zero | `percentage | `auto | `universal]) => declaration;
+  let minHeight:      value([< `length | `zero | `percentage | `universal]) => declaration;
+  let maxHeight:      value([< `length | `zero | `percentage | `none | `universal]) => declaration;
+  let lineHeight:     value([< `normal | `number | `length | `zero | `percentage | `universal]) => declaration; /* TODO? move to fonts */
   let verticalAlign:  value([< `baseline | `sub | `super | `top | `textTop | `middle
-                             | `bottom | `textBottom | `percentage | `length | `universal]) => declaration;
+                             | `bottom | `textBottom | `percentage | `length | `zero | `universal]) => declaration;
 
 
   /**
@@ -780,8 +805,8 @@ module type Properties = {
   let backgroundRepeat:     value([< `repeat | `repeatX | `repeatY | `noRepeat | `universal]) => declaration;
   let backgroundAttachment: value([< `scroll | `fixed | `universal]) => declaration;
   let backgroundPosition:   value([< `universal]) => declaration;
-  let backgroundPosition2:  (~h: value([< `percentage | `length | `left | `center | `right]),
-                             ~v: value([< `percentage | `length | `top | `center | `bottom])) => declaration;
+  let backgroundPosition2:  (~h: value([< `percentage | `length | `zero | `left | `center | `right]),
+                             ~v: value([< `percentage | `length | `zero | `top | `center | `bottom])) => declaration;
 
 
   /**
@@ -805,11 +830,11 @@ module type Properties = {
   /**
    * Text
    */
-  let textIndent:     value([< `length | `percentage | `universal]) => declaration;
+  let textIndent:     value([< `length | `zero | `percentage | `universal]) => declaration;
   let textAlign:      value([< `left | `right | `center | `justify | `universal]) => declaration;
   let textDecoration: value([< `none | `underline | `overline | `lineThrough | `blink | `universal]) => declaration;
-  let letterSpacing:  value([< `normal | `length | `universal]) => declaration;
-  let wordSpacing:    value([< `normal | `length | `universal]) => declaration;
+  let letterSpacing:  value([< `normal | `length | `zero | `universal]) => declaration;
+  let wordSpacing:    value([< `normal | `length | `zero | `universal]) => declaration;
   let textTransform:  value([< `capitalize | `uppercase | `lowercase | `none | `universal]) => declaration;
   let whiteSpace:     value([< `normal | `pre | `nowrap | `preWrap | `preLine | `universal]) => declaration;
 
@@ -860,6 +885,17 @@ module type Properties = {
 
 
   /**
+   * Transforms
+   */
+  let transform:            value([< `none | `universal]) => declaration;
+  let transforms:           list(value([`transform])) => declaration;
+  let transformOrigin:      value([< `universal]) => declaration;
+  let transformOrigin2:     (~h: value([< `percentage | `length | `zero | `left | `center | `right]),
+                             ~v: value([< `percentage | `length | `zero | `top | `center | `bottom])) => declaration;
+  let transformBox:         value([< `borderBox | `fillBox | `viewBox | `universal]) => declaration;
+
+
+  /**
    * Flexible Box Layout Model
    */
   let flexDirection:  value([< `row | `rowReverse | `column | `columnReverse | `universal]) => declaration;
@@ -872,7 +908,7 @@ module type Properties = {
   let flex_:          value([< `content | `auto | `none | `universal]) => declaration;
   let flex3:          (~grow:   float,
                        ~shrink: float,
-                       value([< `content | `length | `percentage | `auto])) => declaration;
+                       value([< `content | `length | `zero | `percentage | `auto])) => declaration;
   let flexGrow:       float => declaration;
   let flexShrink:     float => declaration;
   let flexBasis:      value([< `content | `length | `percentage | `auto | `universal]) => declaration;

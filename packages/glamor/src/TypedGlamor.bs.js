@@ -260,6 +260,46 @@ function frames(n) {
   return "frames(" + (String(n) + ")");
 }
 
+function matrix(a, b, c, d, tx, ty) {
+  return "matrix(" + (String(a) + (", " + (String(b) + (", " + (String(c) + (", " + (String(d) + (", " + (String(tx) + (", " + (String(ty) + ")")))))))))));
+}
+
+function translate(x, y) {
+  return "translate(" + (String(x) + (", " + (String(y) + ")")));
+}
+
+function translateX(v) {
+  return "translateX(" + (String(v) + ")");
+}
+
+function translateY(v) {
+  return "translateY(" + (String(v) + ")");
+}
+
+function scale(x, y) {
+  return "scale(" + (String(x) + (", " + (String(y) + ")")));
+}
+
+function scaleX(v) {
+  return "scaleX(" + (String(v) + ")");
+}
+
+function scaleY(v) {
+  return "scaleY(" + (String(v) + ")");
+}
+
+function rotate(v) {
+  return "rotate(" + (String(v) + ")");
+}
+
+function skewX(v) {
+  return "skewX(" + (String(v) + ")");
+}
+
+function skewY(v) {
+  return "skewY(" + (String(v) + ")");
+}
+
 var $$int = Pervasives.string_of_int;
 
 function num(f) {
@@ -754,6 +794,38 @@ function transitions(vs) {
             /* [] */0
           ];
   }
+}
+
+function transform(v) {
+  return prop("transform", v);
+}
+
+function transforms(vs) {
+  if (vs) {
+    return prop("transform", $$String.concat(", ", List.map((function (prim) {
+                          return prim;
+                        }), vs)));
+  } else {
+    return /* :: */[
+            /* tuple */[
+              "transform",
+              "none"
+            ],
+            /* [] */0
+          ];
+  }
+}
+
+function transformOrigin(v) {
+  return prop("transformOrigin", v);
+}
+
+function transformOrigin2(h, v) {
+  return prop("transformOrigin", "" + (String(h) + (" " + (String(v) + ""))));
+}
+
+function transformBox(v) {
+  return prop("transformBox", v);
 }
 
 function flexDirection(v) {
@@ -1552,6 +1624,12 @@ var progress = "progress";
 
 var invert = "invert";
 
+var borderBox = "border-box";
+
+var fillBox = "fill-box";
+
+var viewBox = "view-box";
+
 var row = "row";
 
 var rowReverse = "row-reverse";
@@ -1775,6 +1853,16 @@ exports.stepStart                 = stepStart;
 exports.stepEnd                   = stepEnd;
 exports.steps                     = steps;
 exports.frames                    = frames;
+exports.matrix                    = matrix;
+exports.translate                 = translate;
+exports.translateX                = translateX;
+exports.translateY                = translateY;
+exports.scale                     = scale;
+exports.scaleX                    = scaleX;
+exports.scaleY                    = scaleY;
+exports.rotate                    = rotate;
+exports.skewX                     = skewX;
+exports.skewY                     = skewY;
 exports.none                      = none;
 exports.auto                      = auto;
 exports.thin                      = thin;
@@ -1901,6 +1989,9 @@ exports.wait                      = wait;
 exports.help                      = help;
 exports.progress                  = progress;
 exports.invert                    = invert;
+exports.borderBox                 = borderBox;
+exports.fillBox                   = fillBox;
+exports.viewBox                   = viewBox;
 exports.row                       = row;
 exports.rowReverse                = rowReverse;
 exports.column                    = column;
@@ -2028,6 +2119,11 @@ exports.transitionDelay           = transitionDelay;
 exports.transitionDelays          = transitionDelays;
 exports.transition                = transition;
 exports.transitions               = transitions;
+exports.transform                 = transform;
+exports.transforms                = transforms;
+exports.transformOrigin           = transformOrigin;
+exports.transformOrigin2          = transformOrigin2;
+exports.transformBox              = transformBox;
 exports.flexDirection             = flexDirection;
 exports.flexWrap                  = flexWrap;
 exports.flexFlow                  = flexFlow;

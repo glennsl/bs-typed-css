@@ -348,6 +348,29 @@ let steps = (n, pos) =>
 let frames = n =>
   {j|frames($n)|j} |> Value.pack;
 
+/* Transform */
+let matrix = (a, b, c, d, tx, ty) =>
+  {j|matrix($a, $b, $c, $d, $tx, $ty)|j} |> Value.pack;
+let translate = (x, y) =>
+  {j|translate($x, $y)|j} |> Value.pack;
+let translateX = v =>
+  {j|translateX($v)|j} |> Value.pack;
+let translateY = v =>
+  {j|translateY($v)|j} |> Value.pack;
+let scale = (x, y) =>
+  {j|scale($x, $y)|j} |> Value.pack;
+let scaleX = v =>
+  {j|scaleX($v)|j} |> Value.pack;
+let scaleY = v =>
+  {j|scaleY($v)|j} |> Value.pack;
+let rotate = v =>
+  {j|rotate($v)|j} |> Value.pack;
+let skewX = v =>
+  {j|skewX($v)|j} |> Value.pack;
+let skewY = v =>
+  {j|skewY($v)|j} |> Value.pack;
+
+
 /* ad-hoc */
 let none = "none" |> Value.pack;
 let auto = "auto" |> Value.pack;
@@ -513,6 +536,11 @@ let progress = "progress" |> Value.pack;
 
 /* outlineColor */
 let invert = "invert" |> Value.pack;
+
+/* transformBox */
+let borderBox = "border-box" |> Value.pack;
+let fillBox = "fill-box" |> Value.pack;
+let viewBox = "view-box" |> Value.pack;
 
 /* flexDirection */
 let row = "row" |> Value.pack;
@@ -800,6 +828,18 @@ let transition = v =>
 let transitions =
   fun | [] => prop("transition", "none" |> Value.pack)
       | vs => prop("transition", vs |> List.map(((prop, dur, fn, delay)) => {j|$prop $dur $fn $delay|j}) |> String.concat(", ") |> Value.pack);
+
+let transform = v =>
+  prop("transform", v);
+let transforms =
+  fun | [] => prop("transform", "none" |> Value.pack)
+      | vs => prop("transform", vs |> List.map(Value.unpack) |> String.concat(", ") |> Value.pack);
+let transformOrigin = v =>
+  prop("transformOrigin", v);
+let transformOrigin2 = (~h, ~v) =>
+  prop("transformOrigin", {j|$h $v|j} |> Value.pack);
+let transformBox = v =>
+  prop("transformBox", v);
 
 let flexDirection = v =>
   prop("flexDirection", v);
