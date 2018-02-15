@@ -949,8 +949,20 @@ let add = decls =>
         |> List.flatten
         |> Declaration.pack;
 
-[@bs.module "glamor"] external css : Js.Dict.t(value(_)) => declarationBlock = "";
-let css = declarations =>
-  declarations |> Declarations.toDict |> css;
+
+[@bs.module "glamor"] [@bs.splice]
+external merge : array(declarationBlock) => declarationBlock = "";
+
+[@bs.module "glamor"]
+external css : Js.Dict.t(value(_)) => declarationBlock = "";
+let css = (~extend=?, declarations) => {
+  let this = declarations |> Declarations.toDict;
+
+  switch extend {
+  | Some(style) => merge([|style, css(this)|])
+  | None => css(this)
+  }
+};
+
 
 let toString = Js.String.make;

@@ -57,5 +57,5 @@ let label: string => declaration;
 let nothing: declaration;
 let add: list(declaration) => declaration;
 
-let css: list(declaration) => declarationBlock;
+let css: (~extend: declarationBlock=?, list(declaration)) => declarationBlock;
 let toString: declarationBlock => string;

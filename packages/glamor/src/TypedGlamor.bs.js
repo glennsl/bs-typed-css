@@ -1071,8 +1071,14 @@ function add(decls) {
                   }), decls));
 }
 
-function css(declarations) {
-  return Glamor.css(TypedGlamor__InternalHelpers.Declarations[/* toDict */0](declarations));
+function css(extend, declarations) {
+  var $$this = TypedGlamor__InternalHelpers.Declarations[/* toDict */0](declarations);
+  if (extend) {
+    return Glamor.merge(extend[0], Glamor.css($$this));
+  } else {
+    return Glamor.css($$this);
+  }
+}
 }
 
 function toString(prim) {
