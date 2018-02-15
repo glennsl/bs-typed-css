@@ -58,4 +58,6 @@ let nothing: declaration;
 let add: list(declaration) => declaration;
 
 let css: (~extend: declarationBlock=?, list(declaration)) => declarationBlock;
+let global: (string, list(declaration)) => unit;
+
 let toString: declarationBlock => string;

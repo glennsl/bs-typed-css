@@ -964,5 +964,9 @@ let css = (~extend=?, declarations) => {
   }
 };
 
+[@bs.module "glamor"] [@bs.scope "css"]
+external global : (string, Js.Dict.t(value(_))) => unit = "";
+let global = (selector, declarations) =>
+  global(selector, declarations |> Declarations.toDict);
 
 let toString = Js.String.make;

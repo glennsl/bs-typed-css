@@ -1079,6 +1079,10 @@ function css(extend, declarations) {
     return Glamor.css($$this);
   }
 }
+
+function $$global(selector, declarations) {
+  Glamor.css.global(selector, TypedGlamor__InternalHelpers.Declarations[/* toDict */0](declarations));
+  return /* () */0;
 }
 
 function toString(prim) {
@@ -2215,5 +2219,6 @@ exports.label = label;
 exports.nothing = nothing;
 exports.add = add;
 exports.css = css;
+exports.$$global = $$global;
 exports.toString = toString;
 /* nothing Not a pure module */
