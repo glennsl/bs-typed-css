@@ -56,7 +56,7 @@ describe("color", () => {
   testValue( rgba(0xff, 0, 0x80, 0.5), "rgba(255, 0, 128, 0.5)");
   testValue( hsl(turn(0.5), 50, 100), "hsl(0.5turn, 50%, 100%)");
   testValue( hsla(turn(0.5), 50, 100, 0.5), "hsla(0.5turn, 50%, 100%, 0.5)");
-  testValue( hex(0xf8a), "#f8a");
+  testValue( hex("f8a"), "#f8a");
 
   testValue( currentColor, "currentColor");
   testValue( transparent,  "transparent");

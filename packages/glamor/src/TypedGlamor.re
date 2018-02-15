@@ -61,7 +61,7 @@ let rgba = (r, g, b, a) => {j|rgba($r, $g, $b, $a)|j} |> Value.pack;
 let hsl = (h, s, l) => {j|hsl($h, $s%, $l%)|j} |> Value.pack;
 
 let hsla = (h, s, l, a) => {j|hsla($h, $s%, $l%, $a)|j} |> Value.pack;
-let hex = value => "#" ++ Js.Int.toStringWithRadix(~radix=16, value) |> Value.pack;
+let hex = value => "#" ++ value |> Value.pack;
 
 let currentColor = "currentColor" |> Value.pack;
 let transparent = "transparent" |> Value.pack;

@@ -53,7 +53,7 @@ describe("color", (function () {
         TestHelpers.testValue(TypedGlamor.rgba(255, 0, 128, 0.5), "rgba(255, 0, 128, 0.5)");
         TestHelpers.testValue(TypedGlamor.hsl(TypedGlamor.turn(0.5), 50, 100), "hsl(0.5turn, 50%, 100%)");
         TestHelpers.testValue(TypedGlamor.hsla(TypedGlamor.turn(0.5), 50, 100, 0.5), "hsla(0.5turn, 50%, 100%, 0.5)");
-        TestHelpers.testValue(TypedGlamor.hex(3978), "#f8a");
+        TestHelpers.testValue(TypedGlamor.hex("f8a"), "#f8a");
         TestHelpers.testValue(TypedGlamor.currentColor, "currentColor");
         return TestHelpers.testValue(TypedGlamor.transparent, "transparent");
       }));

@@ -125,7 +125,7 @@ function hsla(h, s, l, a) {
 }
 
 function hex(value) {
-  return "#" + value.toString(16);
+  return "#" + value;
 }
 
 function rect(top, right, bottom, left) {

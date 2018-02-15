@@ -105,7 +105,7 @@ module type Values = {
   let rgba: (int, int, int, float) => color;
   let hsl:  (angle, int, int) => color; /* TODO: use percentage instead of int? */
   let hsla: (angle, int, int, float) => color; /* TODO: use percentage instead of int? */
-  let hex:  int => color; /* TODO: string or int? */
+  let hex:  string => color;
 
   let currentColor: color;
   let transparent: color;
