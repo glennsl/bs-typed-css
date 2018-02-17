@@ -20,8 +20,8 @@
     "typed-css-core": "../core"
   },
   "devDependencies": {
-    "bs-platform": "^2.1.0",
-    "@glennsl/bs-jest": "^0.3.2"
+    "@glennsl/bs-jest": "^0.4.2",
+    "bs-platform": "^2.2.1"
   },
   "jest": {
     "testMatch": [
