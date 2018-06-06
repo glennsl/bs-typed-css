@@ -3,9 +3,7 @@ open Core;
 
 include TypedGlamor__InternalHelpers;
 
-let prop = name =>
-  value => [(name, value)] |> Declaration.pack;
-
+let prop = (name, value) => [(name, value)] |> Declaration.pack;
 
 /*********
  * Values
@@ -343,33 +341,21 @@ let cubicBezier = ((x1, y1), (x2, y2)) =>
   {j|cubic-bezier($x1, $y1, $x2, $y2)|j} |> Value.pack;
 let stepStart = "step-start" |> Value.pack;
 let stepEnd = "step-end" |> Value.pack;
-let steps = (n, pos) =>
-  {j|steps($n, $pos)|j} |> Value.pack;
-let frames = n =>
-  {j|frames($n)|j} |> Value.pack;
+let steps = (n, pos) => {j|steps($n, $pos)|j} |> Value.pack;
+let frames = n => {j|frames($n)|j} |> Value.pack;
 
 /* Transform */
 let matrix = (a, b, c, d, tx, ty) =>
   {j|matrix($a, $b, $c, $d, $tx, $ty)|j} |> Value.pack;
-let translate = (x, y) =>
-  {j|translate($x, $y)|j} |> Value.pack;
-let translateX = v =>
-  {j|translateX($v)|j} |> Value.pack;
-let translateY = v =>
-  {j|translateY($v)|j} |> Value.pack;
-let scale = (x, y) =>
-  {j|scale($x, $y)|j} |> Value.pack;
-let scaleX = v =>
-  {j|scaleX($v)|j} |> Value.pack;
-let scaleY = v =>
-  {j|scaleY($v)|j} |> Value.pack;
-let rotate = v =>
-  {j|rotate($v)|j} |> Value.pack;
-let skewX = v =>
-  {j|skewX($v)|j} |> Value.pack;
-let skewY = v =>
-  {j|skewY($v)|j} |> Value.pack;
-
+let translate = (x, y) => {j|translate($x, $y)|j} |> Value.pack;
+let translateX = v => {j|translateX($v)|j} |> Value.pack;
+let translateY = v => {j|translateY($v)|j} |> Value.pack;
+let scale = (x, y) => {j|scale($x, $y)|j} |> Value.pack;
+let scaleX = v => {j|scaleX($v)|j} |> Value.pack;
+let scaleY = v => {j|scaleY($v)|j} |> Value.pack;
+let rotate = v => {j|rotate($v)|j} |> Value.pack;
+let skewX = v => {j|skewX($v)|j} |> Value.pack;
+let skewY = v => {j|skewY($v)|j} |> Value.pack;
 
 /* ad-hoc */
 let none = "none" |> Value.pack;
@@ -404,7 +390,7 @@ let tableColumn = "table-column" |> Value.pack;
 let tableCell = "table-cell" |> Value.pack;
 let tableCaption = "table-caption" |> Value.pack;
 let flex = "flex" |> Value.pack;
-let inlineFlex = "inlineFlex" |> Value.pack;
+let inlineFlex = "inline-flex" |> Value.pack;
 
 let static = "static" |> Value.pack;
 let relative = "relative" |> Value.pack;
@@ -560,395 +546,305 @@ let flexStart = "flex-start" |> Value.pack;
 let flexEnd = "flex-end" |> Value.pack;
 let spaceBetween = "space-between" |> Value.pack;
 let spaceAround = "space-around" |> Value.pack;
+let spaceEvenly = "space-evenly" |> Value.pack;
 
 /* alignitems */
 let stretch = "stretch" |> Value.pack;
-
 
 /* primitives */
 let int = n => string_of_int(n) |> Value.pack;
 let num = f => Js.String.make(f) |> Value.pack;
 
-
 /*********
  * Properties
  */
-let margin = value =>
-  prop("margin", value);
-let margin2 = (~v, ~h) =>
-  prop("margin", {j|$v $h|j} |> Value.pack);
+let margin = value => prop("margin", value);
+let margin2 = (~v, ~h) => prop("margin", {j|$v $h|j} |> Value.pack);
 let margin3 = (~top, ~h, ~bottom) =>
   prop("margin", {j|$top $h $bottom|j} |> Value.pack);
 let margin4 = (~top, ~right, ~bottom, ~left) =>
   prop("margin", {j|$top $right $bottom $left|j} |> Value.pack);
-let marginTop = value =>
-  prop("marginTop", value);
-let marginRight = value =>
-  prop("marginRight", value);
-let marginBottom = value =>
-  prop("marginBottom", value);
-let marginLeft = value =>
-  prop("marginLeft", value);
+let marginTop = value => prop("marginTop", value);
+let marginRight = value => prop("marginRight", value);
+let marginBottom = value => prop("marginBottom", value);
+let marginLeft = value => prop("marginLeft", value);
 
-
-let padding = value =>
-  prop("padding", value);
-let padding2 = (~v, ~h) =>
-  prop("padding", {j|$v $h|j} |> Value.pack);
+let padding = value => prop("padding", value);
+let padding2 = (~v, ~h) => prop("padding", {j|$v $h|j} |> Value.pack);
 let padding3 = (~top, ~h, ~bottom) =>
   prop("padding", {j|$top $h $bottom|j} |> Value.pack);
 let padding4 = (~top, ~right, ~bottom, ~left) =>
   prop("padding", {j|$top $right $bottom $left|j} |> Value.pack);
-let paddingTop = value =>
-  prop("paddingTop", value);
-let paddingRight = value =>
-  prop("paddingRight", value);
-let paddingBottom = value =>
-  prop("paddingBottom", value);
-let paddingLeft = value =>
-  prop("paddingLeft", value);
+let paddingTop = value => prop("paddingTop", value);
+let paddingRight = value => prop("paddingRight", value);
+let paddingBottom = value => prop("paddingBottom", value);
+let paddingLeft = value => prop("paddingLeft", value);
 
-let border = value =>
-  prop("border", value);
+let border = value => prop("border", value);
 let border2 = (~width=?, ~color=?, style) => {
   let value =
-    switch ((width, color)) {
-    | (Some(w), Some(c))  => {j|$w $style $c|j}
-    | (Some(w), None)     => {j|$w $style|j}
-    | (None, Some(c))     => {j|$style $c|j}
-    | (None, None)        => Value.unpack(style)
+    switch (width, color) {
+    | (Some(w), Some(c)) => {j|$w $style $c|j}
+    | (Some(w), None) => {j|$w $style|j}
+    | (None, Some(c)) => {j|$style $c|j}
+    | (None, None) => Value.unpack(style)
     };
-  prop("border", value |> Value.pack)
+  prop("border", value |> Value.pack);
 };
 let border3 = (width, style, color) =>
   prop("border", {j|$width $style $color|j} |> Value.pack);
-let borderTop = value =>
-  prop("borderTop", value);
+let borderTop = value => prop("borderTop", value);
 let borderTop3 = (width, style, color) =>
   prop("borderTop", {j|$width $style $color|j} |> Value.pack);
-let borderRight = value =>
-  prop("borderRight", value);
+let borderRight = value => prop("borderRight", value);
 let borderRight3 = (width, style, color) =>
   prop("borderRight", {j|$width $style $color|j} |> Value.pack);
-let borderBottom = value =>
-  prop("borderBottom", value);
+let borderBottom = value => prop("borderBottom", value);
 let borderBottom3 = (width, style, color) =>
   prop("borderBottom", {j|$width $style $color|j} |> Value.pack);
-let borderLeft = value =>
-  prop("borderLeft", value);
+let borderLeft = value => prop("borderLeft", value);
 let borderLeft3 = (width, style, color) =>
   prop("borderLeft", {j|$width $style $color|j} |> Value.pack);
-let borderWidth = value =>
-  prop("borderWidth", value);
-let borderTopWidth = value =>
-  prop("borderTopWidth", value);
-let borderRightWidth = value =>
-  prop("borderRightWidth", value);
-let borderBottomWidth = value =>
-  prop("borderBottomWidth", value);
-let borderLeftWidth = value =>
-  prop("borderLeftWidth", value);
-let borderStyle = value =>
-  prop("borderStyle", value);
-let borderTopStyle = value =>
-  prop("borderTopStyle", value);
-let borderRightStyle = value =>
-  prop("borderRightStyle", value);
-let borderBottomStyle = value =>
-  prop("borderBottomStyle", value);
-let borderLeftStyle = value =>
-  prop("borderLeftStyle", value);
-let borderColor = value =>
-  prop("borderColor", value);
-let borderTopColor = value =>
-  prop("borderTopColor", value);
-let borderRightColor = value =>
-  prop("borderRightColor", value);
-let borderBottomColor = value =>
-  prop("borderBottomColor", value);
-let borderLeftColor = value =>
-  prop("borderLeftColor", value);
+let borderWidth = value => prop("borderWidth", value);
+let borderTopWidth = value => prop("borderTopWidth", value);
+let borderRightWidth = value => prop("borderRightWidth", value);
+let borderBottomWidth = value => prop("borderBottomWidth", value);
+let borderLeftWidth = value => prop("borderLeftWidth", value);
+let borderStyle = value => prop("borderStyle", value);
+let borderTopStyle = value => prop("borderTopStyle", value);
+let borderRightStyle = value => prop("borderRightStyle", value);
+let borderBottomStyle = value => prop("borderBottomStyle", value);
+let borderLeftStyle = value => prop("borderLeftStyle", value);
+let borderColor = value => prop("borderColor", value);
+let borderTopColor = value => prop("borderTopColor", value);
+let borderRightColor = value => prop("borderRightColor", value);
+let borderBottomColor = value => prop("borderBottomColor", value);
+let borderLeftColor = value => prop("borderLeftColor", value);
 
-let borderRadius = value =>
-  prop("borderRadius", value);
-let borderTopRightRadius = value =>
-  prop("borderTopRightRadius", value);
+let borderRadius = value => prop("borderRadius", value);
+let borderTopRightRadius = value => prop("borderTopRightRadius", value);
 let borderTopRightRadius2 = (~v, ~h) =>
   prop("borderTopRightRadius", {j|$v $h|j} |> Value.pack);
-let borderTopLeftRadius = value =>
-  prop("borderTopLeftRadius", value);
+let borderTopLeftRadius = value => prop("borderTopLeftRadius", value);
 let borderTopLeftRadius2 = (~v, ~h) =>
   prop("borderTopLeftRadius", {j|$v $h|j} |> Value.pack);
-let borderBottomRightRadius = value =>
-  prop("borderBottomRightRadius", value);
+let borderBottomRightRadius = value => prop("borderBottomRightRadius", value);
 let borderBottomRightRadius2 = (~v, ~h) =>
   prop("borderBottomRightRadius", {j|$v $h|j} |> Value.pack);
-let borderBottomLeftRadius = value =>
-  prop("borderBottomLeftRadius", value);
+let borderBottomLeftRadius = value => prop("borderBottomLeftRadius", value);
 let borderBottomLeftRadius2 = (~v, ~h) =>
   prop("borderBottomLeftRadius", {j|$v $h|j} |> Value.pack);
 
-let display = v =>
-  prop("display", v);
-let position = v =>
-  prop("position", v);
-let offsetTop = v =>
-  prop("top", v);
-let offsetRight = v =>
-  prop("right", v);
-let offsetBottom = v =>
-  prop("bottom", v);
-let offsetLeft = v =>
-  prop("left", v);
-let float = v =>
-  prop("float", v);
-let clear = v =>
-  prop("clear", v);
-let zIndex = v =>
-  prop("zIndex", v);
-let direction = v =>
-  prop("direction", v);
-let unicodeBidi = v =>
-  prop("unicodeBidi", v);
-let width = v =>
-  prop("width", v);
-let minWidth = v =>
-  prop("minWidth", v);
-let maxWidth = v =>
-  prop("maxWidth", v);
-let height = v =>
-  prop("height", v);
-let minHeight = v =>
-  prop("minHeight", v);
-let maxHeight = v =>
-  prop("maxHeight", v);
-let lineHeight = v =>
-  prop("lineHeight", v);
-let verticalAlign = v =>
-  prop("verticalAlign", v);
+let display = v => prop("display", v);
+let position = v => prop("position", v);
+let offsetTop = v => prop("top", v);
+let offsetRight = v => prop("right", v);
+let offsetBottom = v => prop("bottom", v);
+let offsetLeft = v => prop("left", v);
+let float = v => prop("float", v);
+let clear = v => prop("clear", v);
+let zIndex = v => prop("zIndex", v);
+let direction = v => prop("direction", v);
+let unicodeBidi = v => prop("unicodeBidi", v);
+let width = v => prop("width", v);
+let minWidth = v => prop("minWidth", v);
+let maxWidth = v => prop("maxWidth", v);
+let height = v => prop("height", v);
+let minHeight = v => prop("minHeight", v);
+let maxHeight = v => prop("maxHeight", v);
+let lineHeight = v => prop("lineHeight", v);
+let verticalAlign = v => prop("verticalAlign", v);
 
-let overflow = v =>
-  prop("overflow", v);
-let clip = v =>
-  prop("clip", v);
-let visibility = v =>
-  prop("visibility", v);
+let overflow = v => prop("overflow", v);
+let clip = v => prop("clip", v);
+let visibility = v => prop("visibility", v);
 
-let color = v =>
-  prop("color", v);
-let opacity = v =>
-  prop("opacity", num(v));
-let background = v =>
-  prop("background", v);
-let backgroundColor = v =>
-  prop("backgroundColor", v);
-let backgroundImage = v =>
-  prop("backgroundImage", v);
-let backgroundRepeat = v =>
-  prop("backgroundRepeat", v);
-let backgroundAttachment = v =>
-  prop("backgroundAttachment", v);
-let backgroundPosition = v =>
-  prop("backgroundPosition", v);
+let color = v => prop("color", v);
+let opacity = v => prop("opacity", num(v));
+let background = v => prop("background", v);
+let backgroundColor = v => prop("backgroundColor", v);
+let backgroundImage = v => prop("backgroundImage", v);
+let backgroundRepeat = v => prop("backgroundRepeat", v);
+let backgroundAttachment = v => prop("backgroundAttachment", v);
+let backgroundPosition = v => prop("backgroundPosition", v);
 let backgroundPosition2 = (~h, ~v) =>
   prop("backgroundPosition", {j|$h $v|j} |> Value.pack);
 
-let shadow = (~x, ~y, ~blur=Value.pack(""), ~spread=Value.pack(""), ~inset=false, color) => {
-  let inset   = inset ? "inset" : "";
-  {j|$inset $x $y $blur $spread $color|j} |> Value.pack
+let shadow =
+    (
+      ~x,
+      ~y,
+      ~blur=Value.pack(""),
+      ~spread=Value.pack(""),
+      ~inset=false,
+      color
+    ) => {
+  let inset = inset ? "inset" : "";
+  {j|$inset $x $y $blur $spread $color|j} |> Value.pack;
 };
-let boxShadow = v =>
-  prop("boxShadow", v);
+let boxShadow = v => prop("boxShadow", v);
 let boxShadows =
-  fun | [] => prop("boxShadow", "none" |> Value.pack)
-      | vs => prop("boxShadow", Values.join(vs));
+  fun
+  | [] => prop("boxShadow", "none" |> Value.pack)
+  | vs => prop("boxShadow", Values.join(vs));
 
-let fontFamily = v =>
-  prop("fontFamily", v);
+let fontFamily = v => prop("fontFamily", v);
 let fontFamilies = vs =>
   prop("fontFamily", vs |> List.map(Value.pack) |> Values.join);
-let fontStyle = v =>
-  prop("fontStyle", v);
-let fontVariant = v =>
-  prop("fontVariant", v);
-let fontWeight = v =>
-  prop("fontWeight", v);
-let fontSize = v =>
-  prop("fontSize", v);
-let font = v =>
-  prop("font", v);
+let fontStyle = v => prop("fontStyle", v);
+let fontVariant = v => prop("fontVariant", v);
+let fontWeight = v => prop("fontWeight", v);
+let fontSize = v => prop("fontSize", v);
+let font = v => prop("font", v);
 
-let textIndent = v =>
-  prop("textIndent", v);
-let textAlign = v =>
-  prop("textAlign", v);
-let textDecoration = v =>
-  prop("textDecoration", v);
-let letterSpacing = v =>
-  prop("letterSpacing", v);
-let wordSpacing = v =>
-  prop("wrdSpacing", v);
-let textTransform = v =>
-  prop("textTransform", v);
-let whiteSpace = v =>
-  prop("whiteSpace", v);
+let textIndent = v => prop("textIndent", v);
+let textAlign = v => prop("textAlign", v);
+let textDecoration = v => prop("textDecoration", v);
+let letterSpacing = v => prop("letterSpacing", v);
+let wordSpacing = v => prop("wrdSpacing", v);
+let textTransform = v => prop("textTransform", v);
+let whiteSpace = v => prop("whiteSpace", v);
 
-let cursor = v =>
-  prop("cursor", v);
-let outline = value =>
-  prop("outline", value);
+let cursor = v => prop("cursor", v);
+let outline = value => prop("outline", value);
 let outline2 = (~width=?, ~color=?, style) => {
   let value =
-    switch ((width, color)) {
-    | (Some(w), Some(c))  => {j|$w $style $c|j}
-    | (Some(w), None)     => {j|$w $style|j}
-    | (None, Some(c))     => {j|$style $c|j}
-    | (None, None)        => Value.unpack(style)
+    switch (width, color) {
+    | (Some(w), Some(c)) => {j|$w $style $c|j}
+    | (Some(w), None) => {j|$w $style|j}
+    | (None, Some(c)) => {j|$style $c|j}
+    | (None, None) => Value.unpack(style)
     };
-  prop("outline", value |> Value.pack)
+  prop("outline", value |> Value.pack);
 };
 let outline3 = (width, style, color) =>
   prop("outline", {j|$width $style $color|j} |> Value.pack);
-let outlineWidth = v =>
-  prop("outlineWidth", v);
-let outlineStyle = v =>
-  prop("outlineStyle", v);
-let outlineColor = v =>
-  prop("outlineColor", v);
+let outlineWidth = v => prop("outlineWidth", v);
+let outlineStyle = v => prop("outlineStyle", v);
+let outlineColor = v => prop("outlineColor", v);
 
-let transitionProperty = v =>
-  prop("transitionProperty", v);
+let transitionProperty = v => prop("transitionProperty", v);
 let transitionProperties =
-  fun | [] => prop("transitionProperty", "none" |> Value.pack)
-      | vs => prop("transitionProperty", Values.join(vs));
-let transitionDuration = v =>
-  prop("transitionDuration", v);
-let transitionDurations = vs =>
-  prop("transitionDuration", Values.join(vs));
-let transitionTimingFunction = v =>
-  prop("transitionTimingFunction", v);
+  fun
+  | [] => prop("transitionProperty", "none" |> Value.pack)
+  | vs => prop("transitionProperty", Values.join(vs));
+let transitionDuration = v => prop("transitionDuration", v);
+let transitionDurations = vs => prop("transitionDuration", Values.join(vs));
+let transitionTimingFunction = v => prop("transitionTimingFunction", v);
 let transitionTimingFunctions = vs =>
   prop("transitionTimingFunction", Values.join(vs));
-let transitionDelay = v =>
-  prop("transitionDelay", v);
-let transitionDelays = vs =>
-  prop("transitionDelay", Values.join(vs));
-let transition = v =>
-  prop("transition", v);
+let transitionDelay = v => prop("transitionDelay", v);
+let transitionDelays = vs => prop("transitionDelay", Values.join(vs));
+let transition = v => prop("transition", v);
 let transitions =
-  fun | [] => prop("transition", "none" |> Value.pack)
-      | vs => prop("transition", vs |> List.map(((prop, dur, fn, delay)) => {j|$prop $dur $fn $delay|j}) |> String.concat(", ") |> Value.pack);
+  fun
+  | [] => prop("transition", "none" |> Value.pack)
+  | vs =>
+    prop(
+      "transition",
+      vs
+      |> List.map(((prop, dur, fn, delay)) => {j|$prop $dur $fn $delay|j})
+      |> String.concat(", ")
+      |> Value.pack
+    );
 
-let transform = v =>
-  prop("transform", v);
+let transform = v => prop("transform", v);
 let transforms =
-  fun | [] => prop("transform", "none" |> Value.pack)
-      | vs => prop("transform", vs |> List.map(Value.unpack) |> String.concat(", ") |> Value.pack);
-let transformOrigin = v =>
-  prop("transformOrigin", v);
+  fun
+  | [] => prop("transform", "none" |> Value.pack)
+  | vs =>
+    prop(
+      "transform",
+      vs |> List.map(Value.unpack) |> String.concat(", ") |> Value.pack
+    );
+let transformOrigin = v => prop("transformOrigin", v);
 let transformOrigin2 = (~h, ~v) =>
   prop("transformOrigin", {j|$h $v|j} |> Value.pack);
-let transformBox = v =>
-  prop("transformBox", v);
+let transformBox = v => prop("transformBox", v);
 
-let flexDirection = v =>
-  prop("flexDirection", v);
-let flexWrap = v =>
-  prop("flexWrap", v);
-let flexFlow = v =>
-  prop("flexFlow", v);
+let flexDirection = v => prop("flexDirection", v);
+let flexWrap = v => prop("flexWrap", v);
+let flexFlow = v => prop("flexFlow", v);
 let flexFlow2 = (direction, wrap) =>
   prop("flexFlow", {j|$direction $wrap|j} |> Value.pack);
-let order = v =>
-  prop("order", int(v));
-let flex_ = v =>
-  prop("flex", v);
+let order = v => prop("order", int(v));
+let flex_ = v => prop("flex", v);
 let flex3 = (~grow, ~shrink, basis) =>
   prop("flex", {j|$grow $shrink $basis|j} |> Value.pack);
-let flexGrow = v =>
-  prop("flexGrow", num(v));
-let flexShrink = v =>
-  prop("flexShrink", num(v));
-let flexBasis = v =>
-  prop("flexBasis", v);
-let justifyContent = v =>
-  prop("justifyContent", v);
-let alignItems = v =>
-  prop("alignItems", v);
-let alignSelf = v =>
-  prop("alignSelf", v);
-let alignContent = v =>
-  prop("alignContent", v);
+let flexGrow = v => prop("flexGrow", num(v));
+let flexShrink = v => prop("flexShrink", num(v));
+let flexBasis = v => prop("flexBasis", v);
+let justifyContent = v => prop("justifyContent", v);
+let alignItems = v => prop("alignItems", v);
+let alignSelf = v => prop("alignSelf", v);
+let alignContent = v => prop("alignContent", v);
 
 /*********
  * Selectors
  */
-type nth = [`anplusb | `even | `odd];
+type nth = [ | `anplusb | `even | `odd];
 
-let odd     = "odd" |> Value.pack;
-let even    = "even" |> Value.pack;
+let odd = "odd" |> Value.pack;
+let even = "even" |> Value.pack;
 let anplusb = (a, b) => {j|$(a)n+($b)|j} |> Value.pack;
 
 let select = (selector, declarations) =>
   [(selector, declarations |> Declarations.toDict)] |> Selector.pack;
 
-let active          = declarations => select(":active", declarations);
+let active = declarations => select(":active", declarations);
 /*let any             = ;*/
-let checked         = declarations => select(":checked", declarations);
-let dir             = (dir, declarations) => select({j|:lang($dir)|j}, declarations);
-let disabled        = declarations => select(":disabled", declarations);
-let empty           = declarations => select(":empty", declarations);
-let enabled         = declarations => select(":enabled", declarations);
-let first           = declarations => select(":first", declarations);
-let firstChild      = declarations => select(":first-child", declarations);
-let firstOfType     = declarations => select(":first-of-type", declarations);
-let fullscreen      = declarations => select(":fullscreen", declarations);
-let focus           = declarations => select(":focus", declarations);
-let hover           = declarations => select(":hover", declarations);
-let visited         = declarations => select(":visited", declarations);
-let indeterminate   = declarations => select(":indeterminate", declarations);
-let invalid         = declarations => select(":invalid", declarations);
-let lang            = (lang, declarations) => select({j|:any($lang)|j}, declarations);
-let lastChild       = declarations => select(":last-child", declarations);
-let lastOfType      = declarations => select(":last-of-type", declarations);
-let link            = declarations => select(":link", declarations);
-let nthChild        = (pattern, declarations) => select({j|:nth-child($pattern)|j}, declarations);
-let nthLastChild    = (pattern, declarations) => select({j|:nth-last-child($pattern)|j}, declarations);
-let nthLastOfType   = (pattern, declarations) => select({j|:nth-last-of-type($pattern)|j}, declarations);
-let nthOfType       = (pattern, declarations) => select({j|:nth-of-type($pattern)|j}, declarations);
-let onlyChild       = declarations => select(":only-child", declarations);
-let onlyOfType      = declarations => select(":only-of-type", declarations);
-let optional        = declarations => select(":optional", declarations);
-let outOfRange      = declarations => select(":out-of-range", declarations);
-let readWrite       = declarations => select(":read-write", declarations);
-let required        = declarations => select(":required", declarations);
-let root            = declarations => select(":root", declarations);
-let scope           = declarations => select(":scope", declarations);
-let target          = declarations => select(":target", declarations);
-let valid           = declarations => select(":valid", declarations);
+let checked = declarations => select(":checked", declarations);
+let dir = (dir, declarations) => select({j|:lang($dir)|j}, declarations);
+let disabled = declarations => select(":disabled", declarations);
+let empty = declarations => select(":empty", declarations);
+let enabled = declarations => select(":enabled", declarations);
+let first = declarations => select(":first", declarations);
+let firstChild = declarations => select(":first-child", declarations);
+let firstOfType = declarations => select(":first-of-type", declarations);
+let fullscreen = declarations => select(":fullscreen", declarations);
+let focus = declarations => select(":focus", declarations);
+let hover = declarations => select(":hover", declarations);
+let visited = declarations => select(":visited", declarations);
+let indeterminate = declarations => select(":indeterminate", declarations);
+let invalid = declarations => select(":invalid", declarations);
+let lang = (lang, declarations) => select({j|:any($lang)|j}, declarations);
+let lastChild = declarations => select(":last-child", declarations);
+let lastOfType = declarations => select(":last-of-type", declarations);
+let link = declarations => select(":link", declarations);
+let nthChild = (pattern, declarations) =>
+  select({j|:nth-child($pattern)|j}, declarations);
+let nthLastChild = (pattern, declarations) =>
+  select({j|:nth-last-child($pattern)|j}, declarations);
+let nthLastOfType = (pattern, declarations) =>
+  select({j|:nth-last-of-type($pattern)|j}, declarations);
+let nthOfType = (pattern, declarations) =>
+  select({j|:nth-of-type($pattern)|j}, declarations);
+let onlyChild = declarations => select(":only-child", declarations);
+let onlyOfType = declarations => select(":only-of-type", declarations);
+let optional = declarations => select(":optional", declarations);
+let outOfRange = declarations => select(":out-of-range", declarations);
+let readWrite = declarations => select(":read-write", declarations);
+let required = declarations => select(":required", declarations);
+let root = declarations => select(":root", declarations);
+let scope = declarations => select(":scope", declarations);
+let target = declarations => select(":target", declarations);
+let valid = declarations => select(":valid", declarations);
 
 /*********
  * Glamor
  */
 type declarationBlock;
 
-let null =
-  Js.null |> Obj.magic;
+let null = Js.null |> Obj.magic;
 
-let unsafe = (property, value) =>
-  prop(property, value |> Value.pack);
+let unsafe = (property, value) => prop(property, value |> Value.pack);
 
-let label = label =>
-  prop("label", label |> Value.pack);
+let label = label => prop("label", label |> Value.pack);
 
-let nothing =
-  unsafe("nothing", null);
+let nothing = unsafe("nothing", null);
 
 let add = decls =>
-  decls |> List.map(Declaration.unpack)
-        |> List.flatten
-        |> Declaration.pack;
-
+  decls |> List.map(Declaration.unpack) |> List.flatten |> Declaration.pack;
 
 [@bs.module "glamor"] [@bs.splice]
 external merge : array(declarationBlock) => declarationBlock = "";
@@ -958,10 +854,10 @@ external css : Js.Dict.t(value(_)) => declarationBlock = "";
 let css = (~extend=?, declarations) => {
   let this = declarations |> Declarations.toDict;
 
-  switch extend {
+  switch (extend) {
   | Some(style) => merge([|style, css(this)|])
   | None => css(this)
-  }
+  };
 };
 
 [@bs.module "glamor"] [@bs.scope "css"]

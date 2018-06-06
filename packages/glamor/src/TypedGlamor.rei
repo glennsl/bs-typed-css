@@ -1,7 +1,5 @@
 /*include (module type of CssCore.Types);*/
-module Core: {
-  include (module type of TypedGlamor__Core.Core);
-};
+module Core: {include (module type of TypedGlamor__Core.Core);};
 open Core;
 include Values;
 include Properties;
@@ -10,17 +8,17 @@ type declarationBlock;
 
 let null: value(_);
 
-let odd: value([`odd]);
-let even: value([`even]);
-let anplusb: (int, int) => value([`anplusb]);
+let odd: value([ | `odd]);
+let even: value([ | `even]);
+let anplusb: (int, int) => value([ | `anplusb]);
 
-type nth = [`anplusb | `even | `odd];
+type nth = [ | `anplusb | `even | `odd];
 
 let select: (string, list(declaration)) => declaration;
 let active: list(declaration) => declaration;
 /*let any: string => list(declaration) => declaration;*/
 let checked: list(declaration) => declaration;
-let dir: value([< `ltr | `rtl]) => list(declaration) => declaration;
+let dir: (value([< | `ltr | `rtl]), list(declaration)) => declaration;
 let disabled: list(declaration) => declaration;
 let empty: list(declaration) => declaration;
 let enabled: list(declaration) => declaration;
@@ -33,14 +31,14 @@ let hover: list(declaration) => declaration;
 let visited: list(declaration) => declaration;
 let indeterminate: list(declaration) => declaration;
 let invalid: list(declaration) => declaration;
-let lang: string => list(declaration) => declaration;
+let lang: (string, list(declaration)) => declaration;
 let lastChild: list(declaration) => declaration;
 let lastOfType: list(declaration) => declaration;
 let link: list(declaration) => declaration;
-let nthChild: value([< nth]) => list(declaration) => declaration;
-let nthLastChild: value([< nth]) => list(declaration) => declaration;
-let nthLastOfType: value([< nth]) => list(declaration) => declaration;
-let nthOfType: value([< nth]) => list(declaration) => declaration;
+let nthChild: (value([< nth]), list(declaration)) => declaration;
+let nthLastChild: (value([< nth]), list(declaration)) => declaration;
+let nthLastOfType: (value([< nth]), list(declaration)) => declaration;
+let nthOfType: (value([< nth]), list(declaration)) => declaration;
 let onlyChild: list(declaration) => declaration;
 let onlyOfType: list(declaration) => declaration;
 let optional: list(declaration) => declaration;

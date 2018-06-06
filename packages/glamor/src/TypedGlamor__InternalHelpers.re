@@ -8,8 +8,7 @@ module Value = {
 module Values = {
   external unpack : list(value(_)) => list(string) = "%identity";
 
-  let join = vs =>
-    vs |> unpack |> String.concat(", ") |> Value.pack;
+  let join = vs => vs |> unpack |> String.concat(", ") |> Value.pack;
 };
 
 module Declaration = {
@@ -20,16 +19,15 @@ module Declaration = {
 };
 
 module Declarations = {
-  external unpack : list(declaration) => list(Declaration.t(_)) = "%identity";
-  let toDict : list(declaration) => Js.Dict.t(value(_)) = declarations =>
-    declarations |> unpack
-                 |> List.flatten
-                 |> Js.Dict.fromList;
+  external unpack : list(declaration) => list(Declaration.t(_)) =
+    "%identity";
+  let toDict: list(declaration) => Js.Dict.t(value(_)) =
+    declarations => declarations |> unpack |> List.flatten |> Js.Dict.fromList;
 };
 
 module Selector = {
-  external pack : list((string, Js.Dict.t(value(_)))) => declaration = "%identity";
-  external unpack : declaration => list((string, Js.Dict.t(value(_)))) = "%identity";
+  external pack : list((string, Js.Dict.t(value(_)))) => declaration =
+    "%identity";
+  external unpack : declaration => list((string, Js.Dict.t(value(_)))) =
+    "%identity";
 };
-
-

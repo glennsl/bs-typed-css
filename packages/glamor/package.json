@@ -4,8 +4,7 @@
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
-    "clean": "bsb -clean-world",
-    "watch:jest": "jest --watchAll --coverage"
+    "clean": "bsb -clean-world"
   },
   "keywords": [
     "Bucklescript",
@@ -24,10 +23,5 @@
   },
   "devDependencies": {
     "glamor": "^2.20.40"
-  },
-  "jest": {
-    "testMatch": [
-      "**/__tests__/**/*_test.bs.js"
-    ]
   }
 }
