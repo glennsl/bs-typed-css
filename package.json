@@ -1,0 +1,27 @@
+{
+  "name": "bs-typed-css",
+  "version": "0.1.0",
+  "description": "CSS. Typed.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glennsl/bs-typed-css.git"
+  },
+  "keywords": [
+    "Bucklescript",
+    "CSS",
+    "Typed",
+    "React",
+    "Glamor",
+    "Reason"
+  ],
+  "author": "glennsl",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/glennsl/bs-typed-css/issues"
+  },
+  "homepage": "https://github.com/glennsl/bs-typed-css#readme"
+}

@@ -1,3 +1,12 @@
 # CSS. Typed.
 
-**NOTE:** This repository has been superseeded by [glennsl/bs-typed-css-core](https://github.com/glennsl/bs-typed-css-core) and [glennsl/bs-typed glamor](https://github.com/glennsl/bs-typed-glamor)
+This repository contains packages implementing a typed interface/DSL to CSS.
+
+### Packages (core)
+
+- `core`: implements the common interface
+
+### Packages (adapters)
+
+- `glamor`: an adapter to the `glamor` CSS library
+- `react`: an adapter to write "styled" components to be used with ReasonReact
