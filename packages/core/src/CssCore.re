@@ -646,6 +646,7 @@ module type Values = {
   let flexEnd:      value([`flexEnd]);
   let spaceBetween: value([`spaceBetween]);
   let spaceAround:  value([`spaceAround]);
+  let spaceEvenly:  value([`spaceEvenly]);
 
   /* alignitems */
   let stretch:  value([`stretch]);
@@ -849,7 +850,7 @@ module type Properties = {
 
 
   /* TODO: Tables */
-  
+
 
   /**
    * User interface
@@ -878,7 +879,7 @@ module type Properties = {
    * transition-property. I wonder if this is actually useful for some purpose
    * other than shooting yourself in the foot, or if it'd be better to just remove
    * them.
-   * 
+   *
    * TODO? Remove singleTransitionProperty from the singulat value
    */
   let transitionProperty:         value([< `none | singleTransitionProperty | `universal]) => declaration;
@@ -921,7 +922,7 @@ module type Properties = {
   let flexGrow:       float => declaration;
   let flexShrink:     float => declaration;
   let flexBasis:      value([< `content | `length | `percentage | `auto | `universal]) => declaration;
-  let justifyContent: value([< `flexStart | `flexEnd | `center | `spaceBetween | `spaceAround | `universal]) => declaration;
+  let justifyContent: value([< `flexStart | `flexEnd | `center | `spaceBetween | `spaceAround | `spaceEvenly | `stretch | `universal]) => declaration;
   let alignItems:     value([< `flexStart | `flexEnd | `center | `baseline | `stretch | `universal]) => declaration;
   let alignSelf:      value([< `auto | `flexStart | `flexEnd | `center | `baseline | `stretch | `universal]) => declaration;
   let alignContent:   value([< `flexStart | `flexEnd | `center | `spaceBetween | `spaceAround | `stretch | `universal]) => declaration;
