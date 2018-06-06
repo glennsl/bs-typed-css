@@ -1,6 +1,8 @@
 {
-  "name": "typed-glamor",
-  "bsc-flags": ["-bs-no-version-header"],
+  "name": "@glennsl/bs-typed-glamor",
+  "bsc-flags": [
+    "-bs-no-version-header"
+  ],
   "version": "0.1.0",
   "sources": [
     "src",
@@ -14,7 +16,11 @@
     "in-source": true
   },
   "suffix": ".bs.js",
-  "bs-dependencies": ["typed-css-core"],
-  "bs-dev-dependencies": ["@glennsl/bs-jest"],
+  "bs-dependencies": [
+    "@glennsl/bs-typed-css-core"
+  ],
+  "bs-dev-dependencies": [
+    "@glennsl/bs-jest"
+  ],
   "refmt": 3
 }

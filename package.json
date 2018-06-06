@@ -4,6 +4,7 @@
   "description": "CSS. Typed.",
   "private": true,
   "scripts": {
+    "postinstall": "lerna bootstrap",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,5 +24,10 @@
   "bugs": {
     "url": "https://github.com/glennsl/bs-typed-css/issues"
   },
-  "homepage": "https://github.com/glennsl/bs-typed-css#readme"
+  "homepage": "https://github.com/glennsl/bs-typed-css#readme",
+  "devDependencies": {
+    "@glennsl/bs-jest": "^0.4.2",
+    "bs-platform": "^3.1.5",
+    "lerna": "^2.11.0"
+  }
 }

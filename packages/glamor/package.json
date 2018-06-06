@@ -1,5 +1,5 @@
 {
-  "name": "typed-glamor",
+  "name": "@glennsl/bs-typed-glamor",
   "version": "0.1.0",
   "scripts": {
     "build": "bsb -make-world",
@@ -8,20 +8,22 @@
     "watch:jest": "jest --watchAll --coverage"
   },
   "keywords": [
-    "reason",
-    "bucklescript",
-    "css",
-    "glamor"
+    "Bucklescript",
+    "CSS",
+    "Typed",
+    "Glamor",
+    "Reason"
   ],
   "author": "glennsl",
-  "license": "MIT",
+  "license": "LGPL-3.0",
   "dependencies": {
-    "glamor": "^2.20.40",
-    "typed-css-core": "../core"
+    "@glennsl/bs-typed-css-core": "^0.1.0"
+  },
+  "peerDependencies": {
+    "glamor": ">=2"
   },
   "devDependencies": {
-    "@glennsl/bs-jest": "^0.4.2",
-    "bs-platform": "^2.2.1"
+    "glamor": "^2.20.40"
   },
   "jest": {
     "testMatch": [

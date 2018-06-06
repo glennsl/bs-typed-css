@@ -1,5 +1,5 @@
 {
-  "name": "typed-css-core",
+  "name": "@glennsl/bs-typed-css-core",
   "version": "0.1.0",
   "scripts": {
     "build": "bsb -make-world",
@@ -7,14 +7,11 @@
     "clean": "bsb -clean-world"
   },
   "keywords": [
-    "reason",
-    "bucklescript",
-    "css"
+    "Bucklescript",
+    "CSS",
+    "Typed",
+    "Reason"
   ],
-  "namespace": false,
   "author": "glennsl",
-  "license": "MIT",
-  "devDependencies": {
-    "bs-platform": "^2.2.1"
-  }
+  "license": "LGPL-3.0"
 }
