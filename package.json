@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "postinstall": "lerna bootstrap",
+    "build": "lerna run build",
+    "release": "npm run build && lerna publish --registry=https://registry.npmjs.org/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
