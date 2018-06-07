@@ -4,7 +4,8 @@
   "scripts": {
     "build": "../../node_modules/.bin/bsb -make-world",
     "start": "../../node_modules/.bin/bsb -make-world -w",
-    "clean": "../../node_modules/.bin/bsb -clean-world"
+    "clean": "../../node_modules/.bin/bsb -clean-world",
+    "start:example": "parcel example/index.html"
   },
   "keywords": [
     "Bucklescript",
@@ -21,5 +22,9 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "reason-react": "^0.4.2"
+  },
+  "devDependencies": {
+    "bsb-js": "^1.1.3",
+    "parcel-bundler": "^1.8.1"
   }
 }

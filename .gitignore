@@ -8,8 +8,9 @@ yarn-error.log*
 node_modules/
 **/coverage/
 
-# Optional npm cache directory
+# Cache directories
 .npm
+.cache
 
 # Optional eslint cache
 .eslintcache
@@ -22,3 +23,6 @@ node_modules/
 .bsb.lock
 lib
 *.bs.js
+
+# Artifacts
+dist

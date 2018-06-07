@@ -41,7 +41,7 @@ type action =
   | Select(string);
 
 let component = ReasonReact.reducerComponent("Page");
-let make = _children => {
+let make = (~message, _children) => {
   ...component,
   initialState: () => {selected: None},
   reducer: (action, _state) =>
@@ -49,17 +49,20 @@ let make = _children => {
     | Select(name) => ReasonReact.Update({selected: Some(name)})
     },
   render: ({send, state}) =>
-    <Styles.Stateless>
-      (
-        fruit
-        |> Array.map(name =>
-             <Fruit
-               name
-               isSelected=(Some(name) == state.selected)
-               onSelect=(_e => send(Select(name)))
-             />
-           )
-        |> ReasonReact.array
-      )
-    </Styles.Stateless>,
+    <div>
+      <h1> (message |> text) </h1>
+      <Styles.Stateless>
+        (
+          fruit
+          |> Array.map(name =>
+               <Fruit
+                 name
+                 isSelected=(Some(name) == state.selected)
+                 onSelect=(_e => send(Select(name)))
+               />
+             )
+          |> ReasonReact.array
+        )
+      </Styles.Stateless>
+    </div>,
 };
