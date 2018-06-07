@@ -19,7 +19,7 @@
     "@glennsl/bs-typed-css-core": "^0.1.0"
   },
   "peerDependencies": {
-    "glamor": ">=2"
+    "glamor": "^2.20.0"
   },
   "devDependencies": {
     "glamor": "^2.20.40"
