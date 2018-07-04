@@ -1,10 +1,10 @@
 {
   "name": "@glennsl/bs-typed-css-core",
-  "version": "0.1.0",
+  "version": "0.1.0-beta.0",
   "scripts": {
-    "build": "../../node_modules/.bin/bsb -make-world",
-    "start": "../../node_modules/.bin/bsb -make-world -w",
-    "clean": "../../node_modules/.bin/bsb -clean-world"
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world"
   },
   "keywords": [
     "Bucklescript",
@@ -13,5 +13,11 @@
     "Reason"
   ],
   "author": "glennsl",
-  "license": "LGPL-3.0"
+  "license": "LGPL-3.0",
+  "peerDependencies": {
+    "bs-platform": ">=3.1.0"
+  },
+  "devDependencies": {
+    "bs-platform": "^3.1.5"
+  }
 }

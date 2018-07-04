@@ -1,10 +1,10 @@
 {
   "name": "@glennsl/bs-typed-glamor",
-  "version": "0.1.0",
+  "version": "0.1.0-beta.0",
   "scripts": {
-    "build": "../../node_modules/.bin/bsb -make-world",
-    "start": "../../node_modules/.bin/bsb -make-world -w",
-    "clean": "../../node_modules/.bin/bsb -clean-world"
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world"
   },
   "keywords": [
     "Bucklescript",
@@ -16,12 +16,14 @@
   "author": "glennsl",
   "license": "LGPL-3.0",
   "dependencies": {
-    "@glennsl/bs-typed-css-core": "^0.1.0"
+    "@glennsl/bs-typed-css-core": "^0.1.0-beta.0"
   },
   "peerDependencies": {
-    "glamor": "^2.20.0"
+    "glamor": ">=2.20.0",
+    "bs-platform": ">=3.1.0"
   },
   "devDependencies": {
-    "glamor": "^2.20.40"
+    "glamor": "^2.20.40",
+    "bs-platform": "^3.1.5"
   }
 }

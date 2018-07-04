@@ -9,13 +9,17 @@ This repository contains packages implementing a typed interface/DSL to CSS.
 ### Packages (adapters)
 
 - `glamor`: an adapter to the `glamor` CSS library
-- `react`: an adapter to write "styled" components to be used with ReasonReact
 
 ## Developing
 
-To develop locally, check out the repository and run `yarn`. This will install the main dev dependencies and run `lerna bootstrap`, which will install all the dependencies in each package.
+To develop locally, check out the repository and run `yarn` with _workspaces_ enable (packages dependencies will be hoisted).
 
-To work on a specific package, simply `cd` into the package folder and run one of the following commands:
+There are 2 top level commands:
+
+- `yarn build`: will run the `build` task in each package, sequentially
+- `yarn start`: will run the `start` task in each package, in parallel
+
+To work on a specific package, `cd` into the package folder and run one of the following commands:
 
 - `yarn clean`: will clean up the build artifacts
 - `yarn build`: will compile the sources
