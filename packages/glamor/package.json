@@ -6,6 +6,10 @@
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world"
   },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "Bucklescript",
     "CSS",
