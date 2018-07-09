@@ -1,20 +1,31 @@
 {
-  "name": "typed-css-core",
-  "version": "0.1.0",
+  "name": "@glennsl/bs-typed-css-core",
+  "version": "0.1.0-beta.0",
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world"
   },
-  "keywords": [
-    "reason",
-    "bucklescript",
-    "css"
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "bsconfig.json"
   ],
-  "namespace": false,
+  "keywords": [
+    "Bucklescript",
+    "CSS",
+    "Typed",
+    "Reason"
+  ],
   "author": "glennsl",
-  "license": "MIT",
+  "license": "LGPL-3.0",
+  "peerDependencies": {
+    "bs-platform": ">=3.1.0"
+  },
   "devDependencies": {
-    "bs-platform": "^2.2.1"
+    "bs-platform": "^3.1.5"
   }
 }

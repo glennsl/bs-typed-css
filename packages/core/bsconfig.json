@@ -1,6 +1,8 @@
 {
-  "name": "typed-css-core",
-  "bsc-flags": ["-bs-no-version-header"],
+  "name": "@glennsl/bs-typed-css-core",
+  "bsc-flags": [
+    "-bs-no-version-header"
+  ],
   "version": "0.1.0",
   "sources": [
     "src"
@@ -11,6 +13,8 @@
   },
   "suffix": ".bs.js",
   "bs-dependencies": [],
-  "bs-dev-dependencies": [],
+  "bs-dev-dependencies": [
+    "@glennsl/bs-jest"
+  ],
   "refmt": 3
 }

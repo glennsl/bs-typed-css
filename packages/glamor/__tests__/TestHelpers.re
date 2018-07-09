@@ -26,6 +26,6 @@ let testSelector = (selector, expected: (string, list((string, string)))) => {
     };
 
   let (k', decls') = expected;
-  test(k, () => 
+  test(k, () =>
     expect((k, decls)) |> toEqual((k', decls' |> List.map(asDeclaration) |> Declarations.toDict)));
 };

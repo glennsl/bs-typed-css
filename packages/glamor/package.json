@@ -1,31 +1,37 @@
 {
-  "name": "typed-glamor",
-  "version": "0.1.0",
+  "name": "@glennsl/bs-typed-glamor",
+  "version": "0.1.0-beta.0",
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
-    "clean": "bsb -clean-world",
-    "watch:jest": "jest --watchAll --coverage"
+    "clean": "bsb -clean-world"
   },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "bsconfig.json"
+  ],
   "keywords": [
-    "reason",
-    "bucklescript",
-    "css",
-    "glamor"
+    "Bucklescript",
+    "CSS",
+    "Typed",
+    "Glamor",
+    "Reason"
   ],
   "author": "glennsl",
-  "license": "MIT",
+  "license": "LGPL-3.0",
   "dependencies": {
-    "glamor": "^2.20.40",
-    "typed-css-core": "../core"
+    "@glennsl/bs-typed-css-core": "^0.1.0-beta.0"
+  },
+  "peerDependencies": {
+    "glamor": ">=2.20.0",
+    "bs-platform": ">=3.1.0"
   },
   "devDependencies": {
-    "@glennsl/bs-jest": "^0.4.2",
-    "bs-platform": "^2.2.1"
-  },
-  "jest": {
-    "testMatch": [
-      "**/__tests__/**/*_test.bs.js"
-    ]
+    "glamor": "^2.20.40",
+    "bs-platform": "^3.1.5"
   }
 }

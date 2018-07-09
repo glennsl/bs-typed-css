@@ -31,5 +31,3 @@ module Selector = {
   external pack : list((string, Js.Dict.t(value(_)))) => declaration = "%identity";
   external unpack : declaration => list((string, Js.Dict.t(value(_)))) = "%identity";
 };
-
-
