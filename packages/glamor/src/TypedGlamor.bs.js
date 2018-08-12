@@ -3,7 +3,6 @@
 var List = require("bs-platform/lib/js/list.js");
 var $$String = require("bs-platform/lib/js/string.js");
 var Glamor = require("glamor");
-var Pervasives = require("bs-platform/lib/js/pervasives.js");
 var TypedGlamor__InternalHelpers = require("./TypedGlamor__InternalHelpers.bs.js");
 
 function prop(name, value) {
@@ -299,7 +298,9 @@ function skewY(v) {
   return "skewY(" + (String(v) + ")");
 }
 
-var $$int = Pervasives.string_of_int;
+function $$int(n) {
+  return String(n);
+}
 
 function num(f) {
   return String(f);
@@ -643,8 +644,8 @@ function backgroundPosition2(h, v) {
 function shadow(x, y, $staropt$star, $staropt$star$1, $staropt$star$2, color) {
   var blur = $staropt$star ? $staropt$star[0] : "";
   var spread = $staropt$star$1 ? $staropt$star$1[0] : "";
-  var inset = $staropt$star$2 ? $staropt$star$2[0] : /* false */0;
-  var inset$1 = inset !== 0 ? "inset" : "";
+  var inset = $staropt$star$2 ? $staropt$star$2[0] : false;
+  var inset$1 = inset ? "inset" : "";
   return "" + (String(inset$1) + (" " + (String(x) + (" " + (String(y) + (" " + (String(blur) + (" " + (String(spread) + (" " + (String(color) + "")))))))))));
 }
 
@@ -870,7 +871,7 @@ function flexFlow2(direction, wrap) {
 }
 
 function order(v) {
-  return prop("order", Pervasives.string_of_int(v));
+  return prop("order", String(v));
 }
 
 function flex_(v) {

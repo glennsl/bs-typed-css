@@ -970,3 +970,96 @@ let global = (selector, declarations) =>
   global(selector, declarations |> Declarations.toDict);
 
 let toString = Js.String.make;
+
+
+
+module Select : {
+  type selector('a) constraint 'a = [< `relative | `global | `any];
+  type pseudoClass;
+  type pseudoElement;
+  type attribute;
+
+  let relative : (selector([`relative]), list(declaration)) => declaration;
+  let this : selector([`relative]);
+
+  let all : selector([`any]);
+
+  let a   : selector([`any]);
+  let img : selector([`any]);
+
+  let active : pseudoClass;
+  let focus  : pseudoClass;
+
+  let (%.) : (selector('a), string) => selector('a);
+  let (%#) : (selector('a), string) => selector('a);
+
+  let (%+) : (selector(_), selector(_)) => selector([`any]);
+  let (%~) : (selector(_), selector(_)) => selector([`any]);
+  let (%>) : (selector(_), selector(_)) => selector([`any]);
+  let (%)  : (selector(_), selector(_)) => selector([`any]);
+
+  let (%:)  : (selector('a), pseudoClass) => selector('a);
+  let (%::) : (selector('a), pseudoElement) => selector('a);
+
+  module Array : {
+    let get : (selector('a), attribute) => selector('a);
+  };
+
+  let title : attribute;
+
+  let (%=)  : (attribute, string) => attribute;
+  let (%~=) : (attribute, string) => attribute;
+  let (%|=) : (attribute, string) => attribute;
+  let (%^=) : (attribute, string) => attribute;
+  let (%$=) : (attribute, string) => attribute;
+  let (%*=) : (attribute, string) => attribute;
+} = {
+
+  type selector('a) = string constraint 'a = [< `any | `global | `relative ];
+  type pseudoClass = string;
+  type pseudoElement = string;
+  type attribute = string;
+
+  let relative = (selector, declarations) =>
+    [(selector, declarations |> Declarations.toDict)] |> Selector.pack;
+  let this = "&";
+
+  let all = "*";
+
+  let a = "a";
+  let img = "img";
+
+  let active = "active";
+  let focus = "focus";
+
+  let (%.)  = (a, b) => {j|$a.$b|j};
+  let (%#)  = (a, b) => {j|$a#$b|j};
+
+  let (%+) = (a, b) => {j|$a + $b|j};
+  let (%~) = (a, b) => {j|$a ~ $b|j};
+  let (%>) = (a, b) => {j|$a > $b|j};
+  let (%)  = (a, b) => {j|$a $b|j};
+
+  let (%:)  = (a, b) => {j|$a:$b|j};
+  let (%::) = (a, b) => {j|$a::$b|j};
+
+  module Array = {
+    let get = (selector, attribute) => {j|$selector[$attribute]|j};
+  };
+
+  let title = "title";
+
+  let (%=)  = (a, b) => {j|$a="$b"|j};
+  let (%~=) = (a, b) => {j|$a~="$b"|j};
+  let (%|=) = (a, b) => {j|$a|="$b"|j};
+  let (%^=) = (a, b) => {j|$a^="$b"|j};
+  let (%$=) = (a, b) => {j|$a\$="$b"|j};
+  let (%*=) = (a, b) => {j|$a*="$b"|j};
+};
+/*
+let x : declaration =
+  Select.(
+    relative 
+       (this % a[title%$="something"]%."my-class" % img%:focus %> a)
+  );
+*/
